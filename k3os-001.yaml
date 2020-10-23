@@ -36,3 +36,4 @@ k3os:
   password: "k3os"
   k3s_args:
   - server
+  - "--cluster-init"
