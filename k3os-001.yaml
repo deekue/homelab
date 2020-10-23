@@ -31,9 +31,11 @@ k3os:
   ntp_servers:
   - 0.us.pool.ntp.org
   - 1.us.pool.ntp.org
-  server_url: https://192.168.136.249:6443
+#  server_url: https://192.168.136.249:6443
   token: SECRETSQUIRREL
   password: "k3os"
   k3s_args:
   - server
   - "--cluster-init"
+  - "--tls-san"
+  - "192.168.136.249"
