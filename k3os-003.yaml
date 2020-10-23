@@ -1,0 +1,18 @@
+hostname: k3os-003
+ssh_authorized_keys:
+- github:deekue
+- ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBIMWQez3DYo1jeHOOE3nG7RPllzzpKW2p2R7QwmOaoj apathy@chelone
+k3os:
+  modules:
+  - kvm
+  sysctl:
+    kernel.printk: "4 4 1 7"
+    kernel.kptr_restrict: "1"
+  ntp_servers:
+  - 0.us.pool.ntp.org
+  - 1.us.pool.ntp.org
+  server_url: https://192.168.136.249:6443
+  token: SECRETSQUIRREL
+  password: "k3os"
+  k3s_args:
+  - server
