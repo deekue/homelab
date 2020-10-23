@@ -2,6 +2,26 @@ hostname: k3os-001
 ssh_authorized_keys:
 - github:deekue
 - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBIMWQez3DYo1jeHOOE3nG7RPllzzpKW2p2R7QwmOaoj apathy@chelone
+write_files:
+- path: /var/lib/rancher/k3s/server/manifests/kube-vip-ds.yaml
+  owner: root:root
+  permissions: '0644'
+  encoding: gz+base64
+  content: |
+    H4sICBcPk18CA2t1YmUtdmlwLWRzLnlhbWwAlVVNb9pAEL3zK1a0x9hAoCjxpUqbHJAaigKK1FM0
+    sQdYsd61dsdQFOW/d5bPNZhEtYSE3+x787EzYyjkM1onjU4EFIVrLTuNhdRZIu4Bc6PHSI0cCTIg
+    SBpCpBaB+PRE5ugI8iIRulSKLRpyTMSifMVoKYsoczvMFZDuDW7tCPOGKzD1Yg4VpmSs/y9EDpTO
+    f8ErKrcF6jVZoFBAuCMFsfnncnz+URX1en0OaxfeRs9oAqm5RHskEmBngUYk2I+lw/sXYbRai9Jh
+    JqbGiieY0vejNRJRpEwKaoRoQ7j59c07jrXJcMhxvScMEFDp4rlxNBi9J502P82qluVbIjwVW3SN
+    i9rt66Rzex13+jdxp9uPO73+VuJqZ+5Wzd+6W3OQGsf6+oPbYWKeZXGC+yADaFNFKOTJqZEJasNZ
+    9nu9bvPUA6QL1Lvqb+FKYN1+4mlXp8mcg5yCBw9CqJfhTW3vm6/6BewxHSGWoEo2NMmW2Kw9LzWh
+    nXInn7OQ5u16H1lm0blzRhjyde+2lqwQMrSbAeF2/q9YmcrNV1q4wPxWT7OocZWxW8X9XkPrXqKR
+    XRdopclqSJ1Kux5ZPFdTOcuhCObmQAo4YtmOO/GtWIET7Km0WuqZeB6MhEkJyYNLHk6eNanF7O5p
+    dKDKHGYsViid2dZ+xBOvdlM9M+L9MDJKputE3KkVrN2F/XCA+VZNaVN0iXh7P6AO09JKWv/klYF/
+    KQmqkUIBr1JJkuhCXAjukSoQieHD5OXu/nEwPMHHf8Yvk8HjwwFeGlXm+GhKTZV9lHtkBDRPRAsp
+    3SRvNRK6FmS51LEvfiB+zHJ7Kx9IOadaKVpyZ/QUolMDr+LsN+/CRPhe3Rn8LhsirYxdVHC/9saV
+    78EejaxRGB+TiKVp5cAfEnsyBcTntk0fLGucTlkzEUMzTuc8FerY2gvk0D720AgrHaj6LDZlCdIt
+    jmWyoNkZt13X+V+8hlw1Pin3p6LntT+rfFnwtxDHxFXA2XrTnf8AVJsFXuEHAAA=
 k3os:
   modules:
   - kvm
