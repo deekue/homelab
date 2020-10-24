@@ -16,3 +16,5 @@ k3os:
   password: "k3os"
   k3s_args:
   - server
+  - "--tls-san"
+  - "192.168.136.249"
