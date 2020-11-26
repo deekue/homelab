@@ -28,14 +28,14 @@ spec:
         - --lbPort
         - "6443"
         - --lbBackends
-        - 192.168.136.136:6443,192.168.136.146:6443,192.168.136.153:6443
+        - 192.168.136.97:6443,192.168.136.146:6443,192.168.136.153:6443
         env:
         - name: vip_arp
           value: "true"
         - name: vip_interface
           value: eth0
         - name: vip_address
-          value: 192.168.136.249
+          value: 192.168.136.10
         - name: vip_leaderelection
           value: "true"
         - name: vip_leaseduration

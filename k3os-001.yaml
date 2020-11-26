@@ -8,20 +8,27 @@ write_files:
   permissions: '0644'
   encoding: gz+base64
   content: |
-    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
+    H4sICEo6wF8CA2t1YmUtdmlwLWRzLnlhbWwAlVXbbtpAEH3nK1a0j7GBkNDEL1Xa5AGpoVZAkfoU
+    TewBVqx3rd0xFEX5985yXXNJVEtI+MyeM5edGUMpn9E6aXQioCxda95pzKTOE3EPWBg9RGoUSJAD
+    QdIQIrMIxKdHskBHUJSJ0JVSbNFQYCJm1StGc1lGudtgroRsa3BLR1g0XImZF3OoMCNj/X8hCqBs
+    +gteUbk1cFqTBUoFhBtSEJt/zsfnH1VTP63PYW3CW+kZTSA1l2iLRALsJNCIBPuxtHv/IoxWS1E5
+    zMXYWPEEY/q+t0YiipTJQKWINoSbX9+841ibHAcc13vCAAFVLp4aR/30Pem0+WnWtSzfEuGh2Kxr
+    XNRuXyad28u407uJO91e3LnqrSUuNuZu3XzdXZuD1DjW1x/cDiPzLMsD3AcZQKsqQikPTqUmqA1n
+    2bu66jYPPUA2Q72p/hoOA7v9lnjWxWEuxyBn4MGdDup5eFHr6+abfgG7z0aIOaiKDU2yFTZPnpea
+    0I65kY9ZSNP2aR95btG5Y0Yt5NNchZCjXY0HN/N/hcpUbr3Kwhnm9WmaRY2LnN0q7vYTtO45Gtll
+    iVaa/ASpU2vWPYunaiwnBZTB1OxIAUfM23EnvhULcII9VVZLPRHP/VSYjJA8OOfR5EmTWkzuntId
+    VRYwYbFS6dy2tgOeeLWb+pmUt0NqlMyWibhTC1i6M9thB/Olmspm6BLx9r5DHWaVlbT8yQsD/1IS
+    VCODEl6lkiTRhbgQ3CJ1IBKDh9HL3f1jf3CAD/8MX0b9x4cdPDeqKvDRVJpq26jwSAo0TUQLKVsl
+    bzUSuhbkhdSxL34gvs9yfSsfSDmnWhlackf0DKJDAy/i/DdvwkT4Xt0Y/CYbIC2MndVwv/SGta/B
+    Fo2sURjvk4ilaRXAnxF7MAXE59ZNH6xqHI9ZMxEDM8ymPBVq39oz5NA+9tAIKx2o+ixWZQnSLfdl
+    sqDZGbdd1/lfvIRCNT4p96eix7U/qnxV8pcQh8RVwMly1Z3/AJPWi63fBwAA
+- path: /etc/rancher/k3s/registries.yaml
+  owner: root:root
+  permissions: '0644'
+  encoding: base64
+  content: |
+    bWlycm9yczoKICBkb2NrZXIuaW86CiAgICBlbmRwb2ludDoKICAgICAgLSAgImh0dHA6Ly8xOTIu
+    MTY4LjEzNi4yMzg6MzEyOCIK
 k3os:
   modules:
   - kvm
@@ -31,11 +38,16 @@ k3os:
   ntp_servers:
   - 0.us.pool.ntp.org
   - 1.us.pool.ntp.org
-#  server_url: https://192.168.136.249:6443
+#  server_url: https://192.168.136.10:6443
   token: SECRETSQUIRREL
   password: "k3os"
   k3s_args:
   - server
   - "--cluster-init"
   - "--tls-san"
-  - "192.168.136.249"
+  - "192.168.136.10"
+  - "--tls-san"
+  - "k8s.s.home.chaosengine.net"
+    #- "--node-external-ip"
+    #- "192.168.136.10"
+  #- "--secrets-encryption"
