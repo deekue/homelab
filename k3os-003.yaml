@@ -2,6 +2,16 @@ hostname: k3os-003
 ssh_authorized_keys:
 - github:deekue
 - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBIMWQez3DYo1jeHOOE3nG7RPllzzpKW2p2R7QwmOaoj apathy@chelone
+write_files:
+- path: /etc/rancher/k3s/registries.yaml
+  owner: root:root
+  permissions: '0644'
+  encoding: base64
+  content: |
+    bWlycm9yczoKICBkb2NrZXIuaW86CiAgICBlbmRwb2ludDoKICAgICAgLSAgImh0dHBzOi8vMTky
+    LjE2OC4xMzYuMjM4OjMxMjgiCg==
+run_cmd:
+- "wget -O - -q http://192.168.136.238:3128/ca.crt | sudo tee -a /etc/ssl/certs/ca-certificates.crt"
 k3os:
   modules:
   - kvm

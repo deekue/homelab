@@ -27,8 +27,10 @@ write_files:
   permissions: '0644'
   encoding: base64
   content: |
-    bWlycm9yczoKICBkb2NrZXIuaW86CiAgICBlbmRwb2ludDoKICAgICAgLSAgImh0dHA6Ly8xOTIu
-    MTY4LjEzNi4yMzg6MzEyOCIK
+    bWlycm9yczoKICBkb2NrZXIuaW86CiAgICBlbmRwb2ludDoKICAgICAgLSAgImh0dHBzOi8vMTky
+    LjE2OC4xMzYuMjM4OjMxMjgiCg==
+run_cmd:
+- "wget -O - -q http://192.168.136.238:3128/ca.crt | sudo tee -a /etc/ssl/certs/ca-certificates.crt"
 k3os:
   modules:
   - kvm
