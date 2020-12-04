@@ -15,6 +15,7 @@ run_cmd:
 k3os:
   modules:
   - kvm
+  - nvme
   sysctl:
     kernel.printk: "4 4 1 7"
     kernel.kptr_restrict: "1"
