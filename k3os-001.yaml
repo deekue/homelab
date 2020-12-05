@@ -31,6 +31,8 @@ write_files:
     LjE2OC4xMzYuMjM4OjMxMjgiCg==
 run_cmd:
 - "wget -O - -q http://192.168.136.238:3128/ca.crt | sudo tee -a /etc/ssl/certs/ca-certificates.crt"
+- "echo 'ttyS4::respawn:/sbin/getty -L 115200 ttyS4 vt100' >> /etc/inittab"
+- "echo 'ttyS4' >> /etc/securetty"
 k3os:
   modules:
   - kvm
