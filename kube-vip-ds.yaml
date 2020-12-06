@@ -47,7 +47,7 @@ spec:
         #- name: vip_configmap
         #  value: ""
         # v0.1.9 was returning VIP octets reversed in gARP
-        image: plndr/kube-vip:0.1.8
+        image: plndr/kube-vip:0.2.2
         imagePullPolicy: Always
         name: kube-vip
         resources: {}
