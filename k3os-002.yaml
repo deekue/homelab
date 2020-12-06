@@ -3,15 +3,24 @@ ssh_authorized_keys:
 - github:deekue
 - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBIMWQez3DYo1jeHOOE3nG7RPllzzpKW2p2R7QwmOaoj apathy@chelone
 write_files:
-- path: /etc/rancher/k3s/registries.yaml
+- path: /root/provision.sh
   owner: root:root
-  permissions: '0644'
-  encoding: base64
+  permissions: '0744'
+  encoding: gz+base64
   content: |
-    bWlycm9yczoKICBkb2NrZXIuaW86CiAgICBlbmRwb2ludDoKICAgICAgLSAgImh0dHBzOi8vMTky
-    LjE2OC4xMzYuMjM4OjMxMjgiCg==
+    H4sIAERLzF8CA4VTXW/aMBR9jn/FLazqy4wT6CrGCtO0rk9ITGJvXR+c5AYsEtuzDR0a+++7CR/l
+    Y9MUKcq1zzn366R9JVKlRSr9nLXp8RiA49KAVRYLqUrGSqNnc+P0g/KLochxJXwuD6dfpQvDN7+O
+    Qb+TI44bipV0olSp2B8y1oYZ5ZlOx/D5E2ToAhTGgXVqJQOCw5nywa0hk9kcmSrg6QmugDsQGDLh
+    pKZjJxY9L3ZQhb6zllUJz8/wAcIcNQNiB7i/518mjzD6L5NFlXLOOD9gEUBusgW6jjIUoc6tUTo0
+    FxygNQ/B+oEQyftuJ7nrd5LeXafb6w96SbffYhHlo+QvdYN8QgT+Y0v5B0NkspO50ILvxALYQEAE
+    LrcFe1+KejyeULz+UIWitqhmorBC1ZOkjS0tvZ2SJWRGe1Mimzm0deYQ1tPbrZbSKgSZwmYDmM0N
+    3DR3g4FDb+WLHghfG4HKDmvgY0iSd9043gmsQhLHNzAanUj9LYvHbOkajdM8r+QD4rX4nEzTOGC8
+    d8h25zyF1pm1WicrPljjBFhb8gx44oYNWEJgfinOIvKgDmSGRSlTLGFmm6DG1/asJLkSf4ZbiK+B
+    RnK9Xzc0ktaZFJuoDd8mDxMwNhCn3FLqgNbzsQFUC+wWHvjqEXjY3tPQ99XwXAYJvIov2yI27f2o
+    9bM23EXn1SJXDri9wO2l9mu80Gn2VfjaNTt37nZ6XlV0yozqfiJtKK+kAeBbh2XzEcUQtw5OaJRJ
+    tzJLTT+LbAz9B1bBL1GRBAAA
 run_cmd:
-- "wget -O - -q http://192.168.136.238:3128/ca.crt | sudo tee -a /etc/ssl/certs/ca-certificates.crt"
+- "/root/provision.sh >> /root/provision.log"
 k3os:
   modules:
   - kvm

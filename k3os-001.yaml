@@ -8,31 +8,38 @@ write_files:
   permissions: '0644'
   encoding: gz+base64
   content: |
-    H4sICEo6wF8CA2t1YmUtdmlwLWRzLnlhbWwAlVXbbtpAEH3nK1a0j7GBkNDEL1Xa5AGpoVZAkfoU
-    TewBVqx3rd0xFEX5985yXXNJVEtI+MyeM5edGUMpn9E6aXQioCxda95pzKTOE3EPWBg9RGoUSJAD
-    QdIQIrMIxKdHskBHUJSJ0JVSbNFQYCJm1StGc1lGudtgroRsa3BLR1g0XImZF3OoMCNj/X8hCqBs
-    +gteUbk1cFqTBUoFhBtSEJt/zsfnH1VTP63PYW3CW+kZTSA1l2iLRALsJNCIBPuxtHv/IoxWS1E5
-    zMXYWPEEY/q+t0YiipTJQKWINoSbX9+841ibHAcc13vCAAFVLp4aR/30Pem0+WnWtSzfEuGh2Kxr
-    XNRuXyad28u407uJO91e3LnqrSUuNuZu3XzdXZuD1DjW1x/cDiPzLMsD3AcZQKsqQikPTqUmqA1n
-    2bu66jYPPUA2Q72p/hoOA7v9lnjWxWEuxyBn4MGdDup5eFHr6+abfgG7z0aIOaiKDU2yFTZPnpea
-    0I65kY9ZSNP2aR95btG5Y0Yt5NNchZCjXY0HN/N/hcpUbr3Kwhnm9WmaRY2LnN0q7vYTtO45Gtll
-    iVaa/ASpU2vWPYunaiwnBZTB1OxIAUfM23EnvhULcII9VVZLPRHP/VSYjJA8OOfR5EmTWkzuntId
-    VRYwYbFS6dy2tgOeeLWb+pmUt0NqlMyWibhTC1i6M9thB/Olmspm6BLx9r5DHWaVlbT8yQsD/1IS
-    VCODEl6lkiTRhbgQ3CJ1IBKDh9HL3f1jf3CAD/8MX0b9x4cdPDeqKvDRVJpq26jwSAo0TUQLKVsl
-    bzUSuhbkhdSxL34gvs9yfSsfSDmnWhlackf0DKJDAy/i/DdvwkT4Xt0Y/CYbIC2MndVwv/SGta/B
-    Fo2sURjvk4ilaRXAnxF7MAXE59ZNH6xqHI9ZMxEDM8ymPBVq39oz5NA+9tAIKx2o+ixWZQnSLfdl
-    sqDZGbdd1/lfvIRCNT4p96eix7U/qnxV8pcQh8RVwMly1Z3/AJPWi63fBwAA
-- path: /etc/rancher/k3s/registries.yaml
+    H4sIAOY/zF8CA5VV227aQBB95ytWtI+xuaW08UuVNnlAaqgVUKQ+RRN7gBXrXWt3DEVR/r1jrmtj
+    EtUSEj6z58xlZ8aQyye0ThodCchz11n1Wkup00jcAWZGT5BaGRKkQBC1hEgsAvHpqczQEWR5JHSh
+    FFs0ZBiJZfGCwUrmQer2mMshORjcxhFmLZdjUoo5VJiQseV/ITKgZPELXlC5HdCsyQK5AsI9yYut
+    fC7HVz6qot6sz2Htw9vqGU0gNZfogAQC7NzTCAT7sXR8/ySMVhtROEzFzFjxCDP6frIGIgiUSUDF
+    iNaH259fS8ehNimOOa63iAECKly4MI5G8VvU6/LTrmpZviXCuthyYFzQ7faj3k0/7A2/hb3BMOxd
+    D3cSV3vzoGr+MtiZvdQ41pcf3A5T8yTzGl4G6UHbKkIua6di49WGsxxeXw/adQ+QLFHvq7+D/cBu
+    vkYl66qeyznIGZTgUQf1yr+o3XXzTT+DPWUjxApUwYY22QLbjeelJrQzbuRzFtKi2+wjTS06d86o
+    hNzMVQgp2u14cDP/V6hM5dYrLFxgfmmmWdS4Ttmt4m5voA0u0chucrTSpA2kXqVZTyyeqpmcZ5B7
+    U3MkeRyx6oa98EaswQn2VFgt9Vw8jWJhEkIqwRWPJk+a1GJ++xgfqTKDOYvlSqe2cxjwqBv2w371
+    TMzbITZKJptI3Ko1bNyF7XCE+VJNYRN0kXh9O6IOk8JK2vzkhYF/KfKqkUAOL1JJkuh8XAhukSoQ
+    iPH99Pn27mE0ruGTP5Pn6ejh/givjCoyfDCFpso2ykokBlpEooOUbJO3GgldB9JM6rAsvid+ynJ3
+    K+9IOac6CVpyZ/QEgrqBF3H6mzdhJMpe3RvKTTZGWhu7rODl0ptUvgYHNLBGYXhKIpSmkwF/Rmxt
+    CojP7ZreW9U4m7FmJMZmkix4KtSptZfIob3voeVX2lMts9iWxUs3P5XJgmZn3HYDV/7CDWSq9UG5
+    PxQ9r/1Z5Yucv4Q4Ia4Czjfb7vwH5BDU2N8HAAA=
+- path: /root/provision.sh
   owner: root:root
-  permissions: '0644'
-  encoding: base64
+  permissions: '0744'
+  encoding: gz+base64
   content: |
-    bWlycm9yczoKICBkb2NrZXIuaW86CiAgICBlbmRwb2ludDoKICAgICAgLSAgImh0dHBzOi8vMTky
-    LjE2OC4xMzYuMjM4OjMxMjgiCg==
+    H4sIAERLzF8CA4VTXW/aMBR9jn/FLazqy4wT6CrGCtO0rk9ITGJvXR+c5AYsEtuzDR0a+++7CR/l
+    Y9MUKcq1zzn366R9JVKlRSr9nLXp8RiA49KAVRYLqUrGSqNnc+P0g/KLochxJXwuD6dfpQvDN7+O
+    Qb+TI44bipV0olSp2B8y1oYZ5ZlOx/D5E2ToAhTGgXVqJQOCw5nywa0hk9kcmSrg6QmugDsQGDLh
+    pKZjJxY9L3ZQhb6zllUJz8/wAcIcNQNiB7i/518mjzD6L5NFlXLOOD9gEUBusgW6jjIUoc6tUTo0
+    FxygNQ/B+oEQyftuJ7nrd5LeXafb6w96SbffYhHlo+QvdYN8QgT+Y0v5B0NkspO50ILvxALYQEAE
+    LrcFe1+KejyeULz+UIWitqhmorBC1ZOkjS0tvZ2SJWRGe1Mimzm0deYQ1tPbrZbSKgSZwmYDmM0N
+    3DR3g4FDb+WLHghfG4HKDmvgY0iSd9043gmsQhLHNzAanUj9LYvHbOkajdM8r+QD4rX4nEzTOGC8
+    d8h25zyF1pm1WicrPljjBFhb8gx44oYNWEJgfinOIvKgDmSGRSlTLGFmm6DG1/asJLkSf4ZbiK+B
+    RnK9Xzc0ktaZFJuoDd8mDxMwNhCn3FLqgNbzsQFUC+wWHvjqEXjY3tPQ99XwXAYJvIov2yI27f2o
+    9bM23EXn1SJXDri9wO2l9mu80Gn2VfjaNTt37nZ6XlV0yozqfiJtKK+kAeBbh2XzEcUQtw5OaJRJ
+    tzJLTT+LbAz9B1bBL1GRBAAA
 run_cmd:
-- "wget -O - -q http://192.168.136.238:3128/ca.crt | sudo tee -a /etc/ssl/certs/ca-certificates.crt"
-- "echo 'ttyS4::respawn:/sbin/getty -L 115200 ttyS4 vt100' >> /etc/inittab"
-- "echo 'ttyS4' >> /etc/securetty"
+- "/root/provision.sh >> /root/provision.log"
 k3os:
   modules:
   - kvm
