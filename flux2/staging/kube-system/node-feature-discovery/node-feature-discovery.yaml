@@ -1,0 +1,68 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: node-feature-discovery
+  namespace: kube-system
+spec:
+  interval: 12h
+  chart:
+    spec:
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      chart: node-feature-discovery
+      version: 2.0.0
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home-charts
+        namespace: flux-system
+      interval: 12h
+  values:
+    image:
+      repository: raspbernetes/node-feature-discovery
+      tag: "v0.6.0"
+    sources:
+      # - cpu
+      - custom
+      # - iommu
+      # - kernel
+      # - local
+      # - memory
+      # - network
+      - pci
+      # - storage
+      # - system
+      - usb
+
+    # node-feature-discovery configuration - see https://github.com/kubernetes-sigs/node-feature-discovery/blob/master/nfd-worker.conf.example for example
+    config: |
+      sources:
+        usb:
+          deviceClassWhitelist:
+            - "02"
+            - "0e"
+            - "ef"
+            - "fe"
+            - "ff"
+          deviceLabelFields:
+            - "class"
+            - "vendor"
+            - "device"
+        custom:
+          - name: "intel-gpu"
+            matchOn:
+              - pciId:
+                  class: ["0300"]
+                  vendor: ["8086"]
+    master:
+      replicaCount: 1
+      tolerations:
+        - key: "node-role.kubernetes.io/master"
+          operator: "Equal"
+          value: ""
+          effect: "NoSchedule"
+        - key: arm
+          operator: Exists
+    worker:
+      tolerations:
+        - key: arm
+          operator: Exists
