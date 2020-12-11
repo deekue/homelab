@@ -53,16 +53,16 @@ spec:
               - pciId:
                   class: ["0300"]
                   vendor: ["8086"]
-    master:
-      replicaCount: 1
-      tolerations:
-        - key: "node-role.kubernetes.io/master"
-          operator: "Equal"
-          value: ""
-          effect: "NoSchedule"
-        - key: arm
-          operator: Exists
-    worker:
-      tolerations:
-        - key: arm
-          operator: Exists
+#    master:
+#      replicaCount: 1
+#      tolerations:
+#        - key: "node-role.kubernetes.io/master"
+#          operator: "Equal"
+#          value: ""
+#          effect: "NoSchedule"
+#        - key: arm
+#          operator: Exists
+#    worker:
+#      tolerations:
+#        - key: arm
+#          operator: Exists
