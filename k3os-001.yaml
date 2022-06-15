@@ -8,36 +8,42 @@ write_files:
   permissions: '0644'
   encoding: gz+base64
   content: |
-    H4sIAOY/zF8CA5VV227aQBB95ytWtI+xuaW08UuVNnlAaqgVUKQ+RRN7gBXrXWt3DEVR/r1jrmtj
-    EtUSEj6z58xlZ8aQyye0ThodCchz11n1Wkup00jcAWZGT5BaGRKkQBC1hEgsAvHpqczQEWR5JHSh
-    FFs0ZBiJZfGCwUrmQer2mMshORjcxhFmLZdjUoo5VJiQseV/ITKgZPELXlC5HdCsyQK5AsI9yYut
-    fC7HVz6qot6sz2Htw9vqGU0gNZfogAQC7NzTCAT7sXR8/ySMVhtROEzFzFjxCDP6frIGIgiUSUDF
-    iNaH259fS8ehNimOOa63iAECKly4MI5G8VvU6/LTrmpZviXCuthyYFzQ7faj3k0/7A2/hb3BMOxd
-    D3cSV3vzoGr+MtiZvdQ41pcf3A5T8yTzGl4G6UHbKkIua6di49WGsxxeXw/adQ+QLFHvq7+D/cBu
-    vkYl66qeyznIGZTgUQf1yr+o3XXzTT+DPWUjxApUwYY22QLbjeelJrQzbuRzFtKi2+wjTS06d86o
-    hNzMVQgp2u14cDP/V6hM5dYrLFxgfmmmWdS4Ttmt4m5voA0u0chucrTSpA2kXqVZTyyeqpmcZ5B7
-    U3MkeRyx6oa98EaswQn2VFgt9Vw8jWJhEkIqwRWPJk+a1GJ++xgfqTKDOYvlSqe2cxjwqBv2w371
-    TMzbITZKJptI3Ko1bNyF7XCE+VJNYRN0kXh9O6IOk8JK2vzkhYF/KfKqkUAOL1JJkuh8XAhukSoQ
-    iPH99Pn27mE0ruGTP5Pn6ejh/givjCoyfDCFpso2ykokBlpEooOUbJO3GgldB9JM6rAsvid+ynJ3
-    K+9IOac6CVpyZ/QEgrqBF3H6mzdhJMpe3RvKTTZGWhu7rODl0ptUvgYHNLBGYXhKIpSmkwF/Rmxt
-    CojP7ZreW9U4m7FmJMZmkix4KtSptZfIob3voeVX2lMts9iWxUs3P5XJgmZn3HYDV/7CDWSq9UG5
-    PxQ9r/1Z5Yucv4Q4Ia4Czjfb7vwH5BDU2N8HAAA=
+    H4sICIYNqmIAA2t1YmUtdmlwLWRzLnlhbWwArVbfj9o4EH7nr7B4bmjp7q16eaPdVVWpRdWyuns4
+    nVbGGcCHY+fGNru06v9+4xiCIWZFq8sDCuP55pvfDm/kH4BWGl2yzXiwlroq2QxwIwVMhDBeu0EN
+    jlfc8XLAmOY1lGzt51BsZLMT2IaLvdRurYN6UBTFgCe2cc7FiHu3Mii/cUey0fqdHUnzumP9oDxB
+    8d4oOKLkWhvXQmz4y7K2iBo1OGhN0pnxDeHJqaFDD8PO8+heuQ+gwMCGXkFru2Dk80cksC3ZX8Ph
+    35EPrPEooJXZmBs7fMW699eW/POtSJuKziJuAzhvMUpaN3w1XEL4feJOrIJq9LDVPeEVxmAldZqm
+    nCsKuD1HxiIb69HRm0CIxKFIvdy/J4HUy8ur12+P0yTPdyZDsu9h0RZ1F+8Ltkmr3xgv1tH6+T8g
+    HJWyYNlO/vX+5U1jD616y6E2egbHs9HmlbQfJJl0vKbgtFeKThSfg9p1L1k6addjn4rKntHbdIP6
+    ZnQ9uu5FE5FnArINiOCABUUpMhidqUN3fE68u9Q/MtmoMGDRTJKF8JzPRHjUEd/lGbk0KxTkLtgW
+    sVhILd32wBdmdNKThuH610uE6tYjdetMrKDyit4+LbXpxHfPIHyILUVGm7Ndah8Aa3t8XMRM3z03
+    NMH2sMpSjTVsy9ZO28wnUdY8jMAJhjHTAPJQTXb3THNv/19SYbQjcUGV1nApdwBxqakqezbabrhM
+    uINfmi+TcEBv0uNYfqr8I8cm4d1w5dOVfqzfGHQZ5Zvr66u+cjAuNaV0QZPSR4FbvclihKwwQ3L1
+    tk8hmkfQfK4y5s9EQIhuevugdJpzrlWVthmqBVc2w2U34mfdCyR051SAbaNTQ/0s1NJEIT+D/C0P
+    Q9DwVBEtjWLO1zPFRXC4pQ6VpsqAxn0Qr6owJn3l8e9vR+Obd6Px1c1ofOgKWVMLl2y5EhhmZb+s
+    upcy2Ued/lfagl+NkoKmbqKe+PbA17uZ4pPc+N9/dFJLSwhpfX2gYYNnl8614A2fSyWdhJN5pwhP
+    t9L07uFxcvvl0zQjv5/8uZOujHVTcE8G1yULBR7svUhv12kuAEdbBdOPt2AdFgvqn5JNzW7JHup6
+    ZqmkmLiBX4TEb52ZIzkst23m4idae017pJ5yU1/Trts7QJd6KC19vIUbIHumW+EXaW1Ofk8dug2C
+    wX+gCUZUUwsAAA==
 - path: /root/provision.sh
   owner: root:root
   permissions: '0744'
   encoding: gz+base64
   content: |
-    H4sIAERLzF8CA4VTXW/aMBR9jn/FLazqy4wT6CrGCtO0rk9ITGJvXR+c5AYsEtuzDR0a+++7CR/l
-    Y9MUKcq1zzn366R9JVKlRSr9nLXp8RiA49KAVRYLqUrGSqNnc+P0g/KLochxJXwuD6dfpQvDN7+O
-    Qb+TI44bipV0olSp2B8y1oYZ5ZlOx/D5E2ToAhTGgXVqJQOCw5nywa0hk9kcmSrg6QmugDsQGDLh
-    pKZjJxY9L3ZQhb6zllUJz8/wAcIcNQNiB7i/518mjzD6L5NFlXLOOD9gEUBusgW6jjIUoc6tUTo0
-    FxygNQ/B+oEQyftuJ7nrd5LeXafb6w96SbffYhHlo+QvdYN8QgT+Y0v5B0NkspO50ILvxALYQEAE
-    LrcFe1+KejyeULz+UIWitqhmorBC1ZOkjS0tvZ2SJWRGe1Mimzm0deYQ1tPbrZbSKgSZwmYDmM0N
-    3DR3g4FDb+WLHghfG4HKDmvgY0iSd9043gmsQhLHNzAanUj9LYvHbOkajdM8r+QD4rX4nEzTOGC8
-    d8h25zyF1pm1WicrPljjBFhb8gx44oYNWEJgfinOIvKgDmSGRSlTLGFmm6DG1/asJLkSf4ZbiK+B
-    RnK9Xzc0ktaZFJuoDd8mDxMwNhCn3FLqgNbzsQFUC+wWHvjqEXjY3tPQ99XwXAYJvIov2yI27f2o
-    9bM23EXn1SJXDri9wO2l9mu80Gn2VfjaNTt37nZ6XlV0yozqfiJtKK+kAeBbh2XzEcUQtw5OaJRJ
-    tzJLTT+LbAz9B1bBL1GRBAAA
+    H4sICJUNqmIAA3Byb3Zpc2lvbi5zaACFVFtv0zAUfk5+xVnaqSDhOk3HNLJ1iDG2l0lFKoiHbQ9u
+    4rRWkzjYbkdF+e8c57beEKqUOj7f+c7tO+mc0KnI6ZTpudvBn+YGCF9KKETBEyZS101lPptLlX/X
+    /MdcpvxW6MUoYanmram8ojFfUR2z9vYrU2bU/b0N+hNs+agRXTFFUzGlzaXrdmCGKUwmD/D5E0Rc
+    GUikgkKJFTMcFJ8JbdQaIhbNuSsSeHyEEyAKKDcRVSzHa0UXQ01rqOC6v2ZZCs/PcAlmznMX0NvA
+    1RX5Mr6D6/96uk4mlJJKh64DEMtowVVfSHzjeVxIkZvSQAC8uTGFDikdfAj6g/OL/mB43g+GF+Fw
+    EFx4roPxMPiLLZCM0YH8rFz+4UEj1o+U8eAJvQA2YDgHwqqEtU6pbY9GFLEHkQgsC3NGFzcRtpM4
+    zGWBTyVYCpHMNU7PnSle2MjGrCdnFZfIhTFsCpsN8GguoVfawlBxXbCXPKTaagTTNmsgDzAYvA98
+    vyZYmYHv9+D6eofqWBTNo6UqOXbjvDq3iNfkYxRNqYCHRiHVzMkUvD1peTsjbqWxA7SS3AM20C3U
+    ttIRPRqBZ9SS7/vt6GgDBXLz+DAtKw7Ub27sIVukbMpTmBX1q/Wy5oyhqvkvcwb+KWBLT625EgwA
+    t8tWhexApLhdhSCPy5DCCJlDomSGDxQIjixqwNY+MXYNve6bOj+SHencEscG9zdVnhXPk+tsoBxj
+    L7QXl72tK7KCnt/3/fubytatjdESpZ0EQOLwrVcnUQ8st2HbhA6G0KR7rIOW+3ivvG7L6FVdq5hQ
+    /1t/FlMoOa3a0oFv49sxyMIgUVrx2Bfcj48lIFvwINFY4x0QU9lR9U1KJGaGYRf9Q125dcRWe3u1
+    qIOqs0UsFJDiANdQNXt0wFMuTKLt2tafh3qp9rNydj0dW4+TS4zLsAH8neJpeXB88L12FUtm5M3k
+    EgVBWPlF+QvRC5ckLQYAAA==
 run_cmd:
 - "/root/provision.sh >> /root/provision.log"
 k3os:
@@ -52,6 +58,7 @@ k3os:
   - 1.us.pool.ntp.org
 #  server_url: https://192.168.136.10:6443
   token: SECRETSQUIRREL
+  # TODO `openssl passwd -1`
   password: "k3os"
   k3s_args:
   - server
@@ -60,6 +67,7 @@ k3os:
   - "192.168.136.10"
   - "--tls-san"
   - "k8s.s.home.chaosengine.net"
+  - "--disable servicelb"
     #- "--node-external-ip"
     #- "192.168.136.10"
   #- "--secrets-encryption"

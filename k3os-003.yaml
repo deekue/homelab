@@ -8,17 +8,20 @@ write_files:
   permissions: '0744'
   encoding: gz+base64
   content: |
-    H4sIAERLzF8CA4VTXW/aMBR9jn/FLazqy4wT6CrGCtO0rk9ITGJvXR+c5AYsEtuzDR0a+++7CR/l
-    Y9MUKcq1zzn366R9JVKlRSr9nLXp8RiA49KAVRYLqUrGSqNnc+P0g/KLochxJXwuD6dfpQvDN7+O
-    Qb+TI44bipV0olSp2B8y1oYZ5ZlOx/D5E2ToAhTGgXVqJQOCw5nywa0hk9kcmSrg6QmugDsQGDLh
-    pKZjJxY9L3ZQhb6zllUJz8/wAcIcNQNiB7i/518mjzD6L5NFlXLOOD9gEUBusgW6jjIUoc6tUTo0
-    FxygNQ/B+oEQyftuJ7nrd5LeXafb6w96SbffYhHlo+QvdYN8QgT+Y0v5B0NkspO50ILvxALYQEAE
-    LrcFe1+KejyeULz+UIWitqhmorBC1ZOkjS0tvZ2SJWRGe1Mimzm0deYQ1tPbrZbSKgSZwmYDmM0N
-    3DR3g4FDb+WLHghfG4HKDmvgY0iSd9043gmsQhLHNzAanUj9LYvHbOkajdM8r+QD4rX4nEzTOGC8
-    d8h25zyF1pm1WicrPljjBFhb8gx44oYNWEJgfinOIvKgDmSGRSlTLGFmm6DG1/asJLkSf4ZbiK+B
-    RnK9Xzc0ktaZFJuoDd8mDxMwNhCn3FLqgNbzsQFUC+wWHvjqEXjY3tPQ99XwXAYJvIov2yI27f2o
-    9bM23EXn1SJXDri9wO2l9mu80Gn2VfjaNTt37nZ6XlV0yozqfiJtKK+kAeBbh2XzEcUQtw5OaJRJ
-    tzJLTT+LbAz9B1bBL1GRBAAA
+    H4sICJUNqmIAA3Byb3Zpc2lvbi5zaACFVFtv0zAUfk5+xVnaqSDhOk3HNLJ1iDG2l0lFKoiHbQ9u
+    4rRWkzjYbkdF+e8c57beEKqUOj7f+c7tO+mc0KnI6ZTpudvBn+YGCF9KKETBEyZS101lPptLlX/X
+    /MdcpvxW6MUoYanmram8ojFfUR2z9vYrU2bU/b0N+hNs+agRXTFFUzGlzaXrdmCGKUwmD/D5E0Rc
+    GUikgkKJFTMcFJ8JbdQaIhbNuSsSeHyEEyAKKDcRVSzHa0UXQ01rqOC6v2ZZCs/PcAlmznMX0NvA
+    1RX5Mr6D6/96uk4mlJJKh64DEMtowVVfSHzjeVxIkZvSQAC8uTGFDikdfAj6g/OL/mB43g+GF+Fw
+    EFx4roPxMPiLLZCM0YH8rFz+4UEj1o+U8eAJvQA2YDgHwqqEtU6pbY9GFLEHkQgsC3NGFzcRtpM4
+    zGWBTyVYCpHMNU7PnSle2MjGrCdnFZfIhTFsCpsN8GguoVfawlBxXbCXPKTaagTTNmsgDzAYvA98
+    vyZYmYHv9+D6eofqWBTNo6UqOXbjvDq3iNfkYxRNqYCHRiHVzMkUvD1peTsjbqWxA7SS3AM20C3U
+    ttIRPRqBZ9SS7/vt6GgDBXLz+DAtKw7Ub27sIVukbMpTmBX1q/Wy5oyhqvkvcwb+KWBLT625EgwA
+    t8tWhexApLhdhSCPy5DCCJlDomSGDxQIjixqwNY+MXYNve6bOj+SHencEscG9zdVnhXPk+tsoBxj
+    L7QXl72tK7KCnt/3/fubytatjdESpZ0EQOLwrVcnUQ8st2HbhA6G0KR7rIOW+3ivvG7L6FVdq5hQ
+    /1t/FlMoOa3a0oFv49sxyMIgUVrx2Bfcj48lIFvwINFY4x0QU9lR9U1KJGaGYRf9Q125dcRWe3u1
+    qIOqs0UsFJDiANdQNXt0wFMuTKLt2tafh3qp9rNydj0dW4+TS4zLsAH8neJpeXB88L12FUtm5M3k
+    EgVBWPlF+QvRC5ckLQYAAA==
 run_cmd:
 - "/root/provision.sh >> /root/provision.log"
 k3os:
@@ -40,3 +43,4 @@ k3os:
   - "192.168.136.10"
   - "--tls-san"
   - "k8s.s.home.chaosengine.net"
+  - "--disable servicelb"
