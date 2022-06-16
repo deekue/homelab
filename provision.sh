@@ -5,11 +5,10 @@ set -euo pipefail
 
 longhornUseWholeDisk=false
 longhornDisk=/dev/sda
-longhornPart=${longhornDisk}2
 longhornDir=/var/lib/longhorn
 
-# get SSL CA cert for private registry cache
 if [[ ! -r /etc/rancher/k3s/registries.yaml ]] ; then
+  echo "get SSL CA cert for private registry cache"
   cat <<-EOF > /etc/rancher/k3s/registries.yaml
 	mirrors:
 	  docker.io:
@@ -20,39 +19,61 @@ if [[ ! -r /etc/rancher/k3s/registries.yaml ]] ; then
     | tee -a /etc/ssl/certs/ca-certificates.crt
 fi
 
-# setup serial console
+echo "setup AMT serial console"
 grep -q ttyS4 /etc/inittab || echo 'ttyS4::respawn:/sbin/getty -L 115200 ttyS4 vt100' >> /etc/inittab
 grep -q ttyS4 /etc/securetty || echo 'ttyS4' >> /etc/securetty
 
-# setup disk for Longhorn
+echo "setup disk for Longhorn"
 if [[ -b "${longhornDisk}" ]] ; then
-  if [[ ! -b "${longhornPart}" ]] ; then
-    if [[ "${longhornUseWholeDisk}" == "true" ]] ; then
-      cat <<-EOF | parted "${longhornDisk}"
-	  print
-	  mklabel gpt
-	  mkpart primary ext4 0% 100%
-	  EOF
-    else
-      # create 2nd partition from free space
-      partStart="$(parted -m "${longhornDisk}" unit GB print free \
-	| grep ':free;' \
-	| grep -v '0.00GB:free;$' \
-	| cut -f2 -d:)"
-      if [[ -n "${partStart}" ]] ; then
-        parted "${longhornDisk}" \
-	  mkpart primary ext4 "$partStart" 100%
-      fi
-    fi
+  if [[ "${longhornUseWholeDisk}" == "true" ]] ; then
+    echo "  using whole disk ${longhornDisk} for Longhorn data"
+    cat <<-EOF | parted "${longhornDisk}"
+	print
+	mklabel gpt
+	mkpart primary ext4 0% 100%
+	EOF
     partprobe
+  else
+    echo -n "not using whole disk, find free space..."
+    partStart="$(parted -m "${longhornDisk}" unit GB print free \
+      | grep ':free;' \
+      | grep -v '0.00GB:free;$' \
+      | cut -f2 -d: \
+      || true)"
+    if [[ -n "${partStart}" ]] ; then
+      parted "${longhornDisk}" \
+	mkpart primary ext4 "$partStart" 100%
+      partprobe
+      echo "done."
+    fi
+  fi
+
+  # do we have an ext4 partition?
+  longhornPartNum="$(parted -m "${longhornDisk}" unit GB print free \
+    | grep -E ':(ext4)?::;$' \
+    | cut -f1 -d: \
+    || true)"
+  if [[ -n "${longhornPartNum}" ]] ; then
+    longhornPart="${longhornDisk}${longhornPartNum}"  # TODO support other parttion naming. eg nvme0n1p1
+    echo "formating ${longhornPart} with ext4"
     # TODO optimal ext4 options?
-    mke2fs -vF -t ext4 -L longhorn-data -m0 "${longhornPart}"
+    mke2fs -vF -t ext4 -L longhorn-data -m0 "${longhornDisk}${longhornPartNum}"
+    if [[ ! -d "${longhornDir}" ]] ; then
+      echo "making dir ${longhornDir}"
+      mkdir -p "${longhornDir}"
+    fi
+    echo "updating /etc/fstab"
+    grep -v "${longhornDir}" /etc/fstab \
+      > /etc/fstab.tmp
+    echo "${longhornPart}	${longhornDir}	ext4	nodiratime,relatime 00" \
+      >> /etc/fstab.tmp
+    mv /etc/fstab.tmp /etc/fstab
+    echo "mounting ${longhornPart} on ${longhornDir}"
+    mount -a
+    mount | grep "${longhornPart}"
+  else
+    echo "ERROR: partition not found/created on ${longhornDisk} for Longhorn data" >&2
+    exit 1
   fi
-  if [[ ! -d "${longhornDir}" ]] ; then
-    mkdir -p "${longhornDir}"
-  fi
-  grep -q "${longhornDir}" /etc/fstab \
-    || echo "${longhornPart}	${longhornDir}	ext4	nodiratime,relatime	0 0" >> /etc/fstab
-  mount -a
 fi
 

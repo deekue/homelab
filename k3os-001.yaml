@@ -30,22 +30,26 @@ write_files:
   permissions: '0744'
   encoding: gz+base64
   content: |
-    H4sICJUNqmIAA3Byb3Zpc2lvbi5zaACFVFtv0zAUfk5+xVnaqSDhOk3HNLJ1iDG2l0lFKoiHbQ9u
-    4rRWkzjYbkdF+e8c57beEKqUOj7f+c7tO+mc0KnI6ZTpudvBn+YGCF9KKETBEyZS101lPptLlX/X
-    /MdcpvxW6MUoYanmram8ojFfUR2z9vYrU2bU/b0N+hNs+agRXTFFUzGlzaXrdmCGKUwmD/D5E0Rc
-    GUikgkKJFTMcFJ8JbdQaIhbNuSsSeHyEEyAKKDcRVSzHa0UXQ01rqOC6v2ZZCs/PcAlmznMX0NvA
-    1RX5Mr6D6/96uk4mlJJKh64DEMtowVVfSHzjeVxIkZvSQAC8uTGFDikdfAj6g/OL/mB43g+GF+Fw
-    EFx4roPxMPiLLZCM0YH8rFz+4UEj1o+U8eAJvQA2YDgHwqqEtU6pbY9GFLEHkQgsC3NGFzcRtpM4
-    zGWBTyVYCpHMNU7PnSle2MjGrCdnFZfIhTFsCpsN8GguoVfawlBxXbCXPKTaagTTNmsgDzAYvA98
-    vyZYmYHv9+D6eofqWBTNo6UqOXbjvDq3iNfkYxRNqYCHRiHVzMkUvD1peTsjbqWxA7SS3AM20C3U
-    ttIRPRqBZ9SS7/vt6GgDBXLz+DAtKw7Ub27sIVukbMpTmBX1q/Wy5oyhqvkvcwb+KWBLT625EgwA
-    t8tWhexApLhdhSCPy5DCCJlDomSGDxQIjixqwNY+MXYNve6bOj+SHencEscG9zdVnhXPk+tsoBxj
-    L7QXl72tK7KCnt/3/fubytatjdESpZ0EQOLwrVcnUQ8st2HbhA6G0KR7rIOW+3ivvG7L6FVdq5hQ
-    /1t/FlMoOa3a0oFv49sxyMIgUVrx2Bfcj48lIFvwINFY4x0QU9lR9U1KJGaGYRf9Q125dcRWe3u1
-    qIOqs0UsFJDiANdQNXt0wFMuTKLt2tafh3qp9rNydj0dW4+TS4zLsAH8neJpeXB88L12FUtm5M3k
-    EgVBWPlF+QvRC5ckLQYAAA==
+    H4sICFdyqmICA3Byb3Zpc2lvbi5zaACdVV1v2zYUfbZ+xS2T1i1QfTldkam1g3ZN+5LOQ9JhD10f
+    aImyCUukRlJ2gyX/fZeiZMuyiw2DAcEi7z08PPfcq7Mn4YKLcEH1yjvDn2YGfFZLqHjFcsoLzyuk
+    WK6kEr9r9sdKFuwD1+tpTgvNdlvNUpixTagz2ltV03BDVVjwRdgteh7P4etXeAK+gpCZNFRUpCum
+    wvWFDhVbcm0UZzq4p2UB377BGzArJjwAlq4kkCUSvLu7gV/eQcqUgVwqqBTfUMOgzb6HlCIiwZyU
+    Gnj71r+ef4TZv57mjUqulFQ68UYAmUzXTAVc4hsTWSW5MM2GD0BWxlQ6CcP450kQv74M4ovXweTi
+    MrmIJ5fEG+F5ePjWcvXnmOD/5VJ+kBGmNEiVIfAnZgE8gGEMfOoIa12E9qYao3z7h+ccr4WcMcXL
+    uec5YbBydQXvPn8BzRSnBaRSaCwX8ZaKVZaCMfd3rxwoF9wYuoCHByfruNlLEsV0RbciCbV1BfI3
+    9+DfQBz/NImiFmBj4igaw2x2AHXqFM3SWjUYh+fsk3cRh7fI0E9NZW9a15DWNf4CyPnffds9kgOT
+    uLBeTN+1GDudAjGqZodZnbkAas3FErY2w7EYnHbACjJqKGnye0Z7gIoqw7Jjpt4InSoM+mxd0AUr
+    YFk1Lzbemrik6F323byC6CmgyE87J0EDWSm5YLYRbOvtSPsCiJDmiPlLyLnIIFfoJSxqyoIgIDus
+    O4OPKTl/3nL1yxPC1lha+PQeGtYOyTnUerSp9zixq2/Gw3V/A+MoiKJP713AeT8irbEt8gn4WbJf
+    RdNjWV44hm2xheW0Y/s4rBn8UGiEPSkrOd+hESfwHqdTd++GTArWSoZt1jzweYaTAbYMVnTDgAoH
+    bAG44VJcYUTH5Tdc/LUu/7fKnZbXKPNze8yLqyTZS9kJGfeE7MvYF3FA6UjK/v50SPFUOsrwZf5h
+    DrquKokyS4RSjQxWBRC0RDcGwJYgNiWLRFzFvT7DJiqpsX49xH6ELTerRlKne3uKrAxWsXBa2xcc
+    bVdNQLlmk1yj3z6Cb9w+zqsO07cNiqpH8B/u1HMefpwGrlIn3OfuUtK1vUjGFQwS2rBybff86ghw
+    76wOq64yJ0szHHONc9VFdU11xGkfuGulWW8xMGXVwx+oPTpEG1n5RkIiXWRRspeKFc0fiCKyhz+J
+    X24Gq73XHoFS1uJk3dEzp9Rp4vFT2Htpu2J4F3I0GMn17e38Ntn3JtgxmSNIFqaKUduQg2NPD3iY
+    PZs42O/YqbGbBHYY/AMGAGAyPQkAAA==
 run_cmd:
-- "/root/provision.sh >> /root/provision.log"
+- "/root/provision.sh >> /root/provision.log 2>> /root/provision.err"
 k3os:
   modules:
   - kvm
