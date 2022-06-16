@@ -47,4 +47,5 @@ k3os:
   - "192.168.136.10"
   - "--tls-san"
   - "k8s.s.home.chaosengine.net"
-  - "--disable servicelb"
+  - "--disable"
+  - "servicelb"
