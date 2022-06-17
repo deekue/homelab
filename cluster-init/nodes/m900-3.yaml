@@ -1,4 +1,4 @@
-hostname: k3os-003
+hostname: m900-3
 ssh_authorized_keys:
 - github:deekue
 - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBIMWQez3DYo1jeHOOE3nG7RPllzzpKW2p2R7QwmOaoj apathy@chelone
@@ -38,13 +38,13 @@ k3os:
   ntp_servers:
   - 0.us.pool.ntp.org
   - 1.us.pool.ntp.org
-  server_url: https://192.168.136.10:6443
+  server_url: https://192.168.40.10:6443
   token: SECRETSQUIRREL
   password: "k3os"
   k3s_args:
   - server
   - "--tls-san"
-  - "192.168.136.10"
+  - "192.168.40.10"
   - "--tls-san"
   - "k8s.s.home.chaosengine.net"
   - "--disable"

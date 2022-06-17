@@ -1,4 +1,4 @@
-hostname: k3os-001
+hostname: m900-1
 ssh_authorized_keys:
 - github:deekue
 - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBIMWQez3DYo1jeHOOE3nG7RPllzzpKW2p2R7QwmOaoj apathy@chelone
@@ -8,23 +8,23 @@ write_files:
   permissions: '0644'
   encoding: gz+base64
   content: |
-    H4sICIYNqmIAA2t1YmUtdmlwLWRzLnlhbWwArVbfj9o4EH7nr7B4bmjp7q16eaPdVVWpRdWyuns4
-    nVbGGcCHY+fGNru06v9+4xiCIWZFq8sDCuP55pvfDm/kH4BWGl2yzXiwlroq2QxwIwVMhDBeu0EN
-    jlfc8XLAmOY1lGzt51BsZLMT2IaLvdRurYN6UBTFgCe2cc7FiHu3Mii/cUey0fqdHUnzumP9oDxB
-    8d4oOKLkWhvXQmz4y7K2iBo1OGhN0pnxDeHJqaFDD8PO8+heuQ+gwMCGXkFru2Dk80cksC3ZX8Ph
-    35EPrPEooJXZmBs7fMW699eW/POtSJuKziJuAzhvMUpaN3w1XEL4feJOrIJq9LDVPeEVxmAldZqm
-    nCsKuD1HxiIb69HRm0CIxKFIvdy/J4HUy8ur12+P0yTPdyZDsu9h0RZ1F+8Ltkmr3xgv1tH6+T8g
-    HJWyYNlO/vX+5U1jD616y6E2egbHs9HmlbQfJJl0vKbgtFeKThSfg9p1L1k6addjn4rKntHbdIP6
-    ZnQ9uu5FE5FnArINiOCABUUpMhidqUN3fE68u9Q/MtmoMGDRTJKF8JzPRHjUEd/lGbk0KxTkLtgW
-    sVhILd32wBdmdNKThuH610uE6tYjdetMrKDyit4+LbXpxHfPIHyILUVGm7Ndah8Aa3t8XMRM3z03
-    NMH2sMpSjTVsy9ZO28wnUdY8jMAJhjHTAPJQTXb3THNv/19SYbQjcUGV1nApdwBxqakqezbabrhM
-    uINfmi+TcEBv0uNYfqr8I8cm4d1w5dOVfqzfGHQZ5Zvr66u+cjAuNaV0QZPSR4FbvclihKwwQ3L1
-    tk8hmkfQfK4y5s9EQIhuevugdJpzrlWVthmqBVc2w2U34mfdCyR051SAbaNTQ/0s1NJEIT+D/C0P
-    Q9DwVBEtjWLO1zPFRXC4pQ6VpsqAxn0Qr6owJn3l8e9vR+Obd6Px1c1ofOgKWVMLl2y5EhhmZb+s
-    upcy2Ued/lfagl+NkoKmbqKe+PbA17uZ4pPc+N9/dFJLSwhpfX2gYYNnl8614A2fSyWdhJN5pwhP
-    t9L07uFxcvvl0zQjv5/8uZOujHVTcE8G1yULBR7svUhv12kuAEdbBdOPt2AdFgvqn5JNzW7JHup6
-    ZqmkmLiBX4TEb52ZIzkst23m4idae017pJ5yU1/Trts7QJd6KC19vIUbIHumW+EXaW1Ofk8dug2C
-    wX+gCUZUUwsAAA==
+    H4sICCXJrGICA2t1YmUtdmlwLWRzLnlhbWwArVZbb9owFH7nV1g8N6y0rOryxlo0VVpRBdX2ME2V
+    cQ7g4diZL1w27b/vOIFgiKnotDygcHy+8527Qwv+BbThSqZk2W0tuMxSMga95Az6jCknbSsHSzNq
+    adoiRNIcUrJwE0iWvNgKTEHZTmo2xkLeSpKkRQPbekJZhzo7V5r/ohZlncWt6XD1rma9Ew6heqQE
+    HFBSKZUtIcb/JVFbSK0lWChN4plyBeLRqbbVDtq155V76S6ARHs27QSUthOCPn/SCDYp+dZuf6/4
+    wCinGZQyU+XGtC9I/f7OoH+uFEmV4VmFW4KelBjBjW1ftGfgf1fUsrlXrTwsdY94mVI64zJMU8wV
+    AdScIiMVG2nQ4RvTUBH7IjVy/xEFXM7Or16zPY6TPNma9MkewbQs6jbeV2yjVrMxXq2jcZMfwCyW
+    MiHRTv73/qVFYfatek8hV3IMh7NR5hW1nzmatDTH4KQTAk8EnYDYdi9aOmrXQ5+SzJzQW9aDetnp
+    dXqNaCrkiYBMAcw7YEBgipSunMl9d3wOvDvXPzRZCD9glZkgC/45nQn/iAO+8zNyblYwyG2wJWI6
+    5ZLbzZ7Pz2i/IfXD9dNxDdm909itYzaHzAl8e5hJVYsHa2DOxxYiK5vjbWqfQefm8DipMj1YFzjB
+    Zr/KQo0FbNLSTtnMR1Hm1I/AEYYQVYCmvppksMa5N/+XlClpUZxgpSWcy+1BlEusyo4Nt5ueBdze
+    L0lnQTggl+FxVX6s/AvVRcC7pMKFK/1Qv1DaRpRver3rdtQ4l5jSKU5KEwV2fhnFMJ7pCMn1VZOC
+    FS8g6UTA2REgop7eJiic5phrWSZNhGpKhYlwmSV7q3ueBO+cDHTZ6NhQb4UanChNTyDfx2EaJKwy
+    pMVRjPl6fQpm9QY7lKssAuo2QTTL/Jg0lbsfrjrdm9tO77LT3TcFz7GDUzKbM+1HZber6pc0WEe1
+    /hMuwSclOMOh64sV3ezpGhfTbifVF/7vP7XU4A7SuL3ucNZgbcOxZrSgEy645XA07hjg8VIaDp5f
+    +vePD8OIfNT/upXOlbFDsCulFynx9W3tvAgv12EsAItLRYffbt46TKfYPikZqu2O3Zf1xE4JMdUC
+    fhVSfeqMLcphtikzV32hlbe009hSduhyXHU7B/BO96XFbzd/AUTPZCl85MbE5CNs0I0XtP4CHGxy
+    VFILAAA=
 - path: /root/provision.sh
   owner: root:root
   permissions: '0744'
@@ -60,7 +60,7 @@ k3os:
   ntp_servers:
   - 0.us.pool.ntp.org
   - 1.us.pool.ntp.org
-#  server_url: https://192.168.136.10:6443
+#  server_url: https://192.168.40.10:6443
   token: SECRETSQUIRREL
   # TODO `openssl passwd -1`
   password: "k3os"
@@ -68,7 +68,7 @@ k3os:
   - server
   - "--cluster-init"
   - "--tls-san"
-  - "192.168.136.10"
+  - "192.168.40.10"
   - "--tls-san"
   - "k8s.s.home.chaosengine.net"
   - "--disable"
