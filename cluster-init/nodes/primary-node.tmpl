@@ -1,0 +1,45 @@
+hostname: $nodeHostName
+ssh_authorized_keys:
+- github:deekue
+- ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBIMWQez3DYo1jeHOOE3nG7RPllzzpKW2p2R7QwmOaoj apathy@chelone
+write_files:
+- path: /var/lib/rancher/k3s/server/manifests/kube-vip-ds.yaml
+  owner: root:root
+  permissions: '0644'
+  encoding: gz+base64
+  content: |
+$primaryNodeKubeVipCfg
+- path: /root/provision.sh
+  owner: root:root
+  permissions: '0744'
+  encoding: gz+base64
+  content: |
+$nodeProvisionSh
+run_cmd:
+- "/root/provision.sh >> /root/provision.log 2>> /root/provision.err"
+k3os:
+  modules:
+  - kvm
+  - nvme
+  sysctl:
+    kernel.printk: "4 4 1 7"
+    kernel.kptr_restrict: "1"
+  ntp_servers:
+  - 0.us.pool.ntp.org
+  - 1.us.pool.ntp.org
+#  server_url: https://192.168.40.10:6443
+  token: SECRETSQUIRREL
+  # TODO `openssl passwd -1`
+  password: "k3os"
+  k3s_args:
+  - server
+  - "--cluster-init"
+  - "--tls-san"
+  - "192.168.40.10"
+  - "--tls-san"
+  - "k8s.s.home.chaosengine.net"
+  - "--disable"
+  - "servicelb"
+    #- "--node-external-ip"
+    #- "192.168.136.10"
+  #- "--secrets-encryption"
