@@ -30,24 +30,25 @@ write_files:
   permissions: '0744'
   encoding: gz+base64
   content: |
-    H4sICFdyqmICA3Byb3Zpc2lvbi5zaACdVV1v2zYUfbZ+xS2T1i1QfTldkam1g3ZN+5LOQ9JhD10f
-    aImyCUukRlJ2gyX/fZeiZMuyiw2DAcEi7z08PPfcq7Mn4YKLcEH1yjvDn2YGfFZLqHjFcsoLzyuk
-    WK6kEr9r9sdKFuwD1+tpTgvNdlvNUpixTagz2ltV03BDVVjwRdgteh7P4etXeAK+gpCZNFRUpCum
-    wvWFDhVbcm0UZzq4p2UB377BGzArJjwAlq4kkCUSvLu7gV/eQcqUgVwqqBTfUMOgzb6HlCIiwZyU
-    Gnj71r+ef4TZv57mjUqulFQ68UYAmUzXTAVc4hsTWSW5MM2GD0BWxlQ6CcP450kQv74M4ovXweTi
-    MrmIJ5fEG+F5ePjWcvXnmOD/5VJ+kBGmNEiVIfAnZgE8gGEMfOoIa12E9qYao3z7h+ccr4WcMcXL
-    uec5YbBydQXvPn8BzRSnBaRSaCwX8ZaKVZaCMfd3rxwoF9wYuoCHByfruNlLEsV0RbciCbV1BfI3
-    9+DfQBz/NImiFmBj4igaw2x2AHXqFM3SWjUYh+fsk3cRh7fI0E9NZW9a15DWNf4CyPnffds9kgOT
-    uLBeTN+1GDudAjGqZodZnbkAas3FErY2w7EYnHbACjJqKGnye0Z7gIoqw7Jjpt4InSoM+mxd0AUr
-    YFk1Lzbemrik6F323byC6CmgyE87J0EDWSm5YLYRbOvtSPsCiJDmiPlLyLnIIFfoJSxqyoIgIDus
-    O4OPKTl/3nL1yxPC1lha+PQeGtYOyTnUerSp9zixq2/Gw3V/A+MoiKJP713AeT8irbEt8gn4WbJf
-    RdNjWV44hm2xheW0Y/s4rBn8UGiEPSkrOd+hESfwHqdTd++GTArWSoZt1jzweYaTAbYMVnTDgAoH
-    bAG44VJcYUTH5Tdc/LUu/7fKnZbXKPNze8yLqyTZS9kJGfeE7MvYF3FA6UjK/v50SPFUOsrwZf5h
-    DrquKokyS4RSjQxWBRC0RDcGwJYgNiWLRFzFvT7DJiqpsX49xH6ELTerRlKne3uKrAxWsXBa2xcc
-    bVdNQLlmk1yj3z6Cb9w+zqsO07cNiqpH8B/u1HMefpwGrlIn3OfuUtK1vUjGFQwS2rBybff86ghw
-    76wOq64yJ0szHHONc9VFdU11xGkfuGulWW8xMGXVwx+oPTpEG1n5RkIiXWRRspeKFc0fiCKyhz+J
-    X24Gq73XHoFS1uJk3dEzp9Rp4vFT2Htpu2J4F3I0GMn17e38Ntn3JtgxmSNIFqaKUduQg2NPD3iY
-    PZs42O/YqbGbBHYY/AMGAGAyPQkAAA==
+    H4sICMssrWICA3Byb3Zpc2lvbi5zaACdVttu20YQfRa/Ykw7dVuEN9ktXCZSkDROXtw6sFP0wXGB
+    FTmUFiJ32d2lHKP2v3eWF4uUaKSoHwzt7MzsmTlnRjo8CBZcBAumV86hcwhmxTWoSmiQAnCD6h4W
+    UpqXoCUIxFSDkbBA4CkWpTQojKPRgIeVhJKXmDGeO04uxXIllfhD458rmeN7rtezjOUan65qU5Di
+    JtAp61nVLNgwFeR8EXRGx+EZ3NzAAXgKAjRJoJhIVqiC9YkOFC65Noqj9u9ZkcPtLbyiMlA4AJis
+    JLhLAnh9fQG/voUElYFMKigV3zCD0EbfQ8Ioo0sxCTPw+rV3fvkB5t98zZkUXCmpdOxMAFKZrFH5
+    XNIJRVpKLkx94QG4K2NKHQdB9MvUj34+809Df3pyFp9E0zPXmdBz9Padhepdkr/3dxMxHhAkzE+U
+    ceELBQE8gEEEjzVwtc4DW6cmL89+4BmnoggxhTgZd5ymLcRbVcLb3z6DRsVZDokUmshynaXC0iIw
+    5v76tEnKBTeGLeDhoWnqcX0Xxwp1ye5EHGgrI4Jv7sG7gCj6aRqGbYKNicLwGObzQaqxVzQmlapz
+    DN/ZBj95DKtISU01rxetZtxWM94C3KN/+qJ7dAcSadx6Pn3Nku9sBq5RFQ6juriDsQeiXd9OiACV
+    5mIJdzZ/g3kndFADpMwwt83Qk+UDlEwZTPcrs1ojZdNQ0odinbMF5rAs26ONstcFI73jV3MK4Qsg
+    al7Y60aA9s+6lUousD6TXgi+ndzu7trQv5l79H2LwitGWlwRyfDxXYMGMkX6/NLmf4Ca+ePYWl8d
+    79q9DRyHfhh+fNc4HPU9kormI5uCl8ZbK8mfCPrB7fHiCYvpCe3jM4xYNyHNHi0vqWyRWluNnCSe
+    oO/7bq9DY+0nSJOxNrtHT0jcpuFjne5UkkqB7VN18+3EAhzSdoE7hBXbIDDazUVJY2IzcMOleEMu
+    HZhPZPy9Kv43RR0R58RRfPNXfPtjvGWh4yDqcdBnoA9itvvo9thiJBhU2efL95egq7KU1DlJJKm6
+    MFsXCFYQDz7gEsSmwFBEZeQMad7POSS7aStNVsGM5XQY8Qh33Kxqopqmt3hkaYjCvGHQHmg7vqkd
+    ijVOM01C/QCeae5p5XU5PTu11PEQ/kP1w1WyIyn1nGzdgq1tISlXsBPQuhVre+eVewlHZrpJeX51
+    dXkVbwUFdi4yWYk0SBQyqyIyfntdwfy7aZP2K8krctrXxrbxp7HJJMcD6L4a9p3rL4FM26+ikb5U
+    ZdpQvHXrOtLtlr0O9zLS+M57Z98U5SD9DprJMNXEKmEiJHWeQBT4UmFef4AwrFfD/JnkxWbH3jtu
+    +XrinjgZlfEOPR3ZtT/9OOgd2gHf625Dlt03/wImSXPqFwoAAA==
 run_cmd:
 - "/root/provision.sh >> /root/provision.log 2>> /root/provision.err"
 k3os:
