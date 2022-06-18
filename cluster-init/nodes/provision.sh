@@ -29,10 +29,10 @@ if [[ -b "${longhornDisk}" ]] ; then
     if [[ ! -b "${longhornDisk}1" ]] ; then
       echo "  using whole disk ${longhornDisk} for Longhorn data"
       cat <<-EOF | parted "${longhornDisk}"
-	  print
-	  mklabel gpt
-	  mkpart primary ext4 0% 100%
-	  EOF
+	print
+	mklabel gpt
+	mkpart primary ext4 0% 100%
+	EOF
       partprobe
     fi
   else
