@@ -55,25 +55,34 @@ if [[ -b "${longhornDisk}" ]] ; then
     | grep -E '::[^:]*:;$' \
     | cut -f1 -d: \
     || true)"
-  longhornPart="${longhornDisk}${longhornPartNum}"  # TODO support other parttion naming. eg nvme0n1p1
   if [[ -n "${longhornPartNum}" ]] ; then
+    longhornPart="${longhornDisk}${longhornPartNum}"  # TODO support other parttion naming. eg nvme0n1p1
     echo "formating ${longhornPart} with ext4"
     # TODO optimal ext4 options?
     mke2fs -vF -t ext4 -L longhorn-data -m0 "${longhornDisk}${longhornPartNum}"
-    if [[ ! -d "${longhornDir}" ]] ; then
-      echo "making dir ${longhornDir}"
-      mkdir -p "${longhornDir}"
-    fi
   else
-    echo "ERROR: partition not found/created on ${longhornDisk} for Longhorn data" >&2
-    exit 1
+    # do we have an ext4 partition already
+    longhornPartNum="$(parted -m "${longhornDisk}" unit GB print free \
+      | grep -E ':ext4:[^:]*:;$' \
+      | cut -f1 -d: \
+      || true)"
+    if [[ -n "${longhornPartNum}" ]] ; then
+      longhornPart="${longhornDisk}${longhornPartNum}"  # TODO support other parttion naming. eg nvme0n1p1
+    else
+      echo "ERROR: partition not found/created on ${longhornDisk} for Longhorn data" >&2
+      exit 1
+    fi
+  fi
+  if [[ ! -d "${longhornDir}" ]] ; then
+    echo "making dir ${longhornDir}"
+    mkdir -p "${longhornDir}"
   fi
   if [[ -b "${longhornPart}" ]] ; then
     if ! grep -q "${longhornPart}" /etc/fstab ; then
       echo "updating /etc/fstab"
       grep -v "${longhornDir}" /etc/fstab \
 	> /etc/fstab.tmp
-      echo "${longhornPart}	${longhornDir}	ext4	nodiratime,relatime 00" \
+      echo "${longhornPart}	${longhornDir}	ext4	nodiratime,relatime 0 0" \
 	>> /etc/fstab.tmp
       mv /etc/fstab.tmp /etc/fstab
     fi
