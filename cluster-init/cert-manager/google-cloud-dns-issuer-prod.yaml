@@ -1,0 +1,27 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: chaosengine-s-issuer-prod
+  namespace: cert-manager
+spec:
+  acme:
+    email: daniel.aaron.quinlan@gmail.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    disableAccountKeyGeneration: true
+    privateKeySecretRef:
+      name: letsencrypt-prod-account-key
+      key: letsencrypt-prod-account-key.json
+    solvers:
+    - selector:
+        dnsZones:
+          - 's.chaosengine.net'
+      dns01:
+        cnameStrategy: Follow
+        cloudDNS:
+          # The ID of the GCP project
+          project: perfect-trilogy-461
+          # This is the secret used to access the service account
+          serviceAccountSecretRef:
+            name: clouddns-dns01-solver-svc-acct
+            key: clouddns-dns01-solver-svc-acct.json
+# https://cert-manager.io/docs/configuration/acme/dns01/#delegated-domains-for-dns01
