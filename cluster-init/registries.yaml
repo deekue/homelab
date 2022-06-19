@@ -1,4 +1,0 @@
-mirrors:
-  docker.io:
-    endpoint:
-      -  "https://192.168.136.238:3128"
