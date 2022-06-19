@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: wildcard-s-chaosengine-net
+  namespace: cert-manager
+spec:
+  secretName: wildcard-s-chaosengine-net-tls
+  issuerRef:
+    # The issuer created previously
+    name: chaosengine-issuer
+    kind: ClusterIssuer
+  dnsNames:
+  - "*.s.chaosengine.net"
