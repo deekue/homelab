@@ -2,6 +2,8 @@
 #
 #
 # TODO make the env vars options
+#
+# ref: https://kube-vip.chipzoller.dev/docs/installation/
 
 KVIMAGE=ghcr.io/kube-vip/kube-vip
 CONTAINER_RUNTIME="docker"
