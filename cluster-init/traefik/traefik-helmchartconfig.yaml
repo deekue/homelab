@@ -1,3 +1,4 @@
+# https://github.com/k3s-io/k3s/issues/2893#issuecomment-773654746
 # https://github.com/traefik/traefik-helm-chart/blob/master/traefik/values.yaml
 apiVersion: helm.cattle.io/v1
 kind: HelmChartConfig
@@ -12,3 +13,5 @@ spec:
     ports:
       web:
         redirectTo: websecure
+    dashboard:
+      domain: "traefik.s.chaosengine.net"
