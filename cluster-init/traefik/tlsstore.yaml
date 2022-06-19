@@ -1,0 +1,10 @@
+# https://github.com/traefik/traefik/issues/6057#issuecomment-615903064
+# set default TLS cert for Traefik from a k8s secret
+apiVersion: traefik.containo.us/v1alpha1
+kind: TLSStore
+metadata:
+  name: default
+  namespace: kube-system
+spec:
+  defaultCertificate:
+    secretName: wildcard-s-chaosengine-net-tls

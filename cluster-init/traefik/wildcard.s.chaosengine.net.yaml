@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: wildcard-s-chaosengine-net
+  namespace: kube-system
+spec:
+  secretName: wildcard-s-chaosengine-net-tls
+  issuerRef:
+    name: chaosengine-s-issuer-prod
+    kind: ClusterIssuer
+  dnsNames:
+  - "*.s.chaosengine.net"
