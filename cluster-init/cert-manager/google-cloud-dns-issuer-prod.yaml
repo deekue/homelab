@@ -7,6 +7,7 @@ spec:
   acme:
     email: daniel.aaron.quinlan@gmail.com
     server: https://acme-v02.api.letsencrypt.org/directory
+    # using this account elsewhere so disable auto key gen
     disableAccountKeyGeneration: true
     privateKeySecretRef:
       name: letsencrypt-prod-account-key
@@ -16,12 +17,15 @@ spec:
         dnsZones:
           - 's.chaosengine.net'
       dns01:
+        # https://cert-manager.io/docs/configuration/acme/dns01/#delegated-domains-for-dns01
+        # use cnameStrategy:Follow plus this DNS record
+        # _acme-challenge.s.chaosengine.net IN CNAME _acme-challenge.auth.chaosengine.net
         cnameStrategy: Follow
         cloudDNS:
-          # The ID of the GCP project
+          # https://cert-manager.io/docs/configuration/acme/dns01/google/
           project: perfect-trilogy-461
           # This is the secret used to access the service account
+          # see https://cert-manager.io/docs/configuration/acme/dns01/google/#use-static-credentials
           serviceAccountSecretRef:
             name: clouddns-dns01-solver-svc-acct
             key: clouddns-dns01-solver-svc-acct.json
-# https://cert-manager.io/docs/configuration/acme/dns01/#delegated-domains-for-dns01
