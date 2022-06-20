@@ -14,12 +14,12 @@ spec:
     ingress:
       enabled: true
       host: "longhorn.s.chaosengine.net"
-      #ingressClassName:
       tls: true
       tlsSecret: "" # must be set if tls:true
+      annotations:
+        traefik.ingress.kubernetes.io/router.middlewares: kube-system-traefik-basic-auth@kubernetescrd
 
-#    csi:
-#     kubeletRootDir: ""
+# TODO enable backups
 #    defaultSettings:
 #     backupTarget: "nfs://metis/longhorn-backup"
 #     backupTargetCredentialSecret: ""
