@@ -35,8 +35,9 @@ run_cmd:
   - "/root/provision.sh >> /root/provision.log 2>> /root/provision.err"
 boot_cmd:
   # enable NFS client
-  - "ln -sv /etc/init.d/nfsclient /etc/runlevels/default/nfsclient"
-  - "mkdir -p /var/lib/nfs/sm"
+  - mkdir -p /var/lib/nfs/sm
+  - rc-update add rpc.statd
+  - rc-update add nfsclient
 k3os:
   modules:
     - kvm
@@ -44,6 +45,8 @@ k3os:
   sysctl:
     kernel.printk: "4 4 1 7"
     kernel.kptr_restrict: "1"
+  dns_nameservers:
+    - 192.168.40.254
   ntp_servers:
     - 0.us.pool.ntp.org
     - 1.us.pool.ntp.org
