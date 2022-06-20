@@ -1,53 +1,60 @@
+---
 hostname: m900-2
 ssh_authorized_keys:
-- github:deekue
-- ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBIMWQez3DYo1jeHOOE3nG7RPllzzpKW2p2R7QwmOaoj apathy@chelone
+  - github:deekue
+  - "ssh-ed25519
+     AAAAC3NzaC1lZDI1NTE5AAAAIBIMWQez3DYo1jeHOOE3nG7RPllzzpKW2p2R7QwmOaoj
+     apathy@chelone"
 write_files:
-- path: /root/provision.sh
-  owner: root:root
-  permissions: '0744'
-  encoding: gz+base64
-  content: |
-    H4sICKtdrWICA3Byb3Zpc2lvbi5zaAC9Vltv2zYUfrZ+xYmSNtsQXexkQ6bWLto17Uu2FEmHPaQZ
-    QEvHNmGJVEnKqbHkv/dQF1uy1WXYgPnBMMlz4/d959CHB8GUi2DK9MI5dA7BLLgGVQgNUgCuUK1h
-    KqU5AS1BICYajIQpAk8wy6VBYRyNBjwsJOQ8xxnjqeOkUswXUonfNf6xkCm+5Xo5nrFU4+ao3AoS
-    XAU6Ya1dNQ5WTAUpnwbNpuPwGdzewgF4CgI0caCYiBeoguWpDhTOuTaKo/bXLEvh7g5e0DVQOAAY
-    LyS4cyrw5uYSfnkNMSoDM6kgV3zFDELtvYaYUUSXfGJm4OVL7+LqHUyezOYMMq6UVDpyBgCJjJeo
-    fC5phSLJJRemPPAA3IUxuY6CYPjzyB/+dO6fhf7o9Dw6HY7OXWdA6Sj3vS3VuyJ773Pl0e8QxMyP
-    lXHhEzkBPIBBBI9V5WqdBvaemqw8+4PPOF2KKiYXZ8Ydp4KFeCtyeP3rR9CoOEshlkITWa4zV5jb
-    CoxZ35xVQbngxrApPDxUoB6XZ1GkUOfsXkSBtjKi8s0avEsYDn8chWEdYGWGYXgMk0knVF8WjXGh
-    yhjdPFvnjUX3FgmpqeT1staMW2vGm4J79FdbdI9uRyKVWcumrVmyHY/BNarArlfjd9CXYLhr2wgR
-    oNBczOHexq9q3nHt3AESZphbR2jJ8gFypgwm+zdzBqRraslBtkzZFFOY5+XC2lvJZ4yUjl/MGYTP
-    gEh51gjPfqxRruQUyzXphMq2Hduc3Rj6GrtH39XZvawH2oLIhfdvoKwDZop0+amO/wAl48eR3X1x
-    vLvvreA49MPw/ZvK4KhtERfUF7MReEm03SXZEzHfuy0+PGFr2lT7+A0mrJmQZo+OE7q2SOxeWTlJ
-    O0bf990WQn2wU0m9ILtHm0rcCu4+pBt1JFJgnaoE33YqwCFNFbhHWLAVAqOZnOXUHjYCN1yKV2TS
-    FPOBNn8rsn9NUUPEBXEU3f4Z3f0QbVloOBi2OGgz0MZ/p6A9Ftrn490C+9wJhY9Xb69AF3kuCWVJ
-    oVQJgsUABMuIMx9wDmKVYSiG+dDZAks9lTFjWe3GfoR7bhYlVRXsdRaZGyIxrTi0C5qLr0qDbImj
-    mSapvgPPVOc07JqYnu1XwjyEf3CndnftcWwDbygGlipkyXoPuv/CdZdtm3CP8X7O/67vnuL9/2S+
-    wbYRwcX19dV11ELV9v9MFiIJYoLXIkibT49jmDwfNYG/ELjDTsO23oWdOaH20KjqytjSKjPhCnbM
-    a8XZEy/fC9bN132FPvSNPjI8gObN3TcuX9eZtm98z8tV5EnVQVuzZig2w3vvtq2INB8nrbVvsrwT
-    fqeaQTfUwMpzICQhQUVkeKIwLX9ACGE5fCffiJ6tdvZbyy1vGypIDb1jYkcYG26sPf3tai3qptqD
-    t2LLTvSvwOnh6nELAAA=
+  - path: /root/provision.sh
+    owner: root:root
+    permissions: '0744'
+    encoding: gz+base64
+    content: |
+      H4sICKtdrWICA3Byb3Zpc2lvbi5zaAC9Vltv2zYUfrZ+xYmSNtsQXexkQ6bWLto17Uu2FEmHPaQZ
+      QEvHNmGJVEnKqbHkv/dQF1uy1WXYgPnBMMlz4/d959CHB8GUi2DK9MI5dA7BLLgGVQgNUgCuUK1h
+      KqU5AS1BICYajIQpAk8wy6VBYRyNBjwsJOQ8xxnjqeOkUswXUonfNf6xkCm+5Xo5nrFU4+ao3AoS
+      XAU6Ya1dNQ5WTAUpnwbNpuPwGdzewgF4CgI0caCYiBeoguWpDhTOuTaKo/bXLEvh7g5e0DVQOAAY
+      LyS4cyrw5uYSfnkNMSoDM6kgV3zFDELtvYaYUUSXfGJm4OVL7+LqHUyezOYMMq6UVDpyBgCJjJeo
+      fC5phSLJJRemPPAA3IUxuY6CYPjzyB/+dO6fhf7o9Dw6HY7OXWdA6Sj3vS3VuyJ773Pl0e8QxMyP
+      lXHhEzkBPIBBBI9V5WqdBvaemqw8+4PPOF2KKiYXZ8Ydp4KFeCtyeP3rR9CoOEshlkITWa4zV5jb
+      CoxZ35xVQbngxrApPDxUoB6XZ1GkUOfsXkSBtjKi8s0avEsYDn8chWEdYGWGYXgMk0knVF8WjXGh
+      yhjdPFvnjUX3FgmpqeT1staMW2vGm4J79FdbdI9uRyKVWcumrVmyHY/BNarArlfjd9CXYLhr2wgR
+      oNBczOHexq9q3nHt3AESZphbR2jJ8gFypgwm+zdzBqRraslBtkzZFFOY5+XC2lvJZ4yUjl/MGYTP
+      gEh51gjPfqxRruQUyzXphMq2Hduc3Rj6GrtH39XZvawH2oLIhfdvoKwDZop0+amO/wAl48eR3X1x
+      vLvvreA49MPw/ZvK4KhtERfUF7MReEm03SXZEzHfuy0+PGFr2lT7+A0mrJmQZo+OE7q2SOxeWTlJ
+      O0bf990WQn2wU0m9ILtHm0rcCu4+pBt1JFJgnaoE33YqwCFNFbhHWLAVAqOZnOXUHjYCN1yKV2TS
+      FPOBNn8rsn9NUUPEBXEU3f4Z3f0QbVloOBi2OGgz0MZ/p6A9Ftrn490C+9wJhY9Xb69AF3kuCWVJ
+      oVQJgsUABMuIMx9wDmKVYSiG+dDZAks9lTFjWe3GfoR7bhYlVRXsdRaZGyIxrTi0C5qLr0qDbImj
+      mSapvgPPVOc07JqYnu1XwjyEf3CndnftcWwDbygGlipkyXoPuv/CdZdtm3CP8X7O/67vnuL9/2S+
+      wbYRwcX19dV11ELV9v9MFiIJYoLXIkibT49jmDwfNYG/ELjDTsO23oWdOaH20KjqytjSKjPhCnbM
+      a8XZEy/fC9bN132FPvSNPjI8gObN3TcuX9eZtm98z8tV5EnVQVuzZig2w3vvtq2INB8nrbVvsrwT
+      fqeaQTfUwMpzICQhQUVkeKIwLX9ACGE5fCffiJ6tdvZbyy1vGypIDb1jYkcYG26sPf3tai3qptqD
+      t2LLTvSvwOnh6nELAAA=
 run_cmd:
-- "/root/provision.sh >> /root/provision.log 2>> /root/provision.err"
+  - "/root/provision.sh >> /root/provision.log 2>> /root/provision.err"
+boot_cmd:
+  # enable NFS client
+  - "ln -sv /etc/init.d/nfsclient /etc/runlevels/default/nfsclient"
+  - "mkdir -p /var/lib/nfs/sm"
 k3os:
   modules:
-  - kvm
-  - nvme
+    - kvm
+    - nvme
   sysctl:
     kernel.printk: "4 4 1 7"
     kernel.kptr_restrict: "1"
   ntp_servers:
-  - 0.us.pool.ntp.org
-  - 1.us.pool.ntp.org
+    - 0.us.pool.ntp.org
+    - 1.us.pool.ntp.org
   server_url: https://192.168.40.10:6443
   token: SECRETSQUIRREL
   password: "k3os"
   k3s_args:
-  - server
-  - "--tls-san"
-  - "192.168.40.10"
-  - "--tls-san"
-  - "k8s.s.home.chaosengine.net"
-  - "--disable"
-  - "servicelb"
+    - server
+    - "--tls-san"
+    - "192.168.40.10"
+    - "--tls-san"
+    - "k8s.s.chaosengine.net"
+    - "--disable"
+    - "servicelb"
