@@ -50,8 +50,9 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   name: secured
+  namespace: kube-system
 spec:
   chain:
     middlewares:
-      - traefik-secure-headers
-      - traefik-basic-auth
+      - name: traefik-secure-headers
+      - name: traefik-basic-auth
