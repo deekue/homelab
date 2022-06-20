@@ -6,6 +6,7 @@ ssh_authorized_keys:
      AAAAC3NzaC1lZDI1NTE5AAAAIBIMWQez3DYo1jeHOOE3nG7RPllzzpKW2p2R7QwmOaoj
      apathy@chelone"
 write_files:
+  # yamllint disable-line rule:line-length
   - path: /root/provision.sh
     owner: root:root
     permissions: '0744'
@@ -52,7 +53,7 @@ k3os:
     - 1.us.pool.ntp.org
   server_url: https://192.168.40.10:6443
   token: SECRETSQUIRREL
-  password: "k3os"
+  password: "$1$ZDYMI7GJ$0F0YZRwBXP4l3CQItcXMg/"
   k3s_args:
     - server
     - "--tls-san"

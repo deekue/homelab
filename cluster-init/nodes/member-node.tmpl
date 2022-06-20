@@ -7,6 +7,8 @@ ssh_authorized_keys:
      apathy@chelone"
 write_files:
 $primaryNodeKubeVipCfg
+$primaryNodeKubeVipCcCfg
+$primaryNodeKubeVipCcCm
 $nodeProvisionSh
 run_cmd:
   - "/root/provision.sh >> /root/provision.log 2>> /root/provision.err"

@@ -6,6 +6,7 @@ ssh_authorized_keys:
      AAAAC3NzaC1lZDI1NTE5AAAAIBIMWQez3DYo1jeHOOE3nG7RPllzzpKW2p2R7QwmOaoj
      apathy@chelone"
 write_files:
+  # yamllint disable-line rule:line-length
   - path: /var/lib/rancher/k3s/server/manifests/kube-vip-ds.yaml
     owner: root:root
     permissions: '0644'
@@ -28,6 +29,35 @@ write_files:
       +vePD8OIfNT/upXOlbFDsCulFynx9W3tvAgv12EsAItLRYffbt46TKfYPikZqu2O3Zf1xE4JMdUC
       fhVSfeqMLcphtikzV32hlbe009hSduhyXHU7B/BO96XFbzd/AUTPZCl85MbE5CNs0I0XtP4CHGxy
       VFILAAA=
+  # yamllint disable-line rule:line-length
+  - path: /var/lib/rancher/k3s/server/manifests/kube-vip-cloud-controller.yaml
+    owner: root:root
+    permissions: '0644'
+    encoding: gz+base64
+    content: |
+      H4sICAOcrGICA2t1YmUtdmlwLWNsb3VkLWNvbnRyb2xsZXIueWFtbACtVD1v2zAQ3fUrBI1F6Tjt
+      UgjokARoOqRpEANdigw0ebbZUCRxJJW6Rf97j9RHlMSxXaBaJB3v3ruPd+ROfQP0ypq6bE+Le2Vk
+      XS4AWyXgTAgbTSgaCFzywOuiLA1voC7v4xJYqxwT2kbJhDUBrdaAvYd3XAxufusDNAVjrOATMlxy
+      MeMxbCyqXzyQbXb/wc+UPRnTuNCRQvHWaniSAzfGhhzi02+5E4uo0UCADElnNjqKp6SqgBGqsZQu
+      vfrVihgmeowaMhkrqYhLJDRfl98rYS1KZab5V3ddTuBtRAHZTQP34PuTFnCZrWsI1duyEgiUWPrq
+      UkxfWvl85mLIUc9od3FQyiu1brjzKRCMdFaZQD8VtNB9+G6u/sRT+2L2253Zm2NJjZWQcQbo50hd
+      IV2p1QMPYkPvvs67LIoXsz4ngzLr49XyUp8Hh7rsOdJwb2GVVdXXuoeMvF4q89+E5OPyB4hAWmLl
+      zmX7jyvGnfOP27SgmcMq6gUcsdEObavkPjLvQKTwfvDXB1CclV+44WtoSIs3ViuxrcuvSIcgb4HL
+      bZGU5cjOSTen+a9VqY7PpCCL2yvVqEAn88ypqYcWu+1vkqqu+BJ0fx2kWbrHZHqbsI2zhtj3pUmV
+      OZ2uiQ550qb06Ccku2mOJKIi+gZ2ISZwZWhwg4UlmIbT4EZcVp7sw+tcGKONJhPLLWLDsrI0xY/7
+      NNU9qqER1eV6IzAt1xDwGnHdzmfz2bsx/JCWJiQ3UetBB2f6gW/9eD65YX7/6a3S+MG7X75PCn0o
+      xojAMezE82IDkq5v7CQqYcWjDmw0D24gIqqwvaCmwM8woSaupr/iL5H24AZQWbkAap+kFN/PR4Tp
+      Il8f2OK/cfA8FXkHAAA=
+  # yamllint disable-line rule:line-length
+  - path: /var/lib/rancher/k3s/server/manifests/kube-vip-cloud-controller-configmap.yaml
+    owner: root:root
+    permissions: '0644'
+    encoding: gz+base64
+    content: |
+      H4sICL9krWICA2NvbmZpZ21hcC55YW1sADXKPQ6DMAxA4d2n8AVISYRQ8Nq5K7shLrIgPyIpUm/f
+      hY7v0+Ois5xVcyK8LOyaAuEzp7duLy4QpXHgxgSIiaMQ7p9FLi1318LrjV391iYR/vuq4ey2Iy98
+      ENrJGTt6M/TGOv9wHn4QHWlKeQAAAA==
+  # yamllint disable-line rule:line-length
   - path: /root/provision.sh
     owner: root:root
     permissions: '0744'
@@ -73,7 +103,7 @@ k3os:
     - 0.us.pool.ntp.org
     - 1.us.pool.ntp.org
   token: SECRETSQUIRREL
-  password: "k3os"
+  password: "$1$ZDYMI7GJ$0F0YZRwBXP4l3CQItcXMg/"
   k3s_args:
     - server
     - "--cluster-init"
