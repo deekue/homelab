@@ -1,3 +1,9 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: longhorn-system
+---
 # https://rancher.com/docs/k3s/latest/en/helm/
 apiVersion: helm.cattle.io/v1
 kind: HelmChart
@@ -17,9 +23,7 @@ spec:
       tls: true
       tlsSecret: "" # must be set if tls:true
       annotations:
-        traefik.ingress.kubernetes.io/router.middlewares: kube-system-traefik-basic-auth@kubernetescrd
-
-# TODO enable backups
-#    defaultSettings:
-#     backupTarget: "nfs://metis/longhorn-backup"
-#     backupTargetCredentialSecret: ""
+        traefik.ingress.kubernetes.io/router.middlewares:
+          kube-system-traefik-basic-auth@kubernetescrd
+    defaultSettings:
+      backupTarget: "nfs://192.168.40.52/volume2/longhorn-backup"

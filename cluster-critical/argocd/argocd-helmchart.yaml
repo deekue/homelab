@@ -1,0 +1,33 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: argocd
+---
+# https://rancher.com/docs/k3s/latest/en/helm/
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  namespace: kube-system
+  name: argocd
+spec:
+  chart: argo-cd
+  targetNamespace: argocd
+  version: v4.9.4
+  repo: https://argoproj.github.io/argo-helm
+  valuesContent: |-
+    # HA with autoscaling
+    redis-ha:
+      enabled: true
+    controller:
+      enableStatefulSet: true
+    server:
+      autoscaling:
+        enabled: true
+        minReplicas: 2
+      extraArgs:
+        - --insecure  # use TLS on IngressRoute
+    repoServer:
+      autoscaling:
+        enabled: true
+        minReplicas: 2

@@ -1,3 +1,11 @@
+# The k3s helm-controller won't create namespaces
+# https://github.com/k3s-io/k3s/issues/5622
+#---
+#apiVersion: v1
+#kind: Namespace
+#metadata:
+#  name: NAMESPACE
+---
 # https://rancher.com/docs/k3s/latest/en/helm/
 apiVersion: helm.cattle.io/v1
 kind: HelmChart
