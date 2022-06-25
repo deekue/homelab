@@ -14,5 +14,6 @@ spec:
   targetNamespace: cert-manager
   version: v1.8.1
   repo: https://charts.jetstack.io
+  bootstrap: true
   valuesContent: |-
     installCRDs: true
