@@ -1,0 +1,12 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: argocd
+
+resources:
+  - namespace.yaml
+  - cert-manager-helmchart.yaml
+  - clouddns-dns01-solver-svc-acct-sealedsecret.json
+  - letsencrypt-prod-account-key-sealedsecret.json
+  - google-cloud-dns-issuer-prod.yaml
+  - wildcard.s.chaosengine.net.yaml
