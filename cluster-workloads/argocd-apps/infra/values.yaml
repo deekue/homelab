@@ -4,5 +4,5 @@ spec:
   destination:
     server: https://kubernetes.default.svc
   source:
-    repoURL: https://github.com/deekue/homelab/cluster-workloads/manifests/infra
+    repoURL: https://github.com/deekue/homelab
     targetRevision: HEAD
