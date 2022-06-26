@@ -1,0 +1,20 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infra-apps
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: "https://github.com/deekue/homelab"
+    path: cluster-workloads/argocd-apps/infra
+    targetRevision: main
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: infra
+  syncPolicy:
+    automated:
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
