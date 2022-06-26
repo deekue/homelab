@@ -9,7 +9,7 @@ spec:
   chart: node-feature-discovery
   targetNamespace: infra
   version: 2.0.0
-  repo: k8s-at-home-charts
+  repoUrl: https://k8s-at-home.com/charts/
   # jobImage: raspbernetes/node-feature-discovery:v0.6.0
   valuesContent: |-
     sources:
