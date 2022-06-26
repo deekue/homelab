@@ -4,10 +4,12 @@ kind: Application
 metadata:
   name: traefik-error-pages
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     namespace: kube-system
-    server: 'https://kubernetes.default.svc'
+    server: {{ .Values.spec.destination.server }}
   source:
     chart: error-pages
     repoURL: 'https://k8s-at-home.com/charts/'
