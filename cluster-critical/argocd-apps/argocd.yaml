@@ -8,8 +8,8 @@ spec:
   project: default
   source:
     repoURL: "https://github.com/deekue/homelab"
-    path: cluster-critical/argocd-apps/argocd
-    targetRevision: master
+    path: cluster-critical/argocd
+    targetRevision: main
   destination:
     server: "https://kubernetes.default.svc"
     namespace: argocd

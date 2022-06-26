@@ -4,9 +4,8 @@ kind: Kustomization
 namespace: argocd
 
 resources:
-  - sealed-secrets
-  - cert-manager
-  - longhorn-system
-  - nfs
-  - traefik
-  - argocd
+  - sealed-secrets.yaml
+  - cert-manager.yaml
+  - longhorn-system.yaml
+  - traefik.yaml
+  - argocd.yaml

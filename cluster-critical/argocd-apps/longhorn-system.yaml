@@ -8,11 +8,11 @@ spec:
   project: default
   source:
     repoURL: "https://github.com/deekue/homelab"
-    path: cluster-critical/argocd-apps/longhorn-system
-    targetRevision: master
+    path: cluster-critical/longhorn-system
+    targetRevision: main
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: argocd
+    namespace: longhorn-system
   syncPolicy:
     automated:
       prune: true
