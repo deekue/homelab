@@ -7,7 +7,6 @@ depsOrder=(
 sealed-secrets
 cert-manager
 longhorn-system
-nfs
 traefik
 argocd
 argocd-apps
