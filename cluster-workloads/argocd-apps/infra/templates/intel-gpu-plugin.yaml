@@ -1,0 +1,18 @@
+# yamllint disable
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: intel-gpu-plugin
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: infra
+    server: {{ .Values.spec.destination.server }}
+  project: default
+  source:
+    path: cluster-workloads/manifests/infra/intel-gpu-plugin
+    repoURL: {{ .Values.spec.source.repoURL }}
+    targetRevision: {{ .Values.spec.source.targetRevision }}
