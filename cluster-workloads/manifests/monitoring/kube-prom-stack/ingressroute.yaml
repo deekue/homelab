@@ -1,0 +1,17 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: monitoring-grafana
+  namespace: monitoring
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`mon.s.chaosengine.net`) || Host(`monitoring.s.chaosengine.net`)
+      priority: 10
+      services:
+        - name: monitoring-grafana
+          port: 80
+  tls: {}

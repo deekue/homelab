@@ -1,0 +1,17 @@
+prometheus:
+  admissionWebhooks:
+    enabled: false
+    certManager:
+      enabled: true
+  prometheusSpec:
+    resources:
+      requests:
+        memory: 400Mi
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: replicated-r2
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 20Gi
