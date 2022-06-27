@@ -5,14 +5,18 @@ kind: Application
 metadata:
   name: kube-prom-stack
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
+  source:
+    repoURL: {{ .Values.spec.source.repoURL }}
+    path: cluster-workloads/manifests/monitoring/kube-prom-stack
+    targetRevision: {{ .Values.spec.source.targetRevision }}
   destination:
     namespace: monitoring
     server: {{ .Values.spec.destination.server }}
   project: default
-  source:
-    path: cluster-workloads/manifests/monitoring/kube-prom-stack
-    repoURL: {{ .Values.spec.source.repoURL }}
-    targetRevision: {{ .Values.spec.source.targetRevision }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
