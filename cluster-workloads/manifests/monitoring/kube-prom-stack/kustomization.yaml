@@ -8,11 +8,8 @@ helmCharts:
     releaseName: monitoring
     namespace: kube-system
     repo: https://prometheus-community.github.io/helm-charts
-    version: "33.1.0"
+    version: "36.2.0"
     valuesFile: values.yaml
-
-bases:
-  - crds
 
 resources:
   - ingressroute.yaml
