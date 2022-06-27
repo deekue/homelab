@@ -1,4 +1,5 @@
 # https://longhorn.io/docs/1.3.0/high-availability/auto-balance-replicas/#set-individual-volumes-to-auto-balance-replicas-using-a-storageclass
+---
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
@@ -10,5 +11,12 @@ parameters:
   numberOfReplicas: "2"
   replicaAutoBalance: "best-effort"
   dataLocality: "best-effort"
-  staleReplicaTimeout: "2880" # 48 hours in minutes
+  staleReplicaTimeout: "2880"  # 48 hours in minutes
   fromBackup: ""
+  # default backup, just in case
+  recurringJobSelector: '[
+   {
+     "name":"SlowLowPriorityLowCriticality",
+     "isGroup":true,
+   },
+  ]'
