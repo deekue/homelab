@@ -1,0 +1,7 @@
+---
+# https://kubernetes-sigs.github.io/node-feature-discovery/v0.11/get-started/deployment-and-usage.html#deployment-with-kustomize
+kind: Kustomization
+bases:
+  - https://github.com/kubernetes-sigs/node-feature-discovery/deployment/overlays/default?ref=v0.11.1
+# patchesStrategicMerge:
+#   - overrides.yaml
