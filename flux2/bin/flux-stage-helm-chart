@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+#
+#
+set -eEuo pipefail
+
+# TODO
+function usage {
+  echo "Usage: $(basename -- "$0") env namespace name" >&2
+  exit 1
+}
+
+fluxEnv="${1:?$(usage)}"
+namespace="${2:?$(usage)}"
+helmChartName="${3:?$(usage)}"
+
+fluxBaseDir="$(dirname -- "$0")/.."
+namespaceDir="${fluxBaseDir}/${namespace}"
+namespaceFile="${fluxBaseDir}/${namespace}/_namespace.yaml"
+helmChartDir="${namespaceDir}/${helmChartName}"
+
+# create dirs for namespace and helm chart
+mkdir -p "${helmChartDir}"
+
+# create namespace file, if not present
+if [[ ! -f "${namespaceFile}" ]] ; then
+  # TODO create _namespace.yaml
+  cat <<EOF > "${namespaceFile}"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ${namespace}
+
+EOF
+
+fi
+
+# create values.yaml from Helm chart
+if [[ ! -f "${helmChartDir}/values.yaml" ]] ; then
+  #helm show values longhorn/longhorn
+fi
+# create values-depN.yaml for dependencies
+# optionally create _ingress.yaml
+# optionally create _pvc.yaml
+
