@@ -1,6 +1,6 @@
 ---
 kind: Kustomization
 bases:
-  - https://github.com/intel/intel-device-plugins-for-kubernetes/deployments/gpu_plugin/overlays/nfd_labeled_nodes?ref=0.24.0
+  - https://github.com/intel/intel-device-plugins-for-kubernetes/deployments/gpu_plugin/overlays/nfd_labeled_nodes?ref=v0.24.0
 # patchesStrategicMerge:
 #   - overrides.yaml
