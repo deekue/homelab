@@ -45,7 +45,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`prom.s.chaosengine.net`) || Host(`prometheus.s.chaosengine.net`)
+      match: Host(`am.s.chaosengine.net`) || Host(`alertmanager.s.chaosengine.net`)
       priority: 10
       services:
         - name: monitoring-kube-prometheus-alertmanager
