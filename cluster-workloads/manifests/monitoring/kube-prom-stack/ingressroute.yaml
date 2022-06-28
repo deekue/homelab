@@ -15,3 +15,41 @@ spec:
         - name: monitoring-grafana
           port: 80
   tls: {}
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: monitoring-kube-prometheus-prometheus
+  namespace: monitoring
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`prom.s.chaosengine.net`) || Host(`prometheus.s.chaosengine.net`)
+      priority: 10
+      services:
+        - name: monitoring-kube-prometheus-prometheus
+          port: 9090
+      middlewares:
+        - name: secured
+  tls: {}
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: monitoring-kube-prometheus-alertmanager
+  namespace: monitoring
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`prom.s.chaosengine.net`) || Host(`prometheus.s.chaosengine.net`)
+      priority: 10
+      services:
+        - name: monitoring-kube-prometheus-alertmanager
+          port: 9093
+      middlewares:
+        - name: secured
+  tls: {}
