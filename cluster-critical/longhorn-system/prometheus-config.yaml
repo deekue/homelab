@@ -5,6 +5,8 @@ kind: ServiceMonitor
 metadata:
   name: monitoring-longhorn
   namespace: kube-system
+  labels:
+    release: monitoring
 spec:
   selector:
     matchLabels:
