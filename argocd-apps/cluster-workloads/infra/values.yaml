@@ -3,6 +3,8 @@
 spec:
   destination:
     server: https://kubernetes.default.svc
+    namespace: infra
   source:
     repoURL: https://github.com/deekue/homelab
+    pathPrefix: cluster-workloads/infra
     targetRevision: HEAD

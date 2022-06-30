@@ -1,0 +1,10 @@
+# https://raw.githubusercontent.com/argoproj/argocd-example-apps/master/apps/values.yaml
+---
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+  source:
+    repoURL: https://github.com/deekue/homelab
+    pathPrefix: argocd-apps/cluster-workloads/monitoring
+    targetRevision: HEAD

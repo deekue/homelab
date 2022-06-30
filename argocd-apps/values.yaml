@@ -5,4 +5,5 @@ spec:
     server: https://kubernetes.default.svc
   source:
     repoURL: https://github.com/deekue/homelab
+    pathPrefix: argocd-apps
     targetRevision: HEAD

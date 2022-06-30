@@ -3,20 +3,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kube-prom-stack
+  name: cluster-critical-apps
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   source:
     repoURL: {{ .Values.spec.source.repoURL }}
-    path: cluster-workloads/manifests/monitoring/kube-prom-stack
+    path: {{ .Values.spec.source.pathPrefix }}/cluster-critical
     targetRevision: {{ .Values.spec.source.targetRevision }}
   destination:
-    namespace: monitoring
+    namespace: argocd
     server: {{ .Values.spec.destination.server }}
   project: default
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true

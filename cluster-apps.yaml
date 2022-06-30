@@ -2,19 +2,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: "${app}"
+  name: cluster-apps
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: "https://github.com/deekue/homelab"
-    path: cluster-critical/${app}
+    path: argocd-apps/cluster
     targetRevision: main
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: ${namespace}
+    namespace: argocd
   syncPolicy:
     automated:
       prune: true
-    syncOptions:
-      - CreateNamespace=true
+      selfHeal: true

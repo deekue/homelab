@@ -1,21 +1,18 @@
+# yamllint disable
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: traefik-error-pages
+  name: argocd
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
-  destination:
-    namespace: kube-system
-    server: {{ .Values.spec.destination.server }}
   source:
-    chart: error-pages
-    repoURL: 'https://k8s-at-home.com/charts/'
-    targetRevision: "1.0.0"
-    helm:
-      releaseName: traefik-error-pages
+    repoURL: {{ .Values.spec.source.repoURL }}
+    path: {{ .Values.spec.source.pathPrefix }}/argocd
+    targetRevision: {{ .Values.spec.source.targetRevision }}
+  destination:
+    namespace: argocd
+    server: {{ .Values.spec.destination.server }}
   project: default
   syncPolicy:
     automated:

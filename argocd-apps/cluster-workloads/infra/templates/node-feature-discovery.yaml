@@ -3,16 +3,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: intel-gpu-plugin
+  name: node-feature-discovery
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: infra
+    namespace: {{ .Values.spec.destination.namespace }}
     server: {{ .Values.spec.destination.server }}
   project: default
   source:
-    path: cluster-workloads/manifests/infra/intel-gpu-plugin
+    path: {{ .Values.spec.source.pathPrefix }}/node-feature-discovery
     repoURL: {{ .Values.spec.source.repoURL }}
     targetRevision: {{ .Values.spec.source.targetRevision }}
