@@ -1,9 +1,9 @@
-# yamllint disable
+# yamllint disable-file
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: infra-apps
+  name: monitoring-apps
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "2"
@@ -20,5 +20,3 @@ spec:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
