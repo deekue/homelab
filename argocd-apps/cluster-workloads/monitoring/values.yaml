@@ -6,5 +6,5 @@ spec:
     namespace: monitoring
   source:
     repoURL: https://github.com/deekue/homelab
-    pathPrefix: argocd-apps/cluster-workloads/monitoring
+    pathPrefix: cluster-workloads/monitoring
     targetRevision: HEAD
