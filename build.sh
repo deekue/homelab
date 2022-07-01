@@ -14,5 +14,5 @@ function applyArgoCdAppOfApps {
 }
 
 # main
-#restoreSealedSecretsMasterKey "${1:?arg1 is Sealed Secrets master key}"
-applyArgoCdAppOfApps "${2:-../cluster-apps.yaml}"
+#restoreSealedSecretsMasterKey "${1:-sealed-secrets-master-key-secret.yaml}"
+applyArgoCdAppOfApps "${2:-cluster-apps.yaml}"
