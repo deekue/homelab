@@ -1,4 +1,4 @@
-# yamllint disable
+# yamllint disable-file
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -16,3 +16,7 @@ spec:
     path: {{ .Values.spec.source.pathPrefix }}/intel-gpu-plugin
     repoURL: {{ .Values.spec.source.repoURL }}
     targetRevision: {{ .Values.spec.source.targetRevision }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
