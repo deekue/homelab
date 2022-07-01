@@ -13,3 +13,4 @@ helmCharts:
 
 resources:
   - ingressroute.yaml
+  - crds
