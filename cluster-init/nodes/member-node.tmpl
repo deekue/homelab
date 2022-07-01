@@ -39,5 +39,9 @@ k3os:
     - "$kubeVipAddr"
     - "--tls-san"
     - "$kubeVipHostname"
+    # replace with kube-vip LB
     - "--disable"
     - "servicelb"
+    # replace with Cilium
+    - "--flannel-backend=none"
+    - "--disable-network-policy"

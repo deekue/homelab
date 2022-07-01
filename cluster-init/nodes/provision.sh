@@ -15,8 +15,8 @@ if [[ ! -r /etc/rancher/k3s/registries.yaml ]] ; then
 	endpoint:
 	  -  "https://192.168.40.238:3128"
 	EOF
-  wget -O - -q "http://192.168.40.238:3128/ca.crt" \
-    | tee -a /etc/ssl/certs/ca-certificates.crt
+  wget -q "http://192.168.40.238:3128/ca.crt" \
+    -O /etc/ssl/certs/ca-certificates.crt
 fi
 
 echo "setup AMT serial console"

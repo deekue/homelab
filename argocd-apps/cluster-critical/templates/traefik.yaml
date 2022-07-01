@@ -1,4 +1,4 @@
-# yamllint disable
+# yamllint disable-file
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -19,5 +19,5 @@ spec:
   project: default
   syncPolicy:
     automated:
-      prune: true
+      prune: false
       selfHeal: true

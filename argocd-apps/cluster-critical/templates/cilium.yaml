@@ -3,21 +3,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: longhorn-system
+  name: cilium
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "4"
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   source:
     repoURL: {{ .Values.spec.source.repoURL }}
-    path: {{ .Values.spec.source.pathPrefix }}/longhorn-system
+    path: {{ .Values.spec.source.pathPrefix }}/cilium
     targetRevision: {{ .Values.spec.source.targetRevision }}
   destination:
-    namespace: longhorn-system
+    namespace: kube-system
     server: {{ .Values.spec.destination.server }}
   project: default
   syncPolicy:
     automated:
       prune: false
-    syncOptions:
-      - CreateNamespace=true
+      selfHeal: true
