@@ -1,5 +1,4 @@
 ---
-namespaceOverride: monitoring
 prometheus:
   admissionWebhooks:
     enabled: false
