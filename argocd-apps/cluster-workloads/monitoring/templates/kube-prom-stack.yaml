@@ -1,0 +1,20 @@
+# yamllint disable-file
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-prom-stack
+  namespace: argocd
+spec:
+  source:
+    repoURL: {{ .Values.spec.source.repoURL }}
+    path: {{ .Values.spec.source.pathPrefix }}/kube-prom-stack
+    targetRevision: {{ .Values.spec.source.targetRevision }}
+  destination:
+    namespace: {{ .Values.spec.destination.namespace }}
+    server: {{ .Values.spec.destination.server }}
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
