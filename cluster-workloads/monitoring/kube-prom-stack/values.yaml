@@ -1,6 +1,6 @@
+---
 prometheus:
   admissionWebhooks:
-    enabled: false
     certManager:
       enabled: true
   prometheusSpec:

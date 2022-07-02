@@ -5,8 +5,7 @@ namespace: kube-system
 
 helmCharts:
   - name: kube-prometheus-stack
-    releaseName: monitoring
-    namespace: kube-system
+    namespace: monitoring
     repo: https://prometheus-community.github.io/helm-charts
     version: "36.2.0"
     valuesFile: values.yaml
