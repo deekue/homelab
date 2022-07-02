@@ -5,11 +5,10 @@ metadata:
   name: argocd-cm
 data:
   kustomize.buildOptions: "--enable-helm"
-  resource:
-    # Required for App-of-apps and sync-waves
-    # https://argo-cd.readthedocs.io/en/stable/operator-manual/health/#argocd-app
-    customizations:
-      health.argoproj.io_Application: |
+  # Required for App-of-apps and sync-waves
+  # https://argo-cd.readthedocs.io/en/stable/operator-manual/health/#argocd-app
+  resource.customizations: |
+      health.argoproj.io_Application:
         hs = {}
         hs.status = "Progressing"
         hs.message = ""
@@ -22,8 +21,8 @@ data:
           end
         end
         return hs
-    # https://github.com/cilium/cilium/issues/17349#issue-991502190
-    exclusions: |
+  # https://github.com/cilium/cilium/issues/17349#issue-991502190
+  resource.exclusions: |
       - apiGroups:
           - cilium.io
         kinds:
