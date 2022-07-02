@@ -2,6 +2,7 @@
 namespaceOverride: monitoring
 prometheus:
   admissionWebhooks:
+    enabled: false
     certManager:
       enabled: true
   prometheusSpec:
@@ -15,4 +16,4 @@ prometheus:
           accessModes: ["ReadWriteOnce"]
           resources:
             requests:
-              storage: 20Gi
+              storage: 50Gi
