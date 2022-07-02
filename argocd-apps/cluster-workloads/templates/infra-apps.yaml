@@ -1,4 +1,4 @@
-# yamllint disable
+# yamllint disable-file
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -13,7 +13,7 @@ spec:
     path: {{ .Values.spec.source.pathPrefix }}/infra
     targetRevision: {{ .Values.spec.source.targetRevision }}
   destination:
-    namespace: kube-system
+    namespace: infra
     server: {{ .Values.spec.destination.server }}
   project: default
   syncPolicy:
