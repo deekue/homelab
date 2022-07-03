@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 #
 # manage OLM install
+# TODO add InstallPlan approval
+# https://olm.operatorframework.io/docs/tasks/install-operator-with-olm/
 
 set -eEuo pipefail
 
@@ -43,9 +45,10 @@ function forceRemoveNamespace {
 
 function generateSubscriptionManifest {
   local -r operatorName="${1:?arg1 is operator name}"
-  local -r targetNamespace="${2:?arg2 is target namespace for operator}"
+  local -r targetNamespace="${2:-${1%%-operator}}"  # default to operator name
   local    channel="${3:-}"
   local    installPlanApproval="${4:-}"
+  # TODO support startingCSV: 
 
   local -r package="$(kubectl get packagemanifest "$operatorName" -o json)"
   if [[ -z "$package" ]] ; then
@@ -54,7 +57,7 @@ function generateSubscriptionManifest {
   fi
 
   catalogSource="$(jq -r '.status.catalogSource | @sh' <<< "$package")"
-  sourceNamespace="$(jq -r '.metadata.namespace | @sh' <<< "$package")"
+  sourceNamespace="$(jq -r '.status.catalogSourceNamespace | @sh' <<< "$package")"
   if [[ -z "$channel" ]] ; then
     channel="$(jq -r '.status.defaultChannel | @sh' <<< "$package")"
   fi
@@ -98,12 +101,16 @@ function usage {
 Usage: $(basename -- "$0") <command> [options]
 
 commands:
-  d|download <version>	downlod manifests, and split olm.yaml
+  d|download <version>	downlod OLM manifests, and split olm.yaml
   i|install		install OLM on a new cluster
   u|update		update OLM
   r|remove		remove OLM
   s|subscription <args> generate Subscription manifest
-                        Args: <name> <targetNS> [channel] [installPlanApproval]
+                        Args: <name> [targetNS] [channel] [approval]
+			Defaults:
+			  targetNS    name (removing '-operator' suffix)  
+			  channel     default channel from PackageManifest
+			  approval    manual ([a]uto|[m]anual)
 
 EOF
   exit 1
