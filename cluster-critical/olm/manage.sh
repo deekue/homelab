@@ -108,7 +108,7 @@ commands:
   s|subscription <args> generate Subscription manifest
                         Args: <name> [targetNS] [channel] [approval]
 			Defaults:
-			  targetNS    name (removing '-operator' suffix)  
+			  targetNS    name (removing '-operator' suffix)
 			  channel     default channel from PackageManifest
 			  approval    manual ([a]uto|[m]anual)
 
