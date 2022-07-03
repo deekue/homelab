@@ -41,6 +41,58 @@ function forceRemoveNamespace {
     | kubectl replace --raw /api/v1/namespaces/"$ns"/finalize -f -
 }
 
+function generateSubscriptionManifest {
+  local -r operatorName="${1:?arg1 is operator name}"
+  local -r targetNamespace="${2:?arg2 is target namespace for operator}"
+  local    channel="${3:-}"
+  local    installPlanApproval="${4:-}"
+
+  local -r package="$(kubectl get packagemanifest "$operatorName" -o json)"
+  if [[ -z "$package" ]] ; then
+    echo "failed to get packagemanifest $operatorName" >&2
+    exit 1
+  fi
+
+  catalogSource="$(jq -r '.status.catalogSource | @sh' <<< "$package")"
+  sourceNamespace="$(jq -r '.metadata.namespace | @sh' <<< "$package")"
+  if [[ -z "$channel" ]] ; then
+    channel="$(jq -r '.status.defaultChannel | @sh' <<< "$package")"
+  fi
+  if [[ -z "$installPlanApproval" ]] ; then
+    installPlanApproval="Manual"  # safe default
+  else
+    installPlanApproval="${installPlanApproval,,}"  # lowercase
+    case "${installPlanApproval}" in
+      m|manual)
+        installPlanApproval=Manual
+	;;
+      a|auto|automatic)
+        installPlanApproval=Automatic
+	;;
+      *)
+	echo "installPlanApproval is [m]anual|[a]utomatic" >&2
+	echo
+	usage
+	;;
+    esac
+  fi
+
+  cat <<EOF
+---
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: $operatorName
+  namespace: $targetNamespace
+spec:
+  channel: $channel
+  name: $operatorName
+  source: $catalogSource
+  sourceNamespace: $sourceNamespace
+  installPlanApproval: $installPlanApproval
+EOF
+}
+
 function usage {
   cat <<EOF >&2
 Usage: $(basename -- "$0") <command> [options]
@@ -50,6 +102,8 @@ commands:
   i|install		install OLM on a new cluster
   u|update		update OLM
   r|remove		remove OLM
+  s|subscription <args> generate Subscription manifest
+                        Args: <name> <targetNS> [channel] [installPlanApproval]
 
 EOF
   exit 1
@@ -85,6 +139,10 @@ case "${1:-}" in
   ns)
     forceRemoveNamespace olm || true
     forceRemoveNamespace operators || true
+    ;;
+  s|subscription)
+    shift
+    generateSubscriptionManifest "$@"
     ;;
   *)
     usage
