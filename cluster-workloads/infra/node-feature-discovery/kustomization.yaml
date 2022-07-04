@@ -3,5 +3,7 @@
 kind: Kustomization
 bases:
   - https://github.com/kubernetes-sigs/node-feature-discovery/deployment/overlays/default?ref=v0.11.1
+resources:
+  - nfdrule-usb-ups.yaml
 # patchesStrategicMerge:
 #   - overrides.yaml
