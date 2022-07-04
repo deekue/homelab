@@ -5,6 +5,8 @@ apiVersion: storage.k8s.io/v1
 metadata:
   name: replicated-r2
   namespace: longhorn-system
+  annotations:
+    chaosengine/version: v0.2
 provisioner: driver.longhorn.io
 allowVolumeExpansion: true
 parameters:
@@ -17,6 +19,6 @@ parameters:
   recurringJobSelector: '[
    {
      "name":"SlowLowPriorityLowCriticality",
-     "isGroup":true,
+     "isGroup":"true",
    },
   ]'
