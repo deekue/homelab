@@ -3,7 +3,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: monitoring-grafana
-  namespace: kube-system
+  namespace: monitoring
 spec:
   entryPoints:
     - websecure
@@ -20,7 +20,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: monitoring-kube-prometheus-prometheus
-  namespace: kube-system
+  namespace: monitoring
 spec:
   entryPoints:
     - websecure
@@ -31,15 +31,13 @@ spec:
       services:
         - name: monitoring-kube-prometheus-prometheus
           port: 9090
-      middlewares:
-        - name: secured
   tls: {}
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: monitoring-kube-prometheus-alertmanager
-  namespace: kube-system
+  namespace: monitoring
 spec:
   entryPoints:
     - websecure
@@ -50,6 +48,4 @@ spec:
       services:
         - name: monitoring-kube-prometheus-alertmanager
           port: 9093
-      middlewares:
-        - name: secured
   tls: {}
