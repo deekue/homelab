@@ -1,0 +1,12 @@
+---
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: minio-operator
+  namespace: operators
+spec:
+  channel: 'stable'
+  name: minio-operator
+  source: 'operatorhubio-catalog'
+  sourceNamespace: 'olm'
+  installPlanApproval: Manual
