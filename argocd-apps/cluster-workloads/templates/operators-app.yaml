@@ -12,6 +12,8 @@ spec:
     repoURL: {{ .Values.spec.source.repoURL }}
     path: cluster-workloads/operators
     targetRevision: {{ .Values.spec.source.targetRevision }}
+    directory:
+      recurse: true
   destination:
     namespace: operators
     server: {{ .Values.spec.destination.server }}
