@@ -45,9 +45,9 @@ function forceRemoveNamespace {
 
 function generateSubscriptionManifest {
   local -r operatorName="${1:?arg1 is operator name}"
-  local -r targetNamespace="${2:-${1%%-operator}}"  # default to operator name
+  local    installPlanApproval="${2:-}"
   local    channel="${3:-}"
-  local    installPlanApproval="${4:-}"
+  local    targetNamespace="${4:-operators}"  # default to operators
   # TODO support startingCSV: 
 
   local -r package="$(kubectl get packagemanifest "$operatorName" -o json)"
@@ -106,11 +106,11 @@ commands:
   u|update		update OLM
   r|remove		remove OLM
   s|subscription <args> generate Subscription manifest
-                        Args: <name> [targetNS] [channel] [approval]
+                        Args: <name> [approval] [channel] [targetNS]
 			Defaults:
-			  targetNS    name (removing '-operator' suffix)
-			  channel     default channel from PackageManifest
 			  approval    manual ([a]uto|[m]anual)
+			  channel     default channel from PackageManifest
+			  targetNS    operators
 
 EOF
   exit 1
