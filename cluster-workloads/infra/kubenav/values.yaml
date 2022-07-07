@@ -1,0 +1,12 @@
+---
+# https://raw.githubusercontent.com/kubenav/deploy/master/helm/values.yaml
+ingress:
+  enabled: true
+  hosts:
+    - host: kubenav.s.chaosengine.net
+      paths:
+        - /
+  tls: []
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares:
+      kube-system-secured@kubernetescrd
