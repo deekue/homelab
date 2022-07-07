@@ -338,10 +338,10 @@ cni:
   customConf: false
 
   # -- Configure the path to the CNI configuration directory on the host.
-  confPath: /etc/cni/net.d
+  confPath: /var/lib/rancher/k3s/agent/etc/cni/net.d
 
   # -- Configure the path to the CNI binary directory on the host.
-  binPath: /opt/cni/bin
+  binPath: /var/lib/rancher/k3s/data/current/bin
 
   # -- Specify the path to a CNI config to read from on agent start.
   # This can be useful if you want to manage your CNI
@@ -901,9 +901,9 @@ hubble:
     # -- hubble-ui ingress configuration.
     ingress:
       enabled: true
-      annotations: {}
-        # kubernetes.io/ingress.class: nginx
-        # kubernetes.io/tls-acme: "true"
+      annotations:
+        traefik.ingress.kubernetes.io/router.middlewares:
+          kube-system-secured@kubernetescrd
       hosts:
         - hubble.s.chaosengine.net
       tls: []
