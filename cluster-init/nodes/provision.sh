@@ -6,17 +6,29 @@ set -euo pipefail
 longhornUseWholeDisk=false
 longhornDisk=/dev/sda
 longhornDir=/var/lib/longhorn
+caCerts="/etc/ssl/certs/ca-certificates.crt"
+registryProxy="http://192.168.40.238:3128"
+k3sRegistries="/etc/rancher/k3s/registries.yaml"
 
-if [[ ! -r /etc/rancher/k3s/registries.yaml ]] ; then
-  echo "get SSL CA cert for private registry cache"
-  cat <<-EOF > /etc/rancher/k3s/registries.yaml
+# get the current cert, check if it's already installed
+regProxyCert="$(curl -fs "$registryProxy/ca.crt")"
+if [[ -n "$regProxyCert" ]] ; then
+  if ! grep -qwf <(head -2 <<< "$regProxyCert" | tail -1) "$caCerts" ; then
+    echo "Adding Registry Proxy CA cert"
+    echo "$regProxyCert" >> "$caCerts"
+  fi
+else
+  echo "failed to retrieve Registry Proxy CA cert" >&2
+fi
+
+if [[ ! -r "$k3sRegistries" ]] ; then
+  echo "Configure Registry proxy"
+  cat <<-EOF > "$k3sRegistries"
 	mirrors:
 	  docker.io:
 	endpoint:
-	  -  "https://192.168.40.238:3128"
+	  -  "$registryProxy"
 	EOF
-  wget -q "http://192.168.40.238:3128/ca.crt" \
-    >> /etc/ssl/certs/ca-certificates.crt
 fi
 
 echo "setup AMT serial console"
