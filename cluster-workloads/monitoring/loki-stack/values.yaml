@@ -1,0 +1,25 @@
+---
+loki:
+  enabled: true
+  persistence:
+    enabled: true
+    existingClaim: loki-pvc
+  config:
+    table_manager:
+      retention_deletes_enabled: true
+      # How long logs are kept for
+      retention_period: 2d
+  serviceMonitor:
+    enabled: true
+  ingress:
+    enabled: true
+    annotations:
+      traefik.ingress.kubernetes.io/router.middlewares:
+        kube-system-secured@kubernetescrd
+    hosts:
+      - host: loki.s.chaosengine.net
+    tls: []
+promtail:
+  enabled: true
+  serviceMonitor:
+    enabled: true
