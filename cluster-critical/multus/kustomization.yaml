@@ -5,30 +5,30 @@ bases:
 
 # patches required for k3s
 # https://gist.github.com/janeczku/ab5139791f28bfba1e0e03cfc2963ecf
-patches:
-  # https://github.com/kubernetes-sigs/kustomize/issues/3265#issuecomment-732475022
-  - patch: |-
-      - op: add
-        path: /spec/template/spec/containers/0/args/-
-        # yamllint disable-line rule:line-length
-        value: "--multus-kubeconfig-file-host=/var/lib/rancher/k3s/agent/etc/cni/net.d/multus.d/multus.kubeconfig"
-    target:
-      kind: DaemonSet
-      group: apps
-      version: v1
-  - patch: |-
-      apiVersion: apps/v1
-      kind: DaemonSet
-      metadata:
-        name: kube-multus-ds
-        namespace: kube-system
-      spec:
-        template:
-          spec:
-            volumes:
-              - name: cni
-                hostPath:
-                  path: /var/lib/rancher/k3s/agent/etc/cni/net.d
-              - name: cnibin
-                hostPath:
-                  path: /var/lib/rancher/k3s/data/current/bin
+# patches:
+#   # https://github.com/kubernetes-sigs/kustomize/issues/3265#issuecomment-732475022
+#   - patch: |-
+#       - op: add
+#         path: /spec/template/spec/containers/0/args/-
+#         # yamllint disable-line rule:line-length
+#         value: "--multus-kubeconfig-file-host=/var/lib/rancher/k3s/agent/etc/cni/net.d/multus.d/multus.kubeconfig"
+#     target:
+#       kind: DaemonSet
+#       group: apps
+#       version: v1
+#   - patch: |-
+#       apiVersion: apps/v1
+#       kind: DaemonSet
+#       metadata:
+#         name: kube-multus-ds
+#         namespace: kube-system
+#       spec:
+#         template:
+#           spec:
+#             volumes:
+#               - name: cni
+#                 hostPath:
+#                   path: /var/lib/rancher/k3s/agent/etc/cni/net.d
+#               - name: cnibin
+#                 hostPath:
+#                   path: /var/lib/rancher/k3s/data/current/bin
