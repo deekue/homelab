@@ -10,3 +10,4 @@ resources:
   - traefik-basic-auth-sealedsecret.yaml
   - traefik-helmchartconfig.yaml
   - wildcard.s.chaosengine.net.yaml
+  - servicemonitor.yaml
