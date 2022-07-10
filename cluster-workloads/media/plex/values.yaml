@@ -1,0 +1,101 @@
+---
+# yamllint disable rule:line-length
+#
+# IMPORTANT NOTE
+#
+# This chart inherits from our common library chart. You can check the default values/options here:
+# https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
+#
+
+image:
+  repository: ghcr.io/k8s-at-home/plex-pass
+  tag: v1.27.2.5929-a806c5905
+  # pullPolicy: IfNotPresent
+
+# -- environment variables. See [plex docs](https://support.plex.tv/articles/201105343-advanced-hidden-server-settings/) for more details.
+# **NOTE:** Plex preference options are camelCase and CASE SENSITIVE!
+# You can do horrible things to your Plex configuration if you are not careful
+env:
+  TZ: "America/Los_Angeles"
+  ADVERTISE_IP: "http://192.168.40.129:32400"
+  PLEX_PREFERENCE_0: "MinutesAllowedPaused=30"
+  PLEX_PREFERENCE_1: "MetricsEpoch=1"
+  PLEX_PREFERENCE_2: "AcceptedEULA=1"
+  PLEX_PREFERENCE_3: "PublishServerOnPlexOnlineKey=1"
+  PLEX_PREFERENCE_4: "DlnaEnabled=0"
+  PLEX_PREFERENCE_5: "LastAutomaticMappedPort=16296"
+  PLEX_PREFERENCE_6: "FriendlyName=xantho"
+  PLEX_PREFERENCE_7: "ButlerUpdateChannel=0"
+  PLEX_PREFERENCE_8: "logDebug=0"
+  PLEX_PREFERENCE_9: "FSEventLibraryPartialScanEnabled=1"
+  PLEX_PREFERENCE_10: "FSEventLibraryUpdatesEnabled=1"
+  PLEX_PREFERENCE_11: "ScheduledLibraryUpdateInterval=86400"
+  PLEX_PREFERENCE_12: "ScheduledLibraryUpdatesEnabled=1"
+  PLEX_PREFERENCE_13: "secureConnections=0"
+  PLEX_PREFERENCE_14: "CinemaTrailersFromTheater=1"
+  PLEX_PREFERENCE_15: "LanguageInCloud=1"
+  PLEX_PREFERENCE_16: "ScannerLowPriority=1"
+  PLEX_PREFERENCE_17: "LanNetworksBandwidth=192.168.136.0/24,192.168.30.0/24"
+  PLEX_PREFERENCE_18: "customConnections=https://192.168.40.129:32400"
+  PLEX_PREFERENCE_19: "allowedNetworks=192.168.136.0/24"
+  PLEX_PREFERENCE_20: "ManualPortMappingMode=1"
+  PLEX_PREFERENCE_21: "HardwareAcceleratedCodecs=1"
+  PLEX_PREFERENCE_22: "ButlerTaskRefreshLibraries=1"
+  PLEX_PREFERENCE_23: "DvrIncrementalEpgLoader=0"
+  PLEX_PREFERENCE_24: "WanPerUserStreamCount=2"
+  PLEX_PREFERENCE_25: "WanTotalMaxUploadRate=150000"
+  PLEX_PREFERENCE_26: "WanPerStreamMaxUploadRate=20000"
+  PLEX_PREFERENCE_27: "ButlerTaskRefreshEpgGuides=1"
+  PLEX_PREFERENCE_28: "DisableTLSv1_0=1"
+  PLEX_PREFERENCE_29: "CinemaTrailersFromBluRay=1"
+  PLEX_PREFERENCE_30: "CinemaTrailersFromLibrary=0"
+  PLEX_PREFERENCE_31: "TranscoderToneMapping=0"
+  PLEX_PREFERENCE_32: "LogVerbose=0"
+  PLEX_PREFERENCE_33: "PushNotificationsEnabled=0"
+  PLEX_PREFERENCE_34: "sendCrashReports=0"
+
+# -- Enable devices to be discoverable
+# hostNetwork: false
+
+persistence:
+  config:
+    enabled: true
+    existingClaim: "plex-config"
+
+  transcode:
+    enabled: true
+    existingClaim: "plex-transcode"
+
+  data:
+    enabled: true
+    existingClaim: "nas-media-pvc"
+
+
+# -- Configure the Security Context for the Pod
+podSecurityContext:
+  runAsUser: 568
+  runAsGroup: 568
+  fsGroup: 568
+  # # Hardware acceleration using an Intel iGPU w/ QuickSync
+  # # These IDs below should be matched to your `video` and `render` group on the host
+  # # To obtain those IDs run the following grep statement on the host:
+  # # $ cat /etc/group | grep "video\|render"
+  # # video:x:44:
+  # # render:x:109:
+  supplementalGroups:
+    - 44
+    # - 109
+
+# -- Configure the resource requests and/or limits for the Pod
+resources:
+  requests:
+    # Hardware acceleration using an Intel iGPU w/ QuickSync and
+    # using intel-gpu-plugin (https://github.com/intel/intel-device-plugins-for-kubernetes)
+    gpu.intel.com/i915: 1
+    cpu: 200m
+    memory: 256Mi
+  limits:
+    # Hardware acceleration using an Intel iGPU w/ QuickSync and
+    # using intel-gpu-plugin (https://github.com/intel/intel-device-plugins-for-kubernetes)
+    gpu.intel.com/i915: 1
+    memory: 4096Mi
