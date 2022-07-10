@@ -7,7 +7,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: replicated-r3-v2
+  storageClassName: replicated-r3-v3
   resources:
     requests:
       storage: 30Gi
