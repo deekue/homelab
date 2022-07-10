@@ -7,6 +7,7 @@ k8sHost="rancher@192.168.40.1"
 k8sVip="192.168.40.10"
 kubeDir="$HOME/.kube"
 kubeCfg="$kubeDir/config"
+sealedSecret="sealed-secrets-keysnghr"
 
 function retrieveKubeConfig {
   tempFile="$kubeDir/config.$(date +%Y%m%d%H%M%S)"
@@ -21,26 +22,50 @@ function updateKubeConfigServer {
   local -r addr="${1:?arg1 is server address}"
   local -r kubeConfig="${2:?arg2 is kube/config}"
 
+  kubectl -n kube-system wait pod \
+    --selector=app.kubernetes.io/name=kube-vip-ds \
+    --for=condition=Ready
   # server: https://192.168.40.10:6443
   sed -i '/^\( *server: https:..\).*:6443$/ s//\1'$addr':6443/' "$kubeConfig"
 }
 
 function restoreSealedSecretsMasterKey {
-  kubectl apply -f "${1:?arg1 is Sealed Secrets master key}"
-  # get the key to test for successful apply
-  kubectl -n kube-system get secret sealed-secrets-keysnghr
+  if ! kubectl -n kube-system get secret "$sealedSecret" > /dev/null ; then
+    kubectl apply -f "${1:?arg1 is Sealed Secrets master key}"
+    # get the key to test for successful apply
+    kubectl -n kube-system get secret sealed-secrets-keysnghr
+  fi
 }
 
 function applyArgoCdAppOfApps {
   kubectl apply -f "${1:?arg1 is cluster-apps.yaml}"
+  # TODO wait for cluster-apps to go Healthy/Synced
 }
 
 function installCilium {
   kustomize build --enable-helm cluster-critical/cilium/ | kubectl  apply -f -
+  kubectl -n kube-system wait pod \
+    --selector=k8s-app=multus \
+    --for=condition=Ready
 }
 
 function installMultus {
   kustomize build --enable-helm cluster-critical/multus/ | kubectl  apply -f -
+  kubectl -n kube-system wait pod \
+    --selector=app=multus \
+    --for=condition=Ready
+}
+
+function configureCertManager {
+  kustomize build cluster-critical/cert-manager/ | kubectl  apply -f -
+  kubectl -n cert-manager wait clusterissuers.cert-manager.io \
+    --all --for=condition=ready
+}
+
+function configureTraefik {
+  kustomize build cluster-critical/traefik/ | kubectl  apply -f -
+  kubectl wait -f cluster-critical/traefik/wildcard.s.chaosengine.net.yaml \
+    --for=condition=ready
 }
 
 function configureArgoCD {
@@ -48,17 +73,23 @@ function configureArgoCD {
   kubectl -n kube-system wait pod \
     --selector=app.kubernetes.io/name=traefik \
     --for=condition=Ready
-  kubectl apply -f cluster-critical/argocd
-  # TODO retrieve password automagically
+  kustomize build cluster-critical/argocd/ | kubectl  apply -f -
+  kubectl -n kube-system wait pod \
+    --selector=app.kubernetes.io/name=argocd-server \
+    --for=condition=Ready
+  echo "Updating initial ArgoCD password"
   cluster-critical/argocd/update-initial-admin-passwd.sh
 }
 
 function installCriticalHelmCharts {
   find cluster-critical -type f -name '*-helmchart.yaml' | xargs -n1 kubectl apply -f 
+  kubectl -n kube-system wait jobs \
+    --selector chaosengine/cluster.stage=critical \
+    --for=condition=complete
 }
 
 function installOLM {
-  cluster-critical/olm/manager.sh install
+  cluster-critical/olm/manage.sh install
 }
 
 # main
@@ -67,11 +98,10 @@ restoreSealedSecretsMasterKey "${1:-sealed-secrets-master-key-secret.yaml}"
 # install Multus then Cilium
 installMultus
 installCilium
-# TODO switch to Kustomise HelmGen so install progress is visible in ArgoCD
 installCriticalHelmCharts
-#installOLM  # TODO replace apps with operators where available
+installOLM  # TODO replace apps with operators where available
+configureCertManager  # required for `argocd login`
+configureTraefik  # required for `argocd login`
 configureArgoCD
 applyArgoCdAppOfApps "${2:-cluster-apps.yaml}"
-
-# TODO confirm kube-vip is up and update .kube/config
-updateKubeConfigServer "192.168.40.10" "$kubeCfg"
+updateKubeConfigServer "$k8sVip" "$kubeCfg"

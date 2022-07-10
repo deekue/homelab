@@ -10,6 +10,8 @@ kind: HelmChart
 metadata:
   namespace: kube-system
   name: longhorn
+  labels:
+    chaosengine/cluster.stage: critical
 spec:
   chart: longhorn
   repo: https://charts.longhorn.io

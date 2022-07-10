@@ -10,6 +10,8 @@ kind: HelmChart
 metadata:
   namespace: kube-system
   name: argocd
+  labels:
+    chaosengine/cluster.stage: critical
 spec:
   chart: argo-cd
   targetNamespace: argocd
