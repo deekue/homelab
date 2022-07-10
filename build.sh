@@ -22,9 +22,6 @@ function updateKubeConfigServer {
   local -r addr="${1:?arg1 is server address}"
   local -r kubeConfig="${2:?arg2 is kube/config}"
 
-  kubectl -n kube-system wait pod \
-    --selector=app.kubernetes.io/name=kube-vip-ds \
-    --for=condition=Ready
   # server: https://192.168.40.10:6443
   sed -i '/^\( *server: https:..\).*:6443$/ s//\1'$addr':6443/' "$kubeConfig"
 }
@@ -45,7 +42,7 @@ function applyArgoCdAppOfApps {
 function installCilium {
   kustomize build --enable-helm cluster-critical/cilium/ | kubectl  apply -f -
   kubectl -n kube-system wait pod \
-    --selector=k8s-app=multus \
+    --selector=k8s-app=cilium \
     --for=condition=Ready
 }
 
@@ -74,7 +71,8 @@ function configureArgoCD {
     --selector=app.kubernetes.io/name=traefik \
     --for=condition=Ready
   kustomize build cluster-critical/argocd/ | kubectl  apply -f -
-  kubectl -n kube-system wait pod \
+  sleep 10  # TODO can't wait on a resource that doesn't exist yet
+  kubectl -n argocd wait pod \
     --selector=app.kubernetes.io/name=argocd-server \
     --for=condition=Ready
   echo "Updating initial ArgoCD password"
@@ -82,14 +80,19 @@ function configureArgoCD {
 }
 
 function installCriticalHelmCharts {
-  find cluster-critical -type f -name '*-helmchart.yaml' | xargs -n1 kubectl apply -f 
-  kubectl -n kube-system wait jobs \
-    --selector chaosengine/cluster.stage=critical \
-    --for=condition=complete
+  find cluster-critical -type f -name '*-helmchart.yaml' \
+    | xargs -n1 kubectl apply -f 
+  # wait for HelmChart install jobs to complete
+  kubectl -n kube-system get helmcharts -o json \
+    | jq -r '.items[].status.jobName' \
+    | xargs -P0 -n1 \
+        kubectl -n kube-system wait job --for=condition=complete
 }
 
 function installOLM {
-  cluster-critical/olm/manage.sh install
+  pushd cluster-critical/olm
+  ./manage.sh install || true
+  popd
 }
 
 # main
@@ -104,4 +107,9 @@ configureCertManager  # required for `argocd login`
 configureTraefik  # required for `argocd login`
 configureArgoCD
 applyArgoCdAppOfApps "${2:-cluster-apps.yaml}"
+
+# wait for kube-vip to be up
+kubectl -n kube-system wait pod \
+  --selector=app.kubernetes.io/name=kube-vip-ds \
+  --for=condition=Ready
 updateKubeConfigServer "$k8sVip" "$kubeCfg"

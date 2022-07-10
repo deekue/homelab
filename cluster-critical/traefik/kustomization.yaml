@@ -1,0 +1,12 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: kube-system
+
+resources:
+  - ingressroute.yaml
+  - middleware.yaml
+  - tls-config.yaml
+  - traefik-basic-auth-sealedsecret.yaml
+  - traefik-helmchartconfig.yaml
+  - wildcard.s.chaosengine.net.yaml

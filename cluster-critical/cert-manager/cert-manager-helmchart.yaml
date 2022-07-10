@@ -9,8 +9,6 @@ kind: HelmChart
 metadata:
   namespace: kube-system
   name: cert-manager
-  labels:
-    chaosengine/cluster.stage: critical
 spec:
   chart: cert-manager
   targetNamespace: cert-manager
