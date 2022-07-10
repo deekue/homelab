@@ -3,10 +3,8 @@
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
-  name: replicated-r2
+  name: replicated-r2-v2
   namespace: longhorn-system
-  annotations:
-    chaosengine/version: v0.2
 provisioner: driver.longhorn.io
 allowVolumeExpansion: true
 reclaimPolicy: Retain
