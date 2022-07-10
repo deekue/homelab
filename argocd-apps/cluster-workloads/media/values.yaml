@@ -1,0 +1,10 @@
+# https://raw.githubusercontent.com/argoproj/argocd-example-apps/master/apps/values.yaml
+---
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: media
+  source:
+    repoURL: https://github.com/deekue/homelab
+    pathPrefix: cluster-workloads/media
+    targetRevision: HEAD
