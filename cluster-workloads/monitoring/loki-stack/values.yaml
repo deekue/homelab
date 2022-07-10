@@ -18,6 +18,8 @@ loki:
         kube-system-secured@kubernetescrd
     hosts:
       - host: loki.s.chaosengine.net
+        paths:
+          - "/"
     tls: []
 promtail:
   enabled: true
