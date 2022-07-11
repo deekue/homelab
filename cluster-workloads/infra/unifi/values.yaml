@@ -82,6 +82,7 @@ ingress:
     annotations:
       traefik.ingress.kubernetes.io/router.middlewares:
         kube-system-secured@kubernetescrd
+      traefik.ingress.kubernetes.io/service.serversscheme: https
     hosts:
       - host: unifi.s.chaosengine.net
         paths:
