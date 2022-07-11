@@ -7,12 +7,12 @@
 # https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
 #
 
-# image:
-#  # -- image repository
-#  repository: jacobalberty/unifi
-#  tag:
-#  # -- image pull policy
-#  pullPolicy: IfNotPresent
+image:
+  # -- image repository
+  repository: jacobalberty/unifi
+  tag: v6.55.5
+  # -- image pull policy
+  pullPolicy: IfNotPresent
 
 # -- environment variables. See more environment variables in the [image documentation](https://github.com/jacobalberty/unifi-docker#environment-variables).
 env:
