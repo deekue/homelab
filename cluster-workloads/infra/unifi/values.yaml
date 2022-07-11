@@ -99,14 +99,14 @@ persistence:
 
 # -- Enable and configure mongodb database subchart under this key.
 #    For more options see [mongodb chart documentation](https://github.com/bitnami/charts/tree/master/bitnami/mongodb)
-mongodb:
-  enabled: true
-  architecture: standalone
-  auth:
-    enabled: false
-  persistence:
-    enabled: true
-    storageClass: "replicated-r2-v2"
-    size: 5Gi
-  metrics:
-    enabled: true
+# mongodb:
+#   enabled: true
+#   architecture: standalone
+#   auth:
+#     enabled: false
+#   persistence:
+#     enabled: true
+#     storageClass: "replicated-r2-v2"
+#     size: 5Gi
+#   metrics:
+#     enabled: true
