@@ -1,0 +1,12 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: infra
+
+helmCharts:
+  - name: unifi
+    releaseName: unifi
+    namespace: infra
+    repo: https://k8s-at-home.com/charts/
+    version: "4.10.1"
+    valuesFile: values.yaml
