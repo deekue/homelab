@@ -96,6 +96,20 @@ spec:
 EOF
 }
 
+function approveInstallPlan {
+  local -r operator="${1:?arg1 is operator Subcription name}"
+  local -r namespace="${2:-operators}"
+
+  local installPlan="$(kubectl -n "$namespace" get subscription "$operator" \
+      -o json \
+    | jq -r '.status.installplan.name')"
+  if [[ -n "$installPlan" ]] ; then
+    kubectl -n operators patch installplan "$installPlan" \
+      --type=json \
+      --patch '[{"op": "replace", "path": "/spec/approved", "value":true}]'
+  fi
+}
+
 function usage {
   cat <<EOF >&2
 Usage: $(basename -- "$0") <command> [options]
@@ -150,6 +164,10 @@ case "${1:-}" in
   s|subscription)
     shift
     generateSubscriptionManifest "$@"
+    ;;
+  a|approve)
+    shift
+    approveInstallPlan "$@"
     ;;
   *)
     usage
