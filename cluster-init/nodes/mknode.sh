@@ -40,10 +40,27 @@ EOF
     | sed -e 's/^/      /'
 }
 
+function genNodeNetworkConfig {
+  local -r nodeId="${1:?arg1 is nodeId}"
+
+  # https://github.com/billimek/homelab-infrastructure/issues/14
+  cat <<EOF | writeFilesHeader /etc/network/interfaces "0644" "/dev/stdin"
+auto lo
+iface lo inet loopback
+auto eth0.40
+iface eth0.40 inet static
+  address 192.168.40.$nodeId
+  netmask 255.255.255.0
+  gateway 192.168.40.254
+EOF
+
+}
 
 for node in "${nodes[@]}" ; do
   echo -n "${node}..."
   nodeHostName="$node"
+  nodeId="${node##*-}"
+  nodeNetworkCfg="$(genNodeNetworkConfig "$nodeId")"
   nodeProvisionSh="$(writeFilesHeader "$provisionShDestPath" "0744" "${provisionShFile}")"
   primaryNodeClusterInit=
   server_url=
@@ -64,7 +81,7 @@ for node in "${nodes[@]}" ; do
     server_url="server_url: https://${kubeVipAddr}:6443"
   fi
   # export to appease shellcheck, and catch missing vars
-  export nodeHostName nodeProvisionSh serverToken serverPassword
+  export nodeHostName nodeProvisionSh serverToken serverPassword nodeNetworkCfg
   export kubeVipAddr kubeVipHostname
   export primaryNodeKubeVipCfg primaryNodeKubeVipCcCfg primaryNodeKubeVipCcCm
   # shellcheck disable=SC2090

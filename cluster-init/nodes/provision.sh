@@ -7,8 +7,11 @@ longhornUseWholeDisk=false
 longhornDisk=/dev/sda
 longhornDir=/var/lib/longhorn
 caCerts="/etc/ssl/certs/ca-certificates.crt"
-registryProxy="http://192.168.40.238:3128"
+registryProxy="http://192.168.40.52:3128"
 k3sRegistries="/etc/rancher/k3s/registries.yaml"
+
+# setup VLAN interfaces
+
 
 # get the current cert, check if it's already installed
 regProxyCert="$(curl -fs "$registryProxy/ca.crt")"

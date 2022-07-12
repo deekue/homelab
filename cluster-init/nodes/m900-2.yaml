@@ -12,28 +12,45 @@ write_files:
     permissions: '0744'
     encoding: gz+base64
     content: |
-      H4sICLn7yWICA3Byb3Zpc2lvbi5zaAC9Vl1v2zYUfbZ+xY2Szs0QWZKTDZkbp0jTtC/dEqQd9pBl
-      AC1RNmGJ1EjKidHkv+9SHzYlOeuwAXuzyMtzL88599L7e/6McX9G1MLZd/ZBL5gCWXAFggNdUbmG
-      mRD6CJQATmmsQAuYUWAxzXKhKdeOoho8WgjIWU4TwlLHSQWfL4Tkvyr620Kk9D1Ty2lCUkU3W+WS
-      H9OVr2JircqpvyLST9nMbxadiFxSqdXU9amOfKVSPzLffkQ884MlLCKaqlEktetIOmdKy/WNFI/r
-      qbvQOp/4fvjTeBT+eDo6CUbj49PJcTg+dZ3lsbqtohlt0CXh0YJKH/d8udkcrUmWug4SNMfb6gWF
-      qJASbw+mgCPAI9ESWAJMDxWQVFISr4FxpUma0tgUVdZj7jF1D17j6RS8RIF70KoXr1Te4tB1EOzu
-      DjxehWxOu3B/D29MCdwBk3EP5pLm4P35kMDZ6wUmBm8MZ2dnvYNPoFEd8MJD3Ko5dbdYADRaCHAv
-      4pjxOdTMrKFEgMuL8qquFdiBPz+3YDEsYQ41ijfhxho0Nv6R1JC6oi/lgPPvxg4erznYA08idEut
-      Ng1VgkvBEzYvpIWbG1xTDBoEOfGurj/AeQ/LGWRMSiHVxBkAxCJaUjliAr8oj3PBuC43POjKhScR
-      sSy1KgF7ocjh4ucvoKhkJIVIcIUN4Dq1SKD1+vMJlFZjnGlNZvD0VF1gWO5NJpKqnDzwia9Ma6Lh
-      9Bq8TxCGP4yDoAZY6TAIhoZzG2pXFkXRbCVGO8/28CaifYsYOxQSIeFT3YcbT86Qh692Iz/3XIlh
-      Vow9BzB2OgVXy4K2TzXn9nYlCLuxjegAhTJ2fTD4Vc2do607QEw0cWsEyxRPkBOp0Z69mzmDXKID
-      0CPLlMxoCvO8/DDx6C+WEfQZfdQnELwCFOVV5YkqgwlCD85o+Y0+wbKrnqj2PmtSDYQ6u5ftoLZA
-      ceHjOyjrgERSCr/X+E9V8w8nZvXNsLvurWAYjILg47sq4MCOiAqc28kYvHiyXcUZgcIcupYe5Qj6
-      uqn2+QUlTBgXuifHEV6blxOlrBytHdHRaORaDO2iHUvaSbJ7sKnErejexXTjjlhwWqcqyTedCrCP
-      PQ4PFBYEZxDBdy7LsT0MAtNM8LcY0hRzg4u/FNm/lqgR4go1mtz9Mbn/frJVodEgtDSwFbD57xTU
-      U8Hen3YL3HUcWfhy/f4aVJHnAlkWCCVLEgwHwEmGmo2AzoGvMhrwMA+t2Y89lRFtVG1jP8MD04tS
-      qor2OovINYqYVhqaD5yLb8uAbEnH+BB6qw/g6Wofh12D6Zl+Rc4D+Ad3srurp7EB3kjcPNE96v6L
-      1m21TcKe4rs1/7u++5bu/6fyDbeNCa5ub69vJxarpv8TUfDYj5BewyAufnscl+99DfyI5IathrXe
-      hc6ckD02qroysjTOjJmETnjtOLPj5T2wdr72K3Sza/TZf792BJeva6LMG7/j5SryuOqgbVgzFJvh
-      3buthYjz8dz6Huksb8F3qhm0oQbGngMukAksIqNHkqblDwggKIfv+Qvo2aqzbn1uddtIgW7YOSY6
-      xthoY+LBI9ZH3VQ9eiu1zET/CzvQMQzFDAAA
+      H4sICIyWzWICA3Byb3Zpc2lvbi5zaAC9Vtty2zYQfRa/Yk07VdIxRUpJOqliOeNcX9zY46TtQ5rO
+      QORSwogEGACUo4nz713wIoGi0nTamb6JwOLs4pyzCx0fhXMuwjnTS+/YOwaz5BpUKTRIAbhGtYG5
+      lOYUtASBmGgwEuYIPMG8kAaF8TQaCLCUUPACU8Yzz8ukWCylEr9q/H0pM3zJ9WqWskzjdqtaChNc
+      hzphzqqahWumwozPw3bRi9kLVEbP/BBNHGqdhbH9DmMW2B885TEzqEexMr6ncMG1UZtrJT9vZv7S
+      mGIahuOfJ6PxT09Gj6LR48n04XjyxPdWD/VNHcyxBVdMxEtUIe2Fars52rA88z3ihy5bFvDb5cVb
+      4MKgSlmM2rM7C6LBLBHiUimiBWxlp0Bg8Qp4CtwMNbBMIUs2dFQblmWY2GqrQu0FZ/7JfTqdQZBq
+      8E86F6G7Vtd74HsE9uEDBKIO2Z724eNHeGpLEB7YjEewUFhA8Ok2hbP7S0oMwQTOzs56B+/AkGwQ
+      jB/QVkO2v8MCwHgpwb9IEi4W0HC2gQoBXlxUV/WdwD3483MHlsJS7qG1QhtuPYOJNZZCS/cav5UD
+      zn+YeHS84eAIAkXQHR27NNQJXkiR8kWpHNzC4tpiyDnESfDq6jWc97C8Qc6VkkpPvQFAIuMVqhGX
+      9IUiKSQ5oNoIYF8uOkmIVal1CbVvLn55Tw5SnGUQS6GpM3yvEQmM2bx7BJUJueDGsDnc3dUXGFZ7
+      06lCXbBbMQ217VkynNlAcAnj8eNJFDUAazOOoqHl3IU6lEUjma3C6ObZHd5GdG+RUOtCKhVcNg26
+      9eScePjidvjXnispzIlxBwTFzmbgG1Vi91R77uhQgvF+bCs6QKmtXW8tfl3z3tHOHSBhhvkNgmOK
+      OyiYMmTP3s28QaHIAeSRVcbmmMGiqD5sPPmL54x8hp/NI4juAYlyr/ZEncEGkQfnWH2TT6jsuifq
+      vXeG1QOhyR7kB6gtSVx48xyqOiBViPBHg39XN/9walefDvfXgzUMo1EUvXleB5y4EXFJAz2dQJBM
+      d6s0I0iYB76jRzWCvmyr/foNJWyYkKYnxyldW1QTpaqcrB3jaDTyHYYO0U4lHSTZP9lW4td0H2K6
+      dUciBTapKvJtpwIcU4/DLcKS0Qxi9ADmBbWHReCGS/GMQtpirmnxbZn/a4laIV6RRtMPf04//jjd
+      qdBqMHY0cBVw+d8rqKeCuz/bL/DQcWLh/dXLK9BlUUhiWRKUqkiwHIBgOWk2AlyAWOcYiXExdmY/
+      9VTOjFW1i/0VbrlZVlLVtDdZZGFIxKzW0H7QXHxWBeQrnNBDGKxfQ2DqfRp2LWZg+5U4j+Af3Mnt
+      rp7GFngrcftE96j7L1p31bYJe4of1vzv+u57uv+fyrfctiZ4dXNzdTN1WLX9n8pSJGFM9FoGafH7
+      47h67xvgz0TuuNOwzruwNydUj426rpytrDMTrmAvvHGc3QmKHlg3X/cVuj40+ty/XweCq9c11faN
+      P/BylUVSd9AurB2K7fDu3dZBpPl47nyPTF504PeqGXShBtaeAyGJCSoix1OFWfUDIoiq4Xv+DfR8
+      vbfufO5020pBbjg4JvaMsdXGxkPAnI+mqXr01mrZif4XQyHDl94MAAA=
+  # yamllint disable-line rule:line-length
+  - path: /etc/network/interfaces
+    owner: root:root
+    permissions: '0644'
+    encoding: gz+base64
+    content: |
+      H4sICAAAAAACA3N0ZGluAFXKQQ6DMAwEwHte4RdEISKIPmcbDERQgogR4vd1BT1wsOxdD3bJNGeT
+      ekTWg9LCojuvb8TJ4PdmGZ2t3W3udMEikBQNEbpu41KoenlbNa0C67VW80GZyIdg/+O0HyB84Hzw
+      UJsvD+OcJo4AAAA=
+  # static DNS config
+  - path: /etc/resolv.conf
+    owner: root:root
+    permissions: '0644'
+    encoding: ""
+    content: |-
+      search home.chaosengine.net
+      nameserver 192.168.40.254
 run_cmd:
   - "/root/provision.sh >> /root/provision.log 2>> /root/provision.err"
 boot_cmd:
@@ -41,6 +58,14 @@ boot_cmd:
   - mkdir -p /var/lib/nfs/sm
   - rc-update add rpc.statd
   - rc-update add nfsclient
+  # configure VLAN interfaces
+  - ip link add link eth0 name eth0.10  type vlan id 10
+  - ip link add link eth0 name eth0.30  type vlan id 30
+  - ip link add link eth0 name eth0.40  type vlan id 40
+  - ip link add link eth0 name eth0.100 type vlan id 100
+  # use static network config rather than connman
+  - rc-update add networking boot
+  - rc-update del connman boot
 k3os:
   modules:
     - kvm

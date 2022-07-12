@@ -10,6 +10,15 @@ $primaryNodeKubeVipCfg
 $primaryNodeKubeVipCcCfg
 $primaryNodeKubeVipCcCm
 $nodeProvisionSh
+$nodeNetworkCfg
+  # static DNS config
+  - path: /etc/resolv.conf
+    owner: root:root
+    permissions: '0644'
+    encoding: ""
+    content: |-
+      search home.chaosengine.net
+      nameserver 192.168.40.254
 run_cmd:
   - "/root/provision.sh >> /root/provision.log 2>> /root/provision.err"
 boot_cmd:
@@ -17,6 +26,14 @@ boot_cmd:
   - mkdir -p /var/lib/nfs/sm
   - rc-update add rpc.statd
   - rc-update add nfsclient
+  # configure VLAN interfaces
+  - ip link add link eth0 name eth0.10  type vlan id 10
+  - ip link add link eth0 name eth0.30  type vlan id 30
+  - ip link add link eth0 name eth0.40  type vlan id 40
+  - ip link add link eth0 name eth0.100 type vlan id 100
+  # use static network config rather than connman
+  - rc-update add networking boot
+  - rc-update del connman boot
 k3os:
   modules:
     - kvm
