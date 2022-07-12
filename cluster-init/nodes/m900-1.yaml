@@ -91,10 +91,10 @@ write_files:
     permissions: '0644'
     encoding: gz+base64
     content: |
-      H4sICAAAAAACA3N0ZGluAHWP3Q6DIAyF73mKJrtdiKAu2+N0ihsRwYySxbdfiTPB/VyUlnO+HCgm
-      CuCCsAN2hgew3hD3MF+xGwVm29C9egN5XJEJfUInANIMduAjW7KpPhX1pdQ/mDKfQ9YnIiHZjmHs
-      +4eJEdRFS3U6MyAVy8xMGEfQbSu3ytk3JPPEpcR12whxAGf9CMG75bhlmsh3mEMfyx+o/ZKFU/91
-      eImd9QJ9JT5RWgEAAA==
+      H4sICAAAAAACA3N0ZGluAJWRWw6CMBBF/7uKWQFpeRhdzghVG0ppbKshYfFOixgkxsAHYXLn5JDL
+      YPA96J6pC9aSBlBGenr39ox1yzCupb/xNxDHCenQBNQMIFhQFrQyLTjKExHs9wKbZhrS1mA3mTLB
+      AfxgJTw0GlANxGAcwd+D3GYo1oZir6FcG8q9BsH5ugX/bZh/UCpO+X+o2ALFby2gz8Go1+JmsWU6
+      m/PoVU0uKnOXzoE45Zk4HAnIBMXEdOhayKsqmx9O+RW9fOKwxPOqZC+9DEFDPwIAAA==
   # static DNS config
   - path: /etc/resolv.conf
     owner: root:root

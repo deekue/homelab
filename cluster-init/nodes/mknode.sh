@@ -44,24 +44,26 @@ function genNodeNetworkConfig {
   local -r nodeId="${1:?arg1 is nodeId}"
 
   # https://github.com/billimek/homelab-infrastructure/issues/14
+  # adding the 'vlan' pkg would make this easier
+  # https://wiki.alpinelinux.org/wiki/Vlan
   cat <<EOF | writeFilesHeader /etc/network/interfaces "0644" "/dev/stdin"
 auto lo
 iface lo inet loopback
 auto eth0
 iface eth0 inet manual
-  up ifup eth0.40
-  up ifup eth0.10
-  up ifup eth0.30
-  up ifup eth0.100
+  up ip link set eth0 up
+  up ip link add link eth0 name eth0.10  type vlan id 10  || true
+  up ip link add link eth0 name eth0.30  type vlan id 30  || true
+  up ip link add link eth0 name eth0.40  type vlan id 40  || true
+  up ip link add link eth0 name eth0.100 type vlan id 100 || true
+  up ip link set eth0.10  up || true
+  up ip link set eth0.30  up || true
+  up ip link set eth0.100 up || true
+auto eth0.40
 iface eth0.40 inet static
   address 192.168.40.$nodeId
   netmask 255.255.255.0
   gateway 192.168.40.254
-
-# link only, addresses on pods
-iface eth0.10 inet manual
-iface eth0.30 inet manual
-iface eth0.100 inet manual
 EOF
 
 }
