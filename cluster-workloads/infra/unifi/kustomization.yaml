@@ -10,3 +10,16 @@ helmCharts:
     repo: https://k8s-at-home.com/charts/
     version: "4.10.1"
     valuesFile: values.yaml
+
+patches:
+  # add VLAN100 mgt to pod, for discovery, inform etc
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: unifi
+      spec:
+        template:
+          metadata:
+            annotations:
+              k8s.v1.cni.cncf.io/networks: kube-system/mgt-vlan
