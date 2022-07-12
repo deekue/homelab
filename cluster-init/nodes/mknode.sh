@@ -47,11 +47,21 @@ function genNodeNetworkConfig {
   cat <<EOF | writeFilesHeader /etc/network/interfaces "0644" "/dev/stdin"
 auto lo
 iface lo inet loopback
-auto eth0.40
+auto eth0
+iface eth0 inet manual
+  up ifup eth0.40
+  up ifup eth0.10
+  up ifup eth0.30
+  up ifup eth0.100
 iface eth0.40 inet static
   address 192.168.40.$nodeId
   netmask 255.255.255.0
   gateway 192.168.40.254
+
+# link only, addresses on pods
+iface eth0.10 inet manual
+iface eth0.30 inet manual
+iface eth0.100 inet manual
 EOF
 
 }

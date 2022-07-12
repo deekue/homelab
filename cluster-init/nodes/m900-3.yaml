@@ -40,9 +40,10 @@ write_files:
     permissions: '0644'
     encoding: gz+base64
     content: |
-      H4sICAAAAAACA3N0ZGluAE3K0Q2DMAwE0P9M4QmikJKqjHMEAxFtg4gRYntcAVI/LPvOD6tkemeT
-      ekTWg9KXRXeeW8TJ4PdmGZ2t3WWudMIikBQNEbpu4VKoarytni8F9qG1mg/KRD4Ee4/TfoDwhv2f
-      +1CbA5wQouyOAAAA
+      H4sICAAAAAACA3N0ZGluAHWP3Q7CIAyF73mKJt4aMthm9HHqxpTAgAjE7O0tmUuYPxel5ZwvB4o5
+      ebCe6QkHRQNopxJ1H644GIbFVunevIEyrsiMLqNlADmAnugoFu+aT0V8Ke0Pps6nkPWJmDDpgWAc
+      x4eKEcRFcnE6E8BbkomZMRqQfc+3Ktk3TOqJS43LvmPsAFY7A97Z5bhlqkh3CH6M9Q/EfsnKaf86
+      tMTOegEE0KRUWgEAAA==
   # static DNS config
   - path: /etc/resolv.conf
     owner: root:root
@@ -58,11 +59,6 @@ boot_cmd:
   - mkdir -p /var/lib/nfs/sm
   - rc-update add rpc.statd
   - rc-update add nfsclient
-  # configure VLAN interfaces
-  - ip link add link eth0 name eth0.10  type vlan id 10
-  - ip link add link eth0 name eth0.30  type vlan id 30
-  - ip link add link eth0 name eth0.40  type vlan id 40
-  - ip link add link eth0 name eth0.100 type vlan id 100
   # use static network config rather than connman
   - rc-update add networking boot
   - rc-update del connman boot

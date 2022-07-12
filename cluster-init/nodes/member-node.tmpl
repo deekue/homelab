@@ -26,11 +26,6 @@ boot_cmd:
   - mkdir -p /var/lib/nfs/sm
   - rc-update add rpc.statd
   - rc-update add nfsclient
-  # configure VLAN interfaces
-  - ip link add link eth0 name eth0.10  type vlan id 10
-  - ip link add link eth0 name eth0.30  type vlan id 30
-  - ip link add link eth0 name eth0.40  type vlan id 40
-  - ip link add link eth0 name eth0.100 type vlan id 100
   # use static network config rather than connman
   - rc-update add networking boot
   - rc-update del connman boot
