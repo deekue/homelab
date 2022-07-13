@@ -8,6 +8,7 @@ k8sVip="192.168.40.10"
 kubeDir="$HOME/.kube"
 kubeCfg="$kubeDir/config"
 sealedSecret="sealed-secrets-keysnghr"
+promCrdVersion="v0.57.0"
 
 function retrieveKubeConfig {
   tempFile="$kubeDir/config.$(date +%Y%m%d%H%M%S)"
@@ -23,7 +24,7 @@ function updateKubeConfigServer {
   local -r kubeConfig="${2:?arg2 is kube/config}"
 
   # server: https://192.168.40.10:6443
-  sed -i '/^\( *server: https:..\).*:6443$/ s//\1'$addr':6443/' "$kubeConfig"
+  sed -i '/^\( *server: https:..\).*:6443$/ s//\1'"$addr"':6443/' "$kubeConfig"
 }
 
 function restoreSealedSecretsMasterKey {
@@ -80,13 +81,15 @@ function configureArgoCD {
 }
 
 function installCriticalHelmCharts {
-  find cluster-critical -type f -name '*-helmchart.yaml' \
-    | xargs -n1 kubectl apply -f 
+  find cluster-critical -type f -name '*-helmchart.yaml' -print0 \
+    | xargs -r0 -n1 kubectl apply -f 
   # wait for HelmChart install jobs to complete
   kubectl -n kube-system get helmcharts -o json \
     | jq -r '.items[].status.jobName' \
     | xargs -P0 -n1 \
-        kubectl -n kube-system wait job --for=condition=complete
+        kubectl -n kube-system wait job \
+	  --for=condition=complete \
+          --timeout=180s
 }
 
 function installOLM {
@@ -95,21 +98,31 @@ function installOLM {
   popd
 }
 
-# main
-retrieveKubeConfig
-restoreSealedSecretsMasterKey "${1:-sealed-secrets-master-key-secret.yaml}"
-# install Multus then Cilium
-installMultus
-installCilium
-installCriticalHelmCharts
-installOLM  # TODO replace apps with operators where available
-configureCertManager  # required for `argocd login`
-configureTraefik  # required for `argocd login`
-configureArgoCD
-applyArgoCdAppOfApps "${2:-cluster-apps.yaml}"
+function prometheusCrdWorkaround {
+  cluster-workloads/monitoring/kube-prom-stack/force-update-crds.sh "$promCrdVersion"
+}
 
-# wait for kube-vip to be up
+function run {
+  echo "############### $1 #########################"
+  "$@"
+}
+
+# main
+run retrieveKubeConfig
+run restoreSealedSecretsMasterKey "${1:-sealed-secrets-master-key-secret.yaml}"
+# install Multus then Cilium
+run installMultus
+run installCilium
+run installCriticalHelmCharts
+run installOLM  # TODO replace apps with operators where available
+run configureCertManager  # required for `argocd login`
+run configureTraefik  # required for `argocd login`
+run configureArgoCD
+run prometheusCrdWorkaround  # run this before ArgoCD tries to install it
+run applyArgoCdAppOfApps "${2:-cluster-apps.yaml}"
+
+echo "wait for kube-vip to be up..."
 kubectl -n kube-system wait pod \
   --selector=app.kubernetes.io/name=kube-vip-ds \
   --for=condition=Ready
-updateKubeConfigServer "$k8sVip" "$kubeCfg"
+run updateKubeConfigServer "$k8sVip" "$kubeCfg"
