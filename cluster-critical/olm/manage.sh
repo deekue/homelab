@@ -125,6 +125,7 @@ commands:
 			  approval    manual ([a]uto|[m]anual)
 			  channel     default channel from PackageManifest
 			  targetNS    operators
+  a|approve <sub>       approve InstallPlan for Subscription
 
 EOF
   exit 1
