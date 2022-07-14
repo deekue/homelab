@@ -1,0 +1,30 @@
+---
+apiVersion: "k8s.cni.cncf.io/v1"
+kind: NetworkAttachmentDefinition
+metadata:
+  name: mgt-macvlan-unifi
+  namespace: kube-system
+spec:
+  config: '{
+            "name": "mgt-macvlan-unifi",
+            "type": "macvlan",
+            "master": "eth0.100",
+            "ipam": {
+                "type": "static",
+		"addresses": [
+			{
+				"address": "192.168.100.2/24",
+				"gateway": "192.168.100.1"
+			}
+		],
+		"routes": [
+			{ "dst": "0.0.0.0/0" }
+		],
+		"dns": {
+			"nameservers" : ["192.168.100.1"],
+			"domain": "mgt.home.chaosengine.net",
+			"search": [ "mgt.home.chaosengine.net", "home.chaosengine.net" ]
+		}
+
+            }
+        }'

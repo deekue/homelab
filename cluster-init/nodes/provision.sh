@@ -29,8 +29,20 @@ if [[ ! -r "$k3sRegistries" ]] ; then
   cat <<-EOF > "$k3sRegistries"
 	mirrors:
 	  docker.io:
-	endpoint:
-	  -  "$registryProxy"
+	    endpoint:
+	      -  "$registryProxy"
+	  ghcr.io:
+	    endpoint:
+	      -  "$registryProxy"
+	  quay.io:
+	    endpoint:
+	      -  "$registryProxy"
+	  gcr.io:
+	    endpoint:
+	      -  "$registryProxy"
+	  k8s.gcr.io:
+	    endpoint:
+	      -  "$registryProxy"
 	EOF
 fi
 
