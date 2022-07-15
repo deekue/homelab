@@ -3,3 +3,7 @@ kind: Kustomization
 bases:
   - https://raw.githubusercontent.com/k8snetworkplumbingwg/multus-cni/v3.9/deployments/multus-daemonset-thick-plugin.yml
   - https://raw.githubusercontent.com/deekue/docker-cni-plugins/v1.1.1-0.4/deployment.yaml
+  - iot-macvlan.yaml
+  - mgt-macvlan-unifi.yaml
+  - mgt-macvlan.yaml
+  - storage-macvlan.yaml
