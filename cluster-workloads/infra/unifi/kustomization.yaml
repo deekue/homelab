@@ -22,4 +22,4 @@ patches:
         template:
           metadata:
             annotations:
-              k8s.v1.cni.cncf.io/networks: kube-system/mgt-macvlan
+              k8s.v1.cni.cncf.io/networks: kube-system/mgt-macvlan-unifi
