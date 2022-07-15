@@ -64,6 +64,11 @@ iface eth0.40 inet static
   address 192.168.40.$nodeId
   netmask 255.255.255.0
   gateway 192.168.40.254
+auto eth1
+iface eth1 inet static
+  address 192.168.50.$nodeId
+  netmask 255.255.255.0
+  gateway 192.168.50.254
 EOF
 
 }

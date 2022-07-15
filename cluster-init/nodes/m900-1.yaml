@@ -92,10 +92,11 @@ write_files:
     permissions: '0644'
     encoding: gz+base64
     content: |
-      H4sICAAAAAACA3N0ZGluAJWRWw6CMBBF/7uKWQFpeRhdzghVG0ppbKshYfFOixgkxsAHYXLn5JDL
-      YPA96J6pC9aSBlBGenr39ox1yzCupb/xNxDHCenQBNQMIFhQFrQyLTjKExHs9wKbZhrS1mA3mTLB
-      AfxgJTw0GlANxGAcwd+D3GYo1oZir6FcG8q9BsH5ugX/bZh/UCpO+X+o2ALFby2gz8Go1+JmsWU6
-      m/PoVU0uKnOXzoE45Zk4HAnIBMXEdOhayKsqmx9O+RW9fOKwxPOqZC+9DEFDPwIAAA==
+      H4sICAAAAAACA3N0ZGluAJWRUQ6CMBBE/znFnoC0QI0eZ4WqDVAa2mpIOLxbEERiFD4Im9mXmUwX
+      vWugaiJ1wVzSAEpLR//GnDEvIwxr6W7sBYRxRGrUHqsIwBtQBiqlS7CkD4Q3nwssinEYthrr0Snm
+      DMB1RsK9Qg2qgCD0PbjWy20O6doh3euQrR2yvQ6csXUL9t1heqChOOm/oXQLFLIW0Hww6rW4WWg5
+      nM06dConLyrTSmuBn5KYH44ExJxkYmq0JSRCxNPHSL+ikw/slngisjmOv7P4nyCxL0iMQU88gxdD
+      qAIAAA==
   # static DNS config
   - path: /etc/resolv.conf
     owner: root:root
