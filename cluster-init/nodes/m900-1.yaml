@@ -12,7 +12,7 @@ write_files:
     permissions: '0644'
     encoding: gz+base64
     content: |
-      H4sICCXJrGICA2t1YmUtdmlwLWRzLnlhbWwArVZbb9owFH7nV1g8N6y0rOryxlo0VVpRBdX2ME2V
+      H4sICGTR0WICA2t1YmUtdmlwLWRzLnlhbWwArVZbb9owFH7nV1g8N6y0rOryxlo0VVpRBdX2ME2V
       cQ7g4diZL1w27b/vOIFgiKnotDygcHy+8527Qwv+BbThSqZk2W0tuMxSMga95Az6jCknbSsHSzNq
       adoiRNIcUrJwE0iWvNgKTEHZTmo2xkLeSpKkRQPbekJZhzo7V5r/ohZlncWt6XD1rma9Ew6heqQE
       HFBSKZUtIcb/JVFbSK0lWChN4plyBeLRqbbVDtq155V76S6ARHs27QSUthOCPn/SCDYp+dZuf6/4
@@ -22,20 +22,20 @@ write_files:
       dXqNaCrkiYBMAcw7YEBgipSunMl9d3wOvDvXPzRZCD9glZkgC/45nQn/iAO+8zNyblYwyG2wJWI6
       5ZLbzZ7Pz2i/IfXD9dNxDdm909itYzaHzAl8e5hJVYsHa2DOxxYiK5vjbWqfQefm8DipMj1YFzjB
       Zr/KQo0FbNLSTtnMR1Hm1I/AEYYQVYCmvppksMa5N/+XlClpUZxgpSWcy+1BlEusyo4Nt5ueBdze
-      L0lnQTggl+FxVX6s/AvVRcC7pMKFK/1Qv1DaRpRver3rdtQ4l5jSKU5KEwV2fhnFMJ7pCMn1VZOC
-      FS8g6UTA2REgop7eJiic5phrWSZNhGpKhYlwmSV7q3ueBO+cDHTZ6NhQb4UanChNTyDfx2EaJKwy
-      pMVRjPl6fQpm9QY7lKssAuo2QTTL/Jg0lbsfrjrdm9tO77LT3TcFz7GDUzKbM+1HZber6pc0WEe1
-      /hMuwSclOMOh64sV3ezpGhfTbifVF/7vP7XU4A7SuL3ucNZgbcOxZrSgEy645XA07hjg8VIaDp5f
-      +vePD8OIfNT/upXOlbFDsCulFynx9W3tvAgv12EsAItLRYffbt46TKfYPikZqu2O3Zf1xE4JMdUC
-      fhVSfeqMLcphtikzV32hlbe009hSduhyXHU7B/BO96XFbzd/AUTPZCl85MbE5CNs0I0XtP4CHGxy
-      VFILAAA=
+      L0lnQTggl+FxVX6s/AvVRcC7pMKFK/1Qv1DaRpRver3rdtQ4l5jSKU5KEwV2jt10GYUxnukIz/VV
+      k4UVLyDpRMDZQSCiHuAmKBzomGtZJk2EakqFiXCZJXure54Er50MdNnr2FNvhRocKk1PIN/HYRok
+      rDKkxWmM+Xp9Cmb1BpuUqywC6jZBNMv8pDSVux+uOt2bW+yITnffFDzHJk7JbM60n5bduqpf0mAj
+      1fpPuAeflOAM564vVnSzp2vcTbu1VN/5v//UUoNrSOMCu8Nxg7UNJ5vRgk644JbD0cRjgMd7aTh4
+      funfPz4MI/JR/+tWOlfGDsGulF6kxNe3tfMivF+HsQAs7hUdfr556zCdYvukZKi2a3Zf1hNrJcRU
+      O/hVSPW1M7Yoh9mmzFz1kVZe1E5jS9mhy3Hb7RzAa92XFj/f/B0QPZOl8JEbE5OPsEE3XtD6Cycy
+      TxxVCwAA
   # yamllint disable-line rule:line-length
   - path: /var/lib/rancher/k3s/server/manifests/kube-vip-cloud-controller.yaml
     owner: root:root
     permissions: '0644'
     encoding: gz+base64
     content: |
-      H4sICKMDsmICA2t1YmUtdmlwLWNsb3VkLWNvbnRyb2xsZXIueWFtbACtVD1v2zAQ3fUrBI1F6Tjt
+      H4sICIbR0WICA2t1YmUtdmlwLWNsb3VkLWNvbnRyb2xsZXIueWFtbACtVD1v2zAQ3fUrBI1F6Tjt
       UgjokARoOqRpEANdigw0ebbZUCRxJJW6Rf97j9RHlMSxXaBaJB3v3ruPd+ROfQP0ypq6bE+Le2Vk
       XS4AWyXgTAgbTSgaCFzywOuiLA1voC7v4xJYqxwT2kbJhDUBrdaAvYd3XAxufusDNAVjrOATMlxy
       MeMxbCyqXzyQbXb/wc+UPRnTuNCRQvHWaniSAzfGhhzi02+5E4uo0UCADElnNjqKp6SqgBGqsZQu
