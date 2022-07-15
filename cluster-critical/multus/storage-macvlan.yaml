@@ -1,0 +1,15 @@
+---
+apiVersion: "k8s.cni.cncf.io/v1"
+kind: NetworkAttachmentDefinition
+metadata:
+  name: storage-macvlan
+  namespace: kube-system
+spec:
+  config: '{
+            "name": "storage-macvlan",
+            "type": "macvlan",
+            "master": "eth1",
+            "ipam": {
+                "type": "dhcp"
+            }
+        }'

@@ -1,0 +1,15 @@
+---
+apiVersion: "k8s.cni.cncf.io/v1"
+kind: NetworkAttachmentDefinition
+metadata:
+  name: mgt-macvlan
+  namespace: kube-system
+spec:
+  config: '{
+            "name": "mgt-macvlan",
+            "type": "macvlan",
+            "master": "eth0.100",
+            "ipam": {
+                "type": "dhcp"
+            }
+        }'

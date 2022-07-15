@@ -1,0 +1,15 @@
+---
+apiVersion: "k8s.cni.cncf.io/v1"
+kind: NetworkAttachmentDefinition
+metadata:
+  name: iot-macvlan
+  namespace: kube-system
+spec:
+  config: '{
+            "name": "iot-macvlan",
+            "type": "macvlan",
+            "master": "eth0.30",
+            "ipam": {
+                "type": "dhcp"
+            }
+        }'
