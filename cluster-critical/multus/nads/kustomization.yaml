@@ -1,0 +1,7 @@
+---
+kind: Kustomization
+resources:
+  - iot-macvlan.yaml
+  - mgt-macvlan-unifi.yaml
+  - mgt-macvlan.yaml
+  - storage-macvlan.yaml
