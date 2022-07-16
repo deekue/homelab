@@ -8,7 +8,7 @@ spec:
   config: '{
             "name": "storage-macvlan",
             "type": "macvlan",
-            "master": "eth1",
+            "master": "storage0",
             "ipam": {
                 "type": "dhcp"
             }

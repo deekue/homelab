@@ -8,7 +8,7 @@ spec:
   config: '{
             "name": "mgt-macvlan-unifi",
             "type": "macvlan",
-            "master": "eth0.100",
+            "master": "trunk0.100",
             "ipam": {
                 "type": "static",
 		"addresses": [
