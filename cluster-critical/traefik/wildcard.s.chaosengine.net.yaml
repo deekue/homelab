@@ -10,5 +10,5 @@ spec:
     name: chaosengine-s-issuer-prod
     kind: ClusterIssuer
   dnsNames:
+    - "s.chaosengine.net"
     - "*.s.chaosengine.net"
-    - "s.chaoengine.net"
