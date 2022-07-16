@@ -46,6 +46,14 @@ write_files:
       DMB1RsK9Qg2qgCD0PbjWy20O6doh3euQrR2yvQ6csXUL9t1heqChOOm/oXQLFLIW0Hww6rW4WWg5
       nM06dConLyrTSmuBn5KYH44ExCnJxNRoS0iEiKePkX5FJx/YLfFEZHMcf2fxP0FiX5AYg57T/qA2
       qAIAAA==
+  # yamllint disable-line rule:line-length
+  - path: /etc/mactab
+    owner: root:root
+    permissions: '0644'
+    encoding: gz+base64
+    content: |
+      H4sICAAAAAACA3N0ZGluAEstyTBQMDCwMjK2MjKxSja3MjKyMk7kSi3JMAQJpxpYmSRbmVlYmaRa
+      GZpxAQBoPLyGLgAAAA==
   # static DNS config
   - path: /etc/resolv.conf
     owner: root:root
@@ -54,6 +62,14 @@ write_files:
     content: |-
       search home.chaosengine.net
       nameserver 192.168.40.254
+  # persistent network device naming
+  - path: /etc/network/if-pre-up.d/nameif
+    owner: root:root
+    permissions: '0644'
+    encoding: ""
+    content: |-
+      #!/bin/sh
+      /sbin/nameif -s
 run_cmd:
   - "/root/provision.sh >> /root/provision.log 2>> /root/provision.err"
 boot_cmd:

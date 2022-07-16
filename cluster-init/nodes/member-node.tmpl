@@ -11,6 +11,7 @@ $primaryNodeKubeVipCcCfg
 $primaryNodeKubeVipCcCm
 $nodeProvisionSh
 $nodeNetworkCfg
+$nodeMacTab
   # static DNS config
   - path: /etc/resolv.conf
     owner: root:root
@@ -19,6 +20,14 @@ $nodeNetworkCfg
     content: |-
       search home.chaosengine.net
       nameserver 192.168.40.254
+  # persistent network device naming
+  - path: /etc/network/if-pre-up.d/nameif
+    owner: root:root
+    permissions: '0644'
+    encoding: ""
+    content: |-
+      #!/bin/sh
+      /sbin/nameif -s
 run_cmd:
   - "/root/provision.sh >> /root/provision.log 2>> /root/provision.err"
 boot_cmd:

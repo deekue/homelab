@@ -73,11 +73,38 @@ EOF
 
 }
 
+# https://gist.github.com/JanKoppe/83f0e273c12ecd37b997f2317d638cdc
+function genNodeMacTab {
+  local -r nodeId="${1:?arg1 is nodeId}"
+  local eth0 eth1
+
+  case "$nodeId" in
+    1)
+      eth0="00:23:24:b6:a4:2a"
+      eth1="00:e0:4c:68:20:60"
+      ;;
+    2)
+      eth0="00:23:24:ac:f7:99"
+      eth1="00:e0:4c:68:4e:df"
+      ;;
+    3)
+      eth0="00:23:24:c7:22:3a"
+      eth1="00:e0:4c:68:4e:16"
+      ;;
+  esac
+  cat <<EOF | writeFilesHeader /etc/mactab "0644" "/dev/stdin"
+eth0 $eth0
+eth1 $eth1
+EOF
+
+}
+
 for node in "${nodes[@]}" ; do
   echo -n "${node}..."
   nodeHostName="$node"
   nodeId="${node##*-}"
   nodeNetworkCfg="$(genNodeNetworkConfig "$nodeId")"
+  nodeMacTab="$(genNodeMacTab "$nodeId")"
   nodeProvisionSh="$(writeFilesHeader "$provisionShDestPath" "0744" "${provisionShFile}")"
   primaryNodeClusterInit=
   server_url=
@@ -98,7 +125,8 @@ for node in "${nodes[@]}" ; do
     server_url="server_url: https://${kubeVipAddr}:6443"
   fi
   # export to appease shellcheck, and catch missing vars
-  export nodeHostName nodeProvisionSh serverToken serverPassword nodeNetworkCfg
+  export nodeHostName nodeProvisionSh nodeNetworkCfg nodeMacTab
+  export serverToken serverPassword
   export kubeVipAddr kubeVipHostname
   export primaryNodeKubeVipCfg primaryNodeKubeVipCcCfg primaryNodeKubeVipCcCm
   # shellcheck disable=SC2090
