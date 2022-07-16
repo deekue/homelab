@@ -29,27 +29,28 @@ fi
 
 if [[ ! -r "$k3sRegistries" ]] ; then
   log "Configure Registry proxy"
-  cat <<-EOF > "$k3sRegistries"
-	mirrors:
-	  docker.io:
-	    endpoint:
-	      -  "$registryProxy"
-	  ghcr.io:
-	    endpoint:
-	      -  "$registryProxy"
-	  quay.io:
-	    endpoint:
-	      -  "$registryProxy"
-	  gcr.io:
-	    endpoint:
-	      -  "$registryProxy"
-	  k8s.gcr.io:
-	    endpoint:
-	      -  "$registryProxy"
-          ${registryProxy##http://}:
-	    endpoint:
-	      -  "$registryProxy"
-	EOF
+  cat <<EOF > "$k3sRegistries"
+mirrors:
+  docker.io:
+    endpoint:
+      -  "$registryProxy"
+  ghcr.io:
+    endpoint:
+      -  "$registryProxy"
+  quay.io:
+    endpoint:
+      -  "$registryProxy"
+  gcr.io:
+    endpoint:
+      -  "$registryProxy"
+  k8s.gcr.io:
+    endpoint:
+      -  "$registryProxy"
+  ${registryProxy##http://}:
+    endpoint:
+      -  "$registryProxy"
+EOF
+
 fi
 
 log "setup AMT serial console"
@@ -77,7 +78,7 @@ if [[ -b "${longhornDisk}" ]] ; then
     if [[ -n "${partStart}" ]] ; then
       log "not using whole disk, finding free space..."
       parted "${longhornDisk}" \
-	mkpart primary ext4 "$partStart" 100%
+        mkpart primary ext4 "$partStart" 100%
       partprobe
       log "done."
     fi
@@ -114,9 +115,9 @@ if [[ -b "${longhornDisk}" ]] ; then
     if ! grep -q "${longhornPart}" /etc/fstab ; then
       log "updating /etc/fstab"
       grep -v "${longhornDir}" /etc/fstab \
-	> /etc/fstab.tmp
+        > /etc/fstab.tmp
       echo "${longhornPart}	${longhornDir}	ext4	nodiratime,relatime 0 0" \
-	>> /etc/fstab.tmp
+        >> /etc/fstab.tmp
       mv /etc/fstab.tmp /etc/fstab
     fi
     log "mounting ${longhornPart} on ${longhornDir}"
