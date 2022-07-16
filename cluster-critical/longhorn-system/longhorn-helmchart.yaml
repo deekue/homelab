@@ -27,5 +27,5 @@ spec:
         traefik.ingress.kubernetes.io/router.middlewares:
           kube-system-traefik-basic-auth@kubernetescrd
     defaultSettings:
-      backupTarget: "nfs://192.168.50.1:/volume2/longhorn-backup"
+      backupTarget: "nfs://192.168.50.52:/volume2/longhorn-backup"
       storageNetwork: "kube-system/storage-macvlan"
