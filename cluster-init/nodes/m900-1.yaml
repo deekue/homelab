@@ -120,7 +120,11 @@ write_files:
     encoding: ""
     content: |-
       #!/bin/sh
-      /sbin/nameif -s
+      case "" in
+        eth*)
+          /sbin/nameif -s || true
+          ;;
+      esac
 run_cmd:
   - "/root/provision.sh >> /root/provision.log 2>> /root/provision.err"
 boot_cmd:
