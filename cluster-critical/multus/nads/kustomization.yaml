@@ -5,3 +5,4 @@ resources:
   - mgt-macvlan-unifi.yaml
   - mgt-macvlan.yaml
   - storage-macvlan.yaml
+  - storage-macvlan-sbr.yaml
