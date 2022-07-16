@@ -69,10 +69,13 @@ iface trunk0.40 inet static
   netmask 255.255.255.0
   gateway 192.168.40.254
 auto storage0
-iface storage0 inet static
-  address 192.168.50.$nodeId
-  netmask 255.255.255.0
-  gateway 192.168.50.254
+iface storage0 inet manual
+  # put host address on a macvlan link so host<->container works
+  # required for Longhorn/iscsiadm interaction
+  up ip link set storage0 up
+  up ip link add shim-storage0 link storage0 type macvlan mode bridge
+  up ip addr add 192.168.50.$nodeId/24 dev shim-storage0
+  up ip link set shim-storage0 up
 EOF
 
 }
