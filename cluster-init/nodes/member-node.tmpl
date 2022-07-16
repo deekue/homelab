@@ -23,11 +23,12 @@ $nodeMacTab
   # persistent network device naming
   - path: /etc/network/if-pre-up.d/nameif
     owner: root:root
-    permissions: '0644'
+    permissions: '0755'
     encoding: ""
     content: |-
       #!/bin/sh
       /sbin/nameif -s
+
 run_cmd:
   - "/root/provision.sh >> /root/provision.log 2>> /root/provision.err"
 boot_cmd:
