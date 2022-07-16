@@ -49,23 +49,23 @@ function genNodeNetworkConfig {
   cat <<EOF | writeFilesHeader /etc/network/interfaces "0644" "/dev/stdin"
 auto lo
 iface lo inet loopback
-auto eth0
-iface eth0 inet manual
-  up ip link set eth0 up
-  up ip link add link eth0 name eth0.10  type vlan id 10  || true
-  up ip link add link eth0 name eth0.30  type vlan id 30  || true
-  up ip link add link eth0 name eth0.40  type vlan id 40  || true
-  up ip link add link eth0 name eth0.100 type vlan id 100 || true
-  up ip link set eth0.10  up || true
-  up ip link set eth0.30  up || true
-  up ip link set eth0.100 up || true
-auto eth0.40
-iface eth0.40 inet static
+auto trunk0
+iface trunk0 inet manual
+  up ip link set trunk0 up
+  up ip link add link trunk0 name trunk0.10  type vlan id 10  || true
+  up ip link add link trunk0 name trunk0.30  type vlan id 30  || true
+  up ip link add link trunk0 name trunk0.40  type vlan id 40  || true
+  up ip link add link trunk0 name trunk0.100 type vlan id 100 || true
+  up ip link set trunk0.10  up || true
+  up ip link set trunk0.30  up || true
+  up ip link set trunk0.100 up || true
+auto trunk0.40
+iface trunk0.40 inet static
   address 192.168.40.$nodeId
   netmask 255.255.255.0
   gateway 192.168.40.254
-auto eth1
-iface eth1 inet static
+auto storage0
+iface storage0 inet static
   address 192.168.50.$nodeId
   netmask 255.255.255.0
   gateway 192.168.50.254
@@ -76,25 +76,25 @@ EOF
 # https://gist.github.com/JanKoppe/83f0e273c12ecd37b997f2317d638cdc
 function genNodeMacTab {
   local -r nodeId="${1:?arg1 is nodeId}"
-  local eth0 eth1
+  local onboard usb
 
   case "$nodeId" in
     1)
-      eth0="00:23:24:b6:a4:2a"
-      eth1="00:e0:4c:68:20:60"
+      onboard="00:23:24:b6:a4:2a"
+      usb="00:e0:4c:68:20:60"
       ;;
     2)
-      eth0="00:23:24:ac:f7:99"
-      eth1="00:e0:4c:68:4e:df"
+      onboard="00:23:24:ac:f7:99"
+      usb="00:e0:4c:68:4e:df"
       ;;
     3)
-      eth0="00:23:24:c7:22:3a"
-      eth1="00:e0:4c:68:4e:16"
+      onboard="00:23:24:c7:22:3a"
+      usb="00:e0:4c:68:4e:16"
       ;;
   esac
   cat <<EOF | writeFilesHeader /etc/mactab "0644" "/dev/stdin"
-eth0 $eth0
-eth1 $eth1
+trunk0 $onboard
+storage0 $usb
 EOF
 
 }
