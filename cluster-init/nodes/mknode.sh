@@ -16,7 +16,11 @@ kubevipCCFile="${kubevipCloudControllerDir}/kube-vip-cloud-controller.yaml"
 kubevipCCFileDestPath="${k3sManifestDir}/kube-vip-cloud-controller.yaml"
 kubevipCCConfigMapFile="${kubevipCloudControllerDir}/configmap.yaml"
 kubevipCCConfigMapFileDestPath="${k3sManifestDir}/kube-vip-cloud-controller-configmap.yaml"
-kubeVipAddr="192.168.40.10"  # TODO get VIP addr from $kubevipFile
+kubeVipAddr="$(yq -rs '.[] 
+   | select(.kind == "DaemonSet") 
+   | .spec.template.spec.containers[0].env[] 
+   | select(.name == "address") 
+   | .value' "$kubevipFile")"
 kubeVipHostname="k8s.s.chaosengine.net"
 serverToken="SECRETSQUIRREL"  # TODO update before prod
 # shellcheck disable=SC2016
