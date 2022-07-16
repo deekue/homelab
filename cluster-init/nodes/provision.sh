@@ -7,7 +7,7 @@ longhornUseWholeDisk=false
 longhornDisk=/dev/sda
 longhornDir=/var/lib/longhorn
 caCerts="/etc/ssl/certs/ca-certificates.crt"
-registryProxy="http://192.168.40.52:3128"
+registryProxy="https://192.168.40.52:3128"
 k3sRegistries="/etc/rancher/k3s/registries.yaml"
 
 function log {
