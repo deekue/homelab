@@ -28,6 +28,7 @@ else
 fi
 
 if [[ ! -r "$k3sRegistries" ]] ; then
+  # https://github.com/k3s-io/k3s/issues/2015#issue-655832536
   log "Configure Registry proxy"
   cat <<EOF > "$k3sRegistries"
 mirrors:
