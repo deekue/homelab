@@ -113,18 +113,6 @@ write_files:
     content: |-
       search home.chaosengine.net
       nameserver 192.168.40.254
-  # persistent network device naming
-  - path: /etc/network/if-pre-up.d/nameif
-    owner: root:root
-    permissions: '0755'
-    encoding: ""
-    content: |-
-      #!/bin/sh
-      case "" in
-        eth*)
-          /sbin/nameif -s || true
-          ;;
-      esac
 run_cmd:
   - "/root/provision.sh >> /root/provision.log 2>> /root/provision.err"
 boot_cmd:
@@ -135,6 +123,8 @@ boot_cmd:
   # use static network config rather than connman
   - rc-update add networking boot
   - rc-update del connman boot
+  # persistent network device naming
+  - nameif -s
 k3os:
   modules:
     - kvm
