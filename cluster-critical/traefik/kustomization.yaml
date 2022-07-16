@@ -9,5 +9,6 @@ resources:
   - tls-config.yaml
   - traefik-basic-auth-sealedsecret.yaml
   - traefik-helmchartconfig.yaml
+  - wildcard-s-chaosengine-net-tls-sealedsecret.yaml
   - wildcard.s.chaosengine.net.yaml
-  - servicemonitor.yaml
+  # - servicemonitor.yaml
