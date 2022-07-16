@@ -17,7 +17,8 @@ function log {
 }
 
 # get the current cert, check if it's already installed
-regProxyCert="$(curl -fs "$registryProxy/ca.crt")"
+# rpardini/docker-registry-proxy only serves the cert over http
+regProxyCert="$(curl -s "${registryProxy//https/http}/ca.crt")"
 if [[ -n "$regProxyCert" ]] ; then
   if ! grep -qwf <(head -2 <<< "$regProxyCert" | tail -1) "$caCerts" ; then
     log "Adding Registry Proxy CA cert"
@@ -47,7 +48,7 @@ mirrors:
   k8s.gcr.io:
     endpoint:
       -  "$registryProxy"
-  ${registryProxy##http://}:
+  ${registryProxy##https://}:
     endpoint:
       -  "$registryProxy"
 EOF
