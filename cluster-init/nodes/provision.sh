@@ -46,6 +46,9 @@ if [[ ! -r "$k3sRegistries" ]] ; then
 	  k8s.gcr.io:
 	    endpoint:
 	      -  "$registryProxy"
+          ${registryProxy##http://}:
+	    endpoint:
+	      -  "$registryProxy"
 	EOF
 fi
 
