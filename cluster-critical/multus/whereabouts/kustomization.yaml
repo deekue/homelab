@@ -1,0 +1,16 @@
+
+---
+kind: Kustomization
+
+resources:
+  - whereabouts.cni.cncf.io_ippools.yaml
+  - whereabouts.cni.cncf.io_overlappingrangeipreservations.yaml
+  - daemonset-install.yaml
+  - ip-reconciler-job.yaml
+
+# yamllint disable-file rule:line-length
+# resources:
+#   - https://raw.githubusercontent.com/k8snetworkplumbingwg/whereabouts/v0.5.3/doc/crds/daemonset-install.yaml
+#   - https://raw.githubusercontent.com/k8snetworkplumbingwg/whereabouts/v0.5.3/doc/crds/ip-reconciler-job.yaml
+#   - https://raw.githubusercontent.com/k8snetworkplumbingwg/whereabouts/v0.5.3/doc/crds/whereabouts.cni.cncf.io_ippools.yaml
+#   - https://raw.githubusercontent.com/k8snetworkplumbingwg/whereabouts/v0.5.3/doc/crds/whereabouts.cni.cncf.io_overlappingrangeipreservations.yaml
