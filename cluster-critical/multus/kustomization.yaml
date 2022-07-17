@@ -2,4 +2,5 @@
 kind: Kustomization
 resources:
   - https://raw.githubusercontent.com/k8snetworkplumbingwg/multus-cni/v3.9/deployments/multus-daemonset-thick-plugin.yml
+  - https://raw.githubusercontent.com/deekue/docker-cni-plugins/v1.1.1-0.5/deployment.yaml
   - whereabouts
