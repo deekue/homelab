@@ -1,0 +1,17 @@
+---
+apiVersion: "k8s.cni.cncf.io/v1"
+kind: NetworkAttachmentDefinition
+metadata:
+  name: storage-macvlan-whereabouts
+  namespace: kube-system
+spec:
+  config: '{
+            "name": "storage-macvlan-whereabouts",
+            "type": "macvlan",
+            "master": "storage0",
+            "ipam": {
+                "type": "whereabouts",
+                "range": "192.168.50.128/25",
+                "exclude": "192.168.50.254/32"
+            }
+        }'
