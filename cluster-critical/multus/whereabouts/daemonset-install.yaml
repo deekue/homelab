@@ -96,6 +96,18 @@ spec:
       initContainers:
         - name: install-cni-bin
           image: ghcr.io/k8snetworkplumbingwg/whereabouts:v0.5.3-amd64
+          env:
+            - name: WHEREABOUTS_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "50Mi"
+            limits:
+              cpu: "100m"
+              memory: "50Mi"
           command: [ "/bin/sh" ]
           args:
             - "-c"
