@@ -93,15 +93,24 @@ spec:
       tolerations:
       - operator: Exists
         effect: NoSchedule
+      initContainers:
+        - name: install-cni-bin
+          image: ghcr.io/k8snetworkplumbingwg/whereabouts:v0.5.3-amd64
+          command: [ "/bin/sh" ]
+          args:
+            - "-c"
+            - "SLEEP=false /install-cni.sh"
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: cnibin
+              mountPath: /host/opt/cni/bin
+            - name: cni-net-dir
+              mountPath: /host/etc/cni/net.d
       containers:
       - name: whereabouts
-        command: [ "/bin/sh" ]
-        args:
-          - -c
-          - >
-            SLEEP=false /install-cni.sh &&
-            /ip-control-loop -log-level debug
-        image: ghcr.io/k8snetworkplumbingwg/whereabouts:latest-amd64
+        command: [ "/ip-control-loop", "-log-level", "debug" ]
+        image: ghcr.io/k8snetworkplumbingwg/whereabouts:v0.5.3-amd64
         env:
         - name: WHEREABOUTS_NAMESPACE
           valueFrom:
