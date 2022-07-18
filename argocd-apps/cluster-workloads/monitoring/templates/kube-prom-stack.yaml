@@ -10,7 +10,7 @@ metadata:
 spec:
   source:
     repoURL: 'https://prometheus-community.github.io/helm-charts'
-    targetRevision: {{ .Values.kube-prom-stack-version }}
+    targetRevision: {{ .Values.kubePromStackVersion }}
     helm:
       skipCrds: true
       valueFiles:
