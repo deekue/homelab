@@ -4,6 +4,8 @@ kind: IngressRoute
 metadata:
   name: plex
   namespace: media
+  annotations:
+    traefik.ingress.kubernetes.io/service.serversscheme: https
 spec:
   entryPoints:
     - websecure
