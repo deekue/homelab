@@ -12,7 +12,7 @@ spec:
       match: Host(`mon.s.chaosengine.net`) || Host(`monitoring.s.chaosengine.net`)
       priority: 10
       services:
-        - name: monitoring-grafana
+        - name: kube-prom-stack-chart-grafana
           port: 80
   tls: {}
 ---
