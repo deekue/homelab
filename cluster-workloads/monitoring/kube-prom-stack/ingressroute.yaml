@@ -19,7 +19,7 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: monitoring-kube-prometheus-prometheus
+  name: monitoring-prometheus
   namespace: monitoring
 spec:
   entryPoints:
@@ -29,14 +29,14 @@ spec:
       match: Host(`prom.s.chaosengine.net`) || Host(`prometheus.s.chaosengine.net`)
       priority: 10
       services:
-        - name: monitoring-kube-prometheus-prometheus
+        - name: kube-prom-stack-chart-kube-prometheus
           port: 9090
   tls: {}
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: monitoring-kube-prometheus-alertmanager
+  name: monitoring-alertmanager
   namespace: monitoring
 spec:
   entryPoints:
@@ -46,6 +46,6 @@ spec:
       match: Host(`am.s.chaosengine.net`) || Host(`alertmanager.s.chaosengine.net`)
       priority: 10
       services:
-        - name: monitoring-kube-prometheus-alertmanager
+        - name: kube-prom-stack-chart-kube-alertmanager
           port: 9093
   tls: {}
