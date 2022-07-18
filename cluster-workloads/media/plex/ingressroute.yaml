@@ -15,4 +15,5 @@ spec:
       services:
         - name: plex
           port: 32400
+          scheme: https
   tls: {}
