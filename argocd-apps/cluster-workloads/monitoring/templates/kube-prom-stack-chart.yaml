@@ -14,8 +14,24 @@ spec:
     targetRevision: {{ .Values.kubePromStackVersion }}
     helm:
       skipCrds: true
-      valueFiles:
-        - kube-prom-stack-values.yaml
+      values: |-
+        prometheus:
+          admissionWebhooks:
+            enabled: false
+            certManager:
+              enabled: true
+          prometheusSpec:
+            resources:
+              requests:
+                memory: 400Mi
+            storageSpec:
+              volumeClaimTemplate:
+                spec:
+                  storageClassName: replicated-r2
+                  accessModes: ["ReadWriteOnce"]
+                  resources:
+                    requests:
+                      storage: 50Gi
     chart: kube-prometheus-stack
   destination:
     namespace: {{ .Values.spec.destination.namespace }}
