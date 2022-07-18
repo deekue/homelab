@@ -15,7 +15,7 @@ spec:
     helm:
       skipCrds: true
       valueFiles:
-        - ../../../../cluster-workloads/monitoring/kube-prom-stack/values.yaml
+        - kube-prom-stack-values.yaml
     chart: kube-prometheus-stack
   destination:
     namespace: {{ .Values.spec.destination.namespace }}
