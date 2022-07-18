@@ -11,7 +11,7 @@ metadata:
 spec:
   source:
     repoURL: https://github.com/prometheus-commuity/helm-charts.git
-    path: charts/kube-prom-stack/crds/
+    path: charts/kube-prometheus-stack/crds/
     targetRevision: kube-prometheus-stack-{{ .Values.kubePromStackVersion }}
     directory:
       recurse: true
