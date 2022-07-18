@@ -6,7 +6,7 @@ metadata:
   name: monitoring-apps
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "22"
+    argocd.argoproj.io/sync-wave: "40"
 spec:
   source:
     repoURL: {{ .Values.spec.source.repoURL }}

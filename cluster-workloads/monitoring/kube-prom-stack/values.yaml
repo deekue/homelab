@@ -1,4 +1,6 @@
 ---
+# referenced from:
+# argocd-apps/cluster-workloads/monitoring/templates/kube-prom-stack.yaml
 prometheus:
   admissionWebhooks:
     enabled: false

@@ -5,23 +5,23 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: kube-prom-stack
+  namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "42"  # must be after kube-prom-stack-crds.yaml
+    argocd.argoproj.io/sync-wave: "41"  # must be before kube-prom-stack.yaml
 spec:
   source:
-    repoURL: 'https://prometheus-community.github.io/helm-charts'
-    targetRevision: {{ .Values.kube-prom-stack-version }}
-    helm:
-      skipCrds: true
-      valueFiles:
-        - ../../../../cluster-workloads/monitoring/kube-prom-stack/values.yaml
-    chart: kube-prometheus-stack
+    repoURL: https://github.com/prometheus-commuity/helm-charts.git
+    path: charts/kube-prom-stack/crds/
+    targetRevision: kube-prometheus-stack-{{ .Values.kube-prom-stack-version }}
+    directory:
+      recurse: true
   destination:
     namespace: {{ .Values.spec.destination.namespace }}
     server: {{ .Values.spec.destination.server }}
   project: default
   syncPolicy:
+    syncOptions:
+      - Replace=true
     automated:
       prune: true
       selfHeal: true
-

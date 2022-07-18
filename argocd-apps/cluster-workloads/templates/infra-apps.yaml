@@ -6,7 +6,7 @@ metadata:
   name: infra-apps
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "21"
+    argocd.argoproj.io/sync-wave: "20"
 spec:
   source:
     repoURL: {{ .Values.spec.source.repoURL }}

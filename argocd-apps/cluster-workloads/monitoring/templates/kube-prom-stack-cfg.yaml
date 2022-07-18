@@ -3,19 +3,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: operators
+  name: kube-prom-stack-cfg
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "30"
+    argocd.argoproj.io/sync-wave: "43"  # must be after kube-prom-stack.yaml
 spec:
   source:
     repoURL: {{ .Values.spec.source.repoURL }}
-    path: cluster-workloads/operators
+    path: {{ .Values.spec.source.pathPrefix }}/kube-prom-stack
     targetRevision: {{ .Values.spec.source.targetRevision }}
-    directory:
-      recurse: true
   destination:
-    namespace: operators
+    namespace: {{ .Values.spec.destination.namespace }}
     server: {{ .Values.spec.destination.server }}
   project: default
   syncPolicy:
