@@ -4,7 +4,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kube-prom-stack
+  name: kube-prom-stack-crds
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "41"  # must be before kube-prom-stack.yaml
