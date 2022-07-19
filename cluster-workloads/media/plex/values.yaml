@@ -54,8 +54,9 @@ env:
   PLEX_PREFERENCE_33: "PushNotificationsEnabled=0"
 
 service:
-  type: "LoadBalancer"
-  loadBalancerIP: "192.168.40.129"
+  main:
+    type: LoadBalancer
+    loadBalancerIP: 192.168.40.129
 
 persistence:
   config:
