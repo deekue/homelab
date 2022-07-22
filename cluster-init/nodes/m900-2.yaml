@@ -43,12 +43,13 @@ write_files:
     permissions: '0644'
     encoding: gz+base64
     content: |
-      H4sICAAAAAACA3N0ZGluAJ2S3W7CMAyF7/sUlnZNaQudNgntCfYSJgklaptk+QEh8fBzUlJRNE1j
-      F1Xj+OTzcRwMXsOgC3lAJmgBUglPf232yPoCY9rboPrqJpmCSeY8eskKAOTcCuegfm/K+vWt3FZl
-      Q9ukGdH10LRtmb+K9jv04oyXhbzdUsJo51fBgDQwSNVH7rS4VVU4ZgdlXQH4ixFwGlCB5BA3rteY
-      Fk+iNo+ozb9RdVU9uqp+QTm6xbt+KPMn7eYJbTRwp00TdV5b7ESeaQ6nqY6oAg4EfQETPBwJPQ9Y
-      K0ASsNTdVEknxW71wbTySAQLZ217lwBWfAVpBYeDtvCpVXfUVq2lY04iH6meFxaZl1oVqaN7/7Or
-      YJbJeP/uKMfVrJjO5CjdfzY5ai5gbyXvxEyJ3SRKfoAtPcB1swUuTkvyD64WhcnaNw9bQdZCAwAA
+      H4sICAAAAAACA3N0ZGluAJ1S227CMAx95yss7ZnSlnbaJLQv2E+YJpSobdzlAkLi4+emBGiHNMRD
+      1dg+Occ+DnpH0NJC7bCSfAClpeM/9VusmgUOZWe8btILZAxGWIfaY7sA8D2oHlqlG7Ccv2B8Py2h
+      EOPhUtfYRb4kSwHcqZdwaFGDEjAkzuehLJ9nWc9Z1q+wFHOW4hWWLE3nE6WPWW6WBRu48h9s/Rxs
+      ULyD3S2TZ5zsc5g5rNQ6dKpiRh7NSGsh+8yT7P2DAUnOacZ0aBvIyzKJX8r5Gp084mkCL4tR0joy
+      WMuoGMPZG3qD3jvYk3VXbdKADKiCg+NwFBCb5VdF2iEzGDiSaWwgMPLHKyMF7MjAN+l6T0avlK2s
+      QtGxnpMGK6dI/7Xs2tWjV2v3qlteEeOdGIUdxyY7EhK2Ron6tpVhmsASvSnZm1VegJCHKfODribC
+      3NovHnxSpbADAAA=
   # yamllint disable-line rule:line-length
   - path: /etc/mactab
     owner: root:root
