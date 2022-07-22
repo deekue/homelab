@@ -35,7 +35,7 @@ write_files:
     permissions: '0644'
     encoding: gz+base64
     content: |
-      H4sICIbR0WICA2t1YmUtdmlwLWNsb3VkLWNvbnRyb2xsZXIueWFtbACtVD1v2zAQ3fUrBI1F6Tjt
+      H4sICFoc2mICA2t1YmUtdmlwLWNsb3VkLWNvbnRyb2xsZXIueWFtbACtVD1v2zAQ3fUrBI1F6Tjt
       UgjokARoOqRpEANdigw0ebbZUCRxJJW6Rf97j9RHlMSxXaBaJB3v3ruPd+ROfQP0ypq6bE+Le2Vk
       XS4AWyXgTAgbTSgaCFzywOuiLA1voC7v4xJYqxwT2kbJhDUBrdaAvYd3XAxufusDNAVjrOATMlxy
       MeMxbCyqXzyQbXb/wc+UPRnTuNCRQvHWaniSAzfGhhzi02+5E4uo0UCADElnNjqKp6SqgBGqsZQu
@@ -54,7 +54,7 @@ write_files:
     permissions: '0644'
     encoding: gz+base64
     content: |
-      H4sICL9krWICA2NvbmZpZ21hcC55YW1sADXKPQ6DMAxA4d2n8AVISYRQ8Nq5K7shLrIgPyIpUm/f
+      H4sICKsb2mICA2NvbmZpZ21hcC55YW1sADXKPQ6DMAxA4d2n8AVISYRQ8Nq5K7shLrIgPyIpUm/f
       hY7v0+Ois5xVcyK8LOyaAuEzp7duLy4QpXHgxgSIiaMQ7p9FLi1318LrjV391iYR/vuq4ey2Iy98
       ENrJGTt6M/TGOv9wHn4QHWlKeQAAAA==
   # yamllint disable-line rule:line-length
@@ -94,13 +94,12 @@ write_files:
     permissions: '0644'
     encoding: gz+base64
     content: |
-      H4sICAAAAAACA3N0ZGluAJ1S227CMAx95yss7ZnSlnbaJLQv2E+YJJSobdzlAkLi4+e2BGiHNMRD
-      1dg+Occ+DgZP0NBC71AoPoA2yvOfui2KeoF92dtg6vQCGYMR1qIJ2CwAQge6g0abGhznL5jQTUso
-      5Xi41A22kS/JUgB/6hQcGjSgJfSJ87kvq+dZ1nOW9SssxZyleIUlS9P5ROljlptlgw1c+Q+2fg7W
-      K97B7pbJM0722c88rNR59FowI49mlXOQfeZJ9v7BgCTjNGNadDXkZZnEL+V8hV4d8XQPz8tilHSe
-      LFYqKsZw9obeoAse9uT8VZsMIAPE4OA4HA2IzfJLkPHIDBaOZGs3EFj1E7RVEnZk4ZtMtSdrVtoJ
-      p1G2rOeVReE1mb+WXbt69GrdXrfLK2K8E6Nhx7HJlqSCrdWyum2ln2Zgid6UbOUqL0Cqw5T5QVcT
-      YW7tFyJ/gZiwAwAA
+      H4sICAAAAAACA3N0ZGluAJ2S3W6DMAyF73kKS7suBVqmTar2BHsJN0lpBCRZflpV6sPPCQ2i1TSt
+      u0DE8eHzsQ0Gr2HQhTwgE3QAqYSntzZ7ZH2BMe1tUH11k0zBJHMevWQFAHJuhXNQvzdl/fpWbquy
+      pmvSjOh6aNq2zE9F9x16ccbLUt60W0oY7fwqGJAGBqn6yJ0Ot6oKx+ygrCsAfzECTgMqkBzixfUa
+      0+JJ1OYRtfk3qq6qR1fVLyhHU1z0Q5k/aTdPaKOBhTZt1HltsRN5pzmctjqiCjgQ9AVM8HAk9Lxg
+      rQBJwFJ3UyWdFLvVB9PKIxEsnLXtXQJY8RWkFRwO2sKnVt1RW7WWjjmJfKR6XlhkXmpVpI6W/mdX
+      wdwn4/zdUY6rWTF9k6M0/2xy1FzA3kreiZkSu0mU/AO2NKZ1swUuTvfkH1zdFSZr37j2lLlCAwAA
   # yamllint disable-line rule:line-length
   - path: /etc/mactab
     owner: root:root

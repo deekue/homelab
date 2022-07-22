@@ -54,20 +54,16 @@ function genNodeNetworkConfig {
 auto lo
 iface lo inet loopback
 auto trunk0
-iface trunk0 inet manual
-  up ip link set trunk0 up
-  up ip link add link trunk0 name trunk0.10  type vlan id 10  || true
-  up ip link add link trunk0 name trunk0.30  type vlan id 30  || true
-  up ip link add link trunk0 name trunk0.40  type vlan id 40  || true
-  up ip link add link trunk0 name trunk0.100 type vlan id 100 || true
-  up ip link set trunk0.10  up || true
-  up ip link set trunk0.30  up || true
-  up ip link set trunk0.100 up || true
-auto trunk0.40
-iface trunk0.40 inet static
+iface trunk0 inet static
   address 192.168.40.$nodeId
   netmask 255.255.255.0
   gateway 192.168.40.254
+  post-up ip link add link trunk0 name trunk0.10  type vlan id 10  || true
+  post-up ip link add link trunk0 name trunk0.30  type vlan id 30  || true
+  post-up ip link add link trunk0 name trunk0.100 type vlan id 100 || true
+  post-up ip link set trunk0.10  up || true
+  post-up ip link set trunk0.30  up || true
+  post-up ip link set trunk0.100 up || true
 auto storage0
 iface storage0 inet manual
   # put host address on a macvlan link so host<->container works
