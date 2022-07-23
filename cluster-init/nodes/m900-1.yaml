@@ -12,7 +12,7 @@ write_files:
     permissions: '0644'
     encoding: gz+base64
     content: |
-      H4sICMRb0mICA2t1YmUtdmlwLWRzLnlhbWwArVZbb9owFH7nV1g8N6y0rOryxlo0VVpRBdX2ME2V
+      H4sICB9I3GICA2t1YmUtdmlwLWRzLnlhbWwArVZbb9owFH7nV1g8N6y0rOryxlo0VVpRBdX2ME2V
       cQ7g4diZL1w27b/v2IEQiKnotDygcHy+8527Qwv+BbThSqZk2W0tuMxSMga95Az6jCknbSsHSzNq
       adoiRNIcUrJwE0iWvNgKTEHZTmo2xkLeSpKkRWu29YSyDnV2rjT/RS3KOotb0+HqXcV6JxxC9UgJ
       OKCkUiobIMb/JVFbSK0lWAgm8Uy5AvHoVNtqB+3K89K9dBdAoj2bdgKC7YSgz580gk1KvrXb30s+
@@ -22,13 +22,13 @@ write_files:
       9BrRlMgTAZkCmHfAgMAUKV06k/vu+Fzz7lz/0GQh/ICVZmpZ8M/pTPhHHPCdn5Fzs4JBboMNiOmU
       S243ez4/o/2G1A/XT8c1ZPdOY7eO2RwyJ/DtYSZVJR6sgTkfWx1Z2hxvU/sMOjeHx0mZ6cG6wAk2
       +1VW11jAJg12QjMfRZlTPwJHGEJUAZr6apLBGufe/F9SpqRFcYKVlnAutwdRLrEqOzbcbnpW4/Z+
-      STqrhQNyWT8uy4+Vf6G6qPEuqXD1lX6oXyhtI8o3vd51O2qcS0zpFCeliUIGucB+uowCGc90hOn6
-      qsnDiheQdCLg7DAQUY1wE1Qf6ZhrWSZNhGpKhYlwmSV7q3ueBC+eDHToduyqt0INjpWmJ5Dv4zAN
-      ElYZ0uI8xny9PgWzeoNtylUWAXWbIJplflaayt0PV53uzS12RKe7bwqeYxunZDZn2s/LbmFVL2lt
-      J1X6T7gJn5TgDCevL1Z0s6dr3E67xVTd+r//VFKDi0jjCrvDgYO1rc82owWdcMEth6OZxwCPN9Nw
-      8PzSv398GEbko/7XrXSujB2CXSm9COOxq4I5uGGHsQAsbhZd/4Dz1mE6xfZJyVBtF+2+rCcWSx1T
-      buFXIeX3ztiiHGabkLnyMy1c1U5jS9mhy3Hf7RzAi92XFj/g/C0QPZNB+MiNiclH2KAbL2j9BS1I
-      M1FXCwAA
+      STqrhQNyWT8uy4+Vf6G6qPEuqXD1lX6oXyhtI8o3vd51O2qcS0zpFCeliUIGubiMohjPdITm+qpJ
+      wooXkHQi4OwYEFHNbxNUn+eYa1kmTYRqSoWJcJkle6t7ngRvnQx0aHVsqbdCDc6UpieQ7+MwDRJW
+      GdLiMMZ8vT4Fs3qDPcpVFgF1myCaZX5QmsrdD1ed7s1tp3fZ6e6bgufYwymZzZn2w7LbVtVLWltI
+      lf4TrsEnJTjDseuLFd3s6RpX024rVVf+7z+V1OAW0ri/7nDaYG3rg81oQSdccMvhaOAxwOO1NBw8
+      v/TvHx+GEfmo/3UrnStjh2BXSi/CbOyqYA6u12EsAItrRde/3rx1mE6xfVIyVNstuy/ria1Sx5Qr
+      +FVI+bEztiiH2SZkrvxGC/e009hSduhyXHY7B/BW96XFrzd/BUTPZBA+cmNi8hE26MYLWn8Bl7PX
+      iFQLAAA=
   # yamllint disable-line rule:line-length
   - path: /var/lib/rancher/k3s/server/manifests/kube-vip-cloud-controller.yaml
     owner: root:root
