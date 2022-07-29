@@ -4,7 +4,6 @@ kind: Kustomization
 namespace: cert-manager
 
 resources:
-  - cert-manager-helmchart.yaml
-  - clouddns-dns01-solver-svc-acct-sealedsecret.json
-  - letsencrypt-prod-account-key-sealedsecret.json
-  - google-cloud-dns-issuer-prod.yaml
+  - namespace.yaml
+  - base
+  - chaosengine
