@@ -1,6 +1,25 @@
 ---
+apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+namespace: kube-system
+
+helmCharts:
+  - name: multus
+    releaseName: multus
+    namespace: kube-system
+    version: v3.4.2
+    repo: https://k8s-at-home.com/charts/
+    includeCRDs: true
+    valuesInline:
+      image:
+        tag: v3.9
+
+      cni:
+        image:
+          tag: v1.1.1
+        paths:
+          config: /etc/cni/net.d
+          bin: /opt/cni/bin
+
 resources:
-  - https://raw.githubusercontent.com/k8snetworkplumbingwg/multus-cni/v3.9/deployments/multus-daemonset-thick-plugin.yml
-  - https://raw.githubusercontent.com/deekue/docker-cni-plugins/v1.1.1-0.5/deployment.yaml
   - whereabouts
