@@ -1,3 +1,4 @@
+---
 # dashboard.yaml
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
@@ -14,4 +15,5 @@ spec:
         - name: api@internal
           kind: TraefikService
       middlewares:
-      - name: secured
+        - name: secured
+  tls: {}

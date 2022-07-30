@@ -25,10 +25,19 @@ helmCharts:
       ports:
         web:
           redirectTo: websecure
+        websecure:
+          tls:
+            enabled: true
+      ingressRoute:
+        dashboard:
+          enabled: true
       dashboard:
         domain: "traefik.s.chaosengine.net"
       globalArguments:
         - "--serversTransport.insecureSkipVerify=true"
+      providers:
+        kubernetesCRD:
+          allowExternalNameServices: true
 
 resources:
   - traefik-basic-auth-sealedsecret.yaml
