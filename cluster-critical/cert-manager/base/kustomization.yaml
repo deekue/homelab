@@ -1,15 +1,22 @@
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: cert-manager
+namespace: kube-system
 
 helmCharts:
   - name: cert-manager
     releaseName: cert-manager
-    namespace: cert-manager
-    version: v1.8.1
+    namespace: kube-system
+    version: v1.9.1
     repo: https://charts.jetstack.io
-    valuesFile: values.yaml
+    valuesInline:
+      installCRDs: false
+      webhook:
+        enabled: true
+
+resources:
+  - namespace.yaml
+  - crds/cert-manager.crds-v1.9.1.yaml
 
 # FIXME Warning: would violate PodSecurity "restricted:latest": unrestricted
 # capabilities (container "cert-manager" must set
