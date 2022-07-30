@@ -1,0 +1,26 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: rook-ceph
+
+helmCharts:
+  - name: rook-ceph
+    releaseName: rook-ceph
+    namespace: rook-ceph
+    version: v1.9.8
+    repo: https://charts.rook.io/release
+    valuesInline:
+      hostpathRequiresPrivileged: true  # Talos v1.2+ PSA
+      crds:
+        enabled: false
+      monitoring:
+        enabled: true
+      resources:
+        requests:
+          cpu: 10m
+          memory: 128Mi
+        limits:
+          memory: 256Mi
+      csi:
+        enableCephfsDrive: false
+        enableCephfsSnapshotter: false
