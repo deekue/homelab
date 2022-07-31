@@ -1,5 +1,0 @@
----
-kind: Kustomization
-resources:
-  - mgt-macvlan-unifi.yaml
-  - storage-macvlan-whereabouts.yaml
