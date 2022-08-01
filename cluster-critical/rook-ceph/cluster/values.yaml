@@ -1,0 +1,137 @@
+# yamllint disable rule:line-length
+---
+kubeVersion: "1.24"  # https://github.com/kubernetes-sigs/kustomize/pull/4666
+toolbox:
+  enabled: true
+monitoring:
+  enabled: true
+  createPrometheusRules: true
+ingress:
+  dashboard:
+    host:
+      name: rook.s.chaosengine.net
+      path: /
+    annotations:
+      traefik.ingress.kubernetes.io/router.middlewares:
+        kube-system-secured@kubernetescrd
+    tls: []
+configOverride: |
+  [global]
+  bdev_enable_discard = true
+  bdev_async_discard = true
+cephClusterSpec:
+  placement:
+    all:
+      tolerations:
+        - key: "node-role.kubernetes.io/control-plane"
+          operator: "Exists"
+          effect: "NoSchedule"
+        - key: "node-role.kubernetes.io/master"
+          operator: "Exists"
+          effect: "NoSchedule"
+  network:
+    provider: multus
+    selectors:
+      cluster: kube-system/storage-macvlan-whereabouts
+  crashCollector:
+    disable: false
+    daysToRetain: 3
+  dashboard:
+    enabled: true
+    urlPrefix: /
+    ssl: false
+  storage:
+    useAllNodes: false
+    useAllDevices: false
+    config:
+      osdsPerDevice: "1"
+    nodes:
+      - name: m900-1
+        devices:
+          - name: "/dev/disk/by-id/nvme-KINGSTON_SEDC1000BM8240G_50026B7683CB7BFF"
+      - name: m900-2
+        devices:
+          - name: "/dev/disk/by-id/nvme-KINGSTON_SEDC1000BM8240G_50026B7683E1C602"
+      - name: m900-3
+        devices:
+          - name: "/dev/disk/by-id/nvme-KINGSTON_SEDC1000BM8240G_50026B7683E1C611"
+  resources:
+    mgr:
+      limits:
+        memory: "1Gi"
+      requests:
+        cpu: "250m"  # 500m
+        memory: "256Mi"  # 512Mi
+    mon:
+      limits:
+        memory: "2Gi"
+      requests:
+        cpu: "500m"  # 1000m
+        memory: "500Mi"  # 1Gi
+    osd:
+      limits:
+        memory: "4Gi"
+      requests:
+        cpu: "500m"  # 1000m
+        memory: "2Gi"  # 4Gi
+    prepareosd:
+      limits:
+        memory: "400Mi"
+      requests:
+        cpu: "250m"  # 500m
+        memory: "25Mi"  # 50Mi
+    mgr-sidecar:
+      limits:
+        memory: "100Mi"
+      requests:
+        cpu: "50m"  # 100m
+        memory: "20Mi"  # 40Mi
+    crashcollector:
+      limits:
+        memory: "60Mi"
+      requests:
+        cpu: "50m"  # 100m
+        memory: "30Mi"  # 60Mi
+    logcollector:
+      limits:
+        memory: "1Gi"
+      requests:
+        cpu: "50m"  # 100m
+        memory: "50Mi"  # 100Mi
+    cleanup:
+      limits:
+        memory: "1Gi"
+      requests:
+        cpu: "250m"  # 500m
+        memory: "50Mi"  # 100Mi
+# cephBlockPoolsVolumeSnapshotClass:
+#   enabled: true
+#   name: csi-rbdplugin-snapclass
+#   annotations:
+#     velero.io/csi-volumesnapshot-class: "true"
+#      cephBlockPools:
+#        - name: ceph-blockpool
+#          spec:
+#            failureDomain: host
+#            replicated:
+#              size: 3
+#          storageClass:
+#            enabled: true
+#            name: ceph-block
+#            isDefault: true
+#            reclaimPolicy: Delete
+#            allowVolumeExpansion: true
+#            parameters:
+#              imageFormat: "2"
+#              imageFeatures: layering
+#              csi.storage.k8s.io/provisioner-secret-name: rook-csi-rbd-provisioner
+#              csi.storage.k8s.io/provisioner-secret-namespace: rook-ceph
+#              csi.storage.k8s.io/controller-expand-secret-name: rook-csi-rbd-provisioner
+#              csi.storage.k8s.io/controller-expand-secret-namespace: rook-ceph
+#              csi.storage.k8s.io/node-stage-secret-name: rook-csi-rbd-node
+#              csi.storage.k8s.io/node-stage-secret-namespace: rook-ceph
+#              csi.storage.k8s.io/fstype: ext4
+
+# must be present as empty arrays to disable
+cephFileSystems: []
+cephObjectStores: []

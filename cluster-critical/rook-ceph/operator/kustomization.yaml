@@ -22,5 +22,9 @@ helmCharts:
         limits:
           memory: 256Mi
       csi:
-        enableCephfsDrive: false
+        enableCephfsDriver: false
         enableCephfsSnapshotter: false
+        csiAddons:
+          enabled: false
+        nfs:
+          enabled: false
