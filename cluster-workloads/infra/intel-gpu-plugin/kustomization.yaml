@@ -2,5 +2,14 @@
 kind: Kustomization
 bases:
   - https://github.com/intel/intel-device-plugins-for-kubernetes/deployments/gpu_plugin/overlays/nfd_labeled_nodes?ref=v0.24.0
-# patchesStrategicMerge:
-#   - overrides.yaml
+
+patchesJSON6902:
+  - target:
+      group: apps
+      version: v1
+      kind: DaemonSet
+      name: intel-gpu-plugin
+    patch: |-
+      - op: add
+        path: /metadata/namespace
+        value: infra
