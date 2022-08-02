@@ -1,4 +1,5 @@
 ---
+kubeVersion: "1.24"  # https://github.com/kubernetes-sigs/kustomize/pull/4666
 # https://raw.githubusercontent.com/kubenav/deploy/master/helm/values.yaml
 ingress:
   enabled: true
