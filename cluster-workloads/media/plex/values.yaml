@@ -65,7 +65,8 @@ persistence:
 
   transcode:
     enabled: true
-    existingClaim: "plex-transcode"
+    type: emptyDir
+    #existingClaim: "plex-transcode"
 
   data:
     enabled: true

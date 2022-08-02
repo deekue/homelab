@@ -93,9 +93,9 @@ persistence:
   data:
     enabled: true
     mountPath: /unifi
-    storageClass: "replicated-r2-v2"
+    storageClass: ceph-block
     accessMode: ReadWriteOnce
-    size: 5Gi
+    size: 10Gi
 
 # -- Enable and configure mongodb database subchart under this key.
 #    For more options see [mongodb chart documentation](https://github.com/bitnami/charts/tree/master/bitnami/mongodb)
@@ -106,7 +106,7 @@ persistence:
 #     enabled: false
 #   persistence:
 #     enabled: true
-#     storageClass: "replicated-r2-v2"
+#     storageClass: ceph-block
 #     size: 5Gi
 #   metrics:
 #     enabled: true
