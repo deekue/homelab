@@ -10,3 +10,7 @@ helmCharts:
     repo: https://helm.cilium.io/
     version: "1.11.6"
     valuesFile: values.yaml
+
+resources:
+  - ingress.yaml
+  - configmap.yaml

@@ -54,11 +54,8 @@ hubble:
   ui:
     enabled: true
     rollOutPods: true
-    ingress:
-      enabled: true
-      annotations:
-        traefik.ingress.kubernetes.io/router.middlewares:
-          kube-system-secured@kubernetescrd
-      hosts:
-        - hubble.s.chaosengine.net
-      tls: []
+bgp:
+  enabled: true
+  announce:
+    loadbalancerIP: true
+    podCIDR: true

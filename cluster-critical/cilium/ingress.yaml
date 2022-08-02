@@ -1,0 +1,23 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: kube-system-secured@kubernetescrd
+  labels:
+    k8s-app: hubble-ui
+  name: hubble-ui
+  namespace: kube-system
+spec:
+  tls: []
+  rules:
+    - host: hubble.s.chaosengine.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: hubble-ui
+                port:
+                  name: http
