@@ -2,7 +2,7 @@
 cluster:
   name: "k8s"
   id: "1"
-k8sServiceHost: 192.168.40.10
+k8sServiceHost: ${vipAddress}
 k8sServicePort: 6443
 rollOutCiliumPods: true
 bpf:
@@ -26,7 +26,7 @@ containerRuntime:
   integration: containerd
 # Native routing
 tunnel: disabled
-ipv4NativeRoutingCIDR: 10.244.0.0/16
+ipv4NativeRoutingCIDR: ${clusterPodSubnets}
 autoDirectNodeRoutes: true
 endpointRoutes:
   enabled: true
