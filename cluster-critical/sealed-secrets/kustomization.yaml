@@ -11,4 +11,3 @@ helmCharts:
     version: "v2.2.0"
     valuesInline:
       fullnameOverride: sealed-secrets-controller
-    includeCRDs: true
