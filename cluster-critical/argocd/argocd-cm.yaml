@@ -8,5 +8,8 @@ metadata:
 literals:
   - "kustomize.buildOptions=--enable-helm"
 files:
+  # Required for App-of-apps and sync-waves
+  # https://argo-cd.readthedocs.io/en/stable/operator-manual/health/#argocd-app
   - resource.customizations.health.argoproj.io_Application
+  # https://github.com/cilium/cilium/issues/17349#issue-991502190
   - resource.exclusions

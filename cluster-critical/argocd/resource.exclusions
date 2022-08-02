@@ -1,4 +1,3 @@
-# https://github.com/cilium/cilium/issues/17349#issue-991502190
 - apiGroups:
     - cilium.io
   kinds:

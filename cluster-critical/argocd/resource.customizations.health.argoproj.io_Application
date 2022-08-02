@@ -1,5 +1,3 @@
-# Required for App-of-apps and sync-waves
-# https://argo-cd.readthedocs.io/en/stable/operator-manual/health/#argocd-app
 hs = {}
 hs.status = "Progressing"
 hs.message = ""
