@@ -21,7 +21,6 @@ helmCharts:
 
 resources:
   - namespace.yaml
-  - crds/cert-manager.crds-v1.9.1.yaml
 
 # FIXME Warning: would violate PodSecurity "restricted:latest": unrestricted
 # capabilities (container "cert-manager" must set

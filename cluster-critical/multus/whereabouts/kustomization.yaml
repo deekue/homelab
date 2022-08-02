@@ -3,8 +3,6 @@
 kind: Kustomization
 
 resources:
-  - whereabouts.cni.cncf.io_ippools.yaml
-  - whereabouts.cni.cncf.io_overlappingrangeipreservations.yaml
   - daemonset-install.yaml
   - ip-reconciler-job.yaml
 

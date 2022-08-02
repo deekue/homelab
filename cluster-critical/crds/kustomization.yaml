@@ -1,0 +1,12 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: kube-system
+
+resources:
+  - cert-manager.crds-v1.9.1.yaml
+  - multus-3.4.2.yaml
+  - rook-ceph-v1.9.8.yaml
+  - traefik
+  - whereabouts.cni.cncf.io_ippools.yaml
+  - whereabouts.cni.cncf.io_overlappingrangeipreservations.yaml

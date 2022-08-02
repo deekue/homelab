@@ -9,11 +9,9 @@ helmCharts:
     namespace: kube-system
     version: v3.4.2
     repo: https://k8s-at-home.com/charts/
-    includeCRDs: true
     valuesInline:
       image:
         tag: v3.9
-
       cni:
         image:
           tag: v1.1.1

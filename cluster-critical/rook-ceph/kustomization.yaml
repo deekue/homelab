@@ -4,7 +4,6 @@ kind: Kustomization
 namespace: rook-ceph
 resources:
   - namespace.yaml
-  - https://raw.githubusercontent.com/rook/rook/v1.9.8/deploy/examples/crds.yaml
   - operator
 # - dashboard
 # - rook-direct-mount

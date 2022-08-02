@@ -9,19 +9,20 @@ helmCharts:
     namespace: kube-system
     repo: https://helm.traefik.io/traefik
     version: "v10.24.0"
-    includeCRDs: true
     valuesInline:
+      rbac:
+        enabled: true
       deployment:
         enabled: true
         kind: Deployment
         replicas: 2
       logs:
         access:
-          enabled: true
+          enabled: false
           format: json
-      # general:
-      #   format: json
-      #   level: DEBUG
+        general:
+          format: json
+          level: DEBUG
       ports:
         web:
           redirectTo: websecure
@@ -31,13 +32,14 @@ helmCharts:
       ingressRoute:
         dashboard:
           enabled: true
-      dashboard:
-        domain: "traefik.s.chaosengine.net"
       globalArguments:
         - "--serversTransport.insecureSkipVerify=true"
       providers:
         kubernetesCRD:
           allowExternalNameServices: true
+        kubernetesIngress:
+          publishedService:
+            enabled: true
 
 resources:
   - traefik-basic-auth-sealedsecret.yaml
