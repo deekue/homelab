@@ -3,7 +3,7 @@ apiVersion: "k8s.cni.cncf.io/v1"
 kind: NetworkAttachmentDefinition
 metadata:
   name: mgt-macvlan-unifi
-  namespace: kube-system
+  namespace: infra
 spec:
   config: '{
             "name": "mgt-macvlan-unifi",

@@ -11,6 +11,9 @@ helmCharts:
     version: "4.10.1"
     valuesFile: values.yaml
 
+resources:
+  - mgt-macvlan-unifi.yaml
+
 patches:
   # add VLAN100 mgt to pod, for discovery, inform etc
   - patch: |-
@@ -22,4 +25,4 @@ patches:
         template:
           metadata:
             annotations:
-              k8s.v1.cni.cncf.io/networks: kube-system/mgt-macvlan-unifi
+              k8s.v1.cni.cncf.io/networks: infra/mgt-macvlan-unifi
