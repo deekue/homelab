@@ -3,7 +3,7 @@ apiVersion: "k8s.cni.cncf.io/v1"
 kind: NetworkAttachmentDefinition
 metadata:
   name: storage-macvlan-whereabouts
-  namespace: kube-system
+  namespace: rook-ceph
 spec:
   config: '{
             "name": "storage-macvlan-whereabouts",

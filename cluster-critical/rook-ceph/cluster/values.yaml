@@ -32,7 +32,7 @@ cephClusterSpec:
   network:
     provider: multus
     selectors:
-      cluster: kube-system/storage-macvlan-whereabouts
+      cluster: rook-ceph/storage-macvlan-whereabouts
   crashCollector:
     disable: false
     daysToRetain: 3
