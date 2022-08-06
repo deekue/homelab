@@ -13,7 +13,7 @@ ingress:
       path: /
     annotations:
       traefik.ingress.kubernetes.io/router.middlewares:
-        kube-system-secured@kubernetescrd
+        kube-system-traefik-secure-headers@kubernetescrd
     tls: []
 configOverride: |
   [global]
