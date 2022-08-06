@@ -20,6 +20,7 @@ generators:
 
 resources:
   - ingressroute.yaml
+  - namespace.yaml
 
 commonAnnotations:
   chaosengine/version: v0.1
