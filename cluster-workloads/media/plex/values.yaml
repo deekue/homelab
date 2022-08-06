@@ -17,7 +17,7 @@ image:
 # You can do horrible things to your Plex configuration if you are not careful
 env:
   TZ: "America/Los_Angeles"
-  ADVERTISE_IP: "https://192.168.41.1:32400"
+  ADVERTISE_IP: "https://192.168.40.129:32400"
   PLEX_PREFERENCE_0: "MinutesAllowedPaused=30"
   PLEX_PREFERENCE_1: "MetricsEpoch=1"
   PLEX_PREFERENCE_2: "AcceptedEULA=1"
@@ -36,7 +36,7 @@ env:
   PLEX_PREFERENCE_15: "LanguageInCloud=1"
   PLEX_PREFERENCE_16: "ScannerLowPriority=1"
   PLEX_PREFERENCE_17: "LanNetworksBandwidth=192.168.10.0/24,192.168.30.0/24,192.168.40.0/24"
-  PLEX_PREFERENCE_18: "customConnections=https://192.168.41.1:32400"
+  PLEX_PREFERENCE_18: "customConnections=https://192.168.40.129:32400"
   PLEX_PREFERENCE_19: "sendCrashReports=0"
   PLEX_PREFERENCE_20: "ManualPortMappingMode=1"
   PLEX_PREFERENCE_21: "HardwareAcceleratedCodecs=1"
@@ -56,7 +56,7 @@ env:
 service:
   main:
     type: LoadBalancer
-    loadBalancerIP: 192.168.41.1
+    loadBalancerIP: 192.168.40.129
 
 persistence:
   config:
