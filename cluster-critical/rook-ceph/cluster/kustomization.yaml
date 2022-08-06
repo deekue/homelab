@@ -13,4 +13,4 @@ helmCharts:
 
 resources:
   - storage-macvlan-whereabouts.yaml
-
+  - rook-ceph-dashboard-password-sealedsecret.yaml
