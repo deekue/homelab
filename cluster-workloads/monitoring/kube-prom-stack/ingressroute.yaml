@@ -28,6 +28,9 @@ spec:
     - kind: Rule
       match: Host(`prom.s.chaosengine.net`) || Host(`prometheus.s.chaosengine.net`)
       priority: 10
+      middlewares:
+        - name: secured
+          namespace: kube-system
       services:
         - name: kube-prom-stack-chart-kube-prometheus
           port: 9090
@@ -45,6 +48,9 @@ spec:
     - kind: Rule
       match: Host(`am.s.chaosengine.net`) || Host(`alertmanager.s.chaosengine.net`)
       priority: 10
+      middlewares:
+        - name: secured
+          namespace: kube-system
       services:
         - name: kube-prom-stack-chart-kube-alertmanager
           port: 9093
