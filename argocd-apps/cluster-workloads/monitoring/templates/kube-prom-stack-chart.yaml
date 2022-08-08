@@ -14,6 +14,7 @@ spec:
     targetRevision: {{ .Values.kubePromStackVersion }}
     helm:
       skipCrds: true
+      releaseName: monitoring
       values: |-
         prometheus:
           admissionWebhooks:
