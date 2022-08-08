@@ -8,4 +8,4 @@ spec:
     repoURL: https://github.com/deekue/homelab
     pathPrefix: cluster-workloads/monitoring
     targetRevision: HEAD
-kubePromStackVersion: "37.2.0"
+kubePromStackVersion: "39.5.0"
