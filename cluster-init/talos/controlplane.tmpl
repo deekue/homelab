@@ -1,0 +1,180 @@
+# yamllint disable rule:line-length
+version: v1alpha1
+debug: false
+persist: true
+machine:
+    type: controlplane
+    token: ${machine_token}
+    ca:
+        crt: ${machine_ca_crt}
+        key: ${machine_ca_key}
+    certSANs:
+      - ${vipAddress}
+      - ${vipHost}
+    kubelet:
+#       extraArgs:
+#           rotate-server-certificates: true
+        nodeIP:
+          validSubnets:
+            - ${network_default_subnet}.0/24
+    network:
+      hostname: ${node}
+      interfaces:
+        - deviceSelector:
+            hardwareAddr: ${eth0mac}
+          dhcp: false
+          addresses:
+            - ${network_default_subnet}.${nodeId}/24
+          routes:
+            - network: 0.0.0.0/0
+              gateway: ${network_default_gateway}
+          vlans:
+            - vlanId: 10
+            - vlanId: 30
+            - vlanId: 100
+          vip:
+              ip: ${vipAddress}
+        - deviceSelector:
+            hardwareAddr: ${eth1mac}
+          dhcp: false
+          addresses:
+            - ${network_storage_subnet}.${nodeId}/24
+      nameservers:
+        - ${machine_network_nameservers}
+      extraHostEntries:
+        - ip: ${vipAddress}
+          aliases:
+            - ${vipHost}
+    install:
+        disk: /dev/sda
+        bootloader: true
+        wipe: false
+        extraKernelArgs:
+            - talos.platform=metal
+            - reboot=k
+            - printk.devkmsg=on
+            - console=tty1
+            - talos.logging.kernel=udp://${syslogAddress}:514/
+            #- console=ttyS4
+    features:
+        rbac: true
+    controlPlane:
+        controllerManager:
+            disabled: false
+        scheduler:
+            disabled: false
+    files:
+        - path: /etc/ssl/certs/ca-certificates
+          permissions: 0o644
+          op: append
+          content: |-
+${machine_registry_proxy_ca_crt}
+    # time:
+    #     disabled: false  # Indicates if the time service is disabled for the machine.
+    #     # Specifies time (NTP) servers to use for setting the system time.
+    #     servers:
+    #         - time.cloudflare.com
+    #     bootTimeout: 2m0s  # Specifies the timeout when the node time is considered to be in sync unlocking the boot sequence.
+
+    sysctls:
+        fs.inotify.max_user_instances: "8192"
+        fs.inotify.max_user_watches: "1048576"
+
+    # Used to configure the machine's container image registry mirrors.
+    registries:
+        mirrors:
+          docker.io:
+            endpoints:
+              - $registryProxy
+          quay.io:
+            endpoints:
+              - $registryProxy
+          gcr.io:
+            endpoints:
+              - $registryProxy
+          k8s.gcr.io:
+            endpoints:
+              - $registryProxy
+    #      ghcr.io:
+    #        endpoints:
+    #          - $registryProxy
+    logging:
+        destinations:
+            - endpoint: udp://${syslogAddress}:514
+              format: json_lines
+cluster:
+    id: ${cluster_id}
+    secret: ${cluster_secret} 
+    token: ${cluster_token}
+    aescbcEncryptionSecret: ${cluster_aescbcEncryptionSecret}
+    controlPlane:
+        endpoint: https://${vipAddress}:6443
+    clusterName: homelab
+    allowSchedulingOnMasters: true  # hyperconverge FTW
+    network:
+        dnsDomain: cluster.local
+        podSubnets:
+            - ${clusterPodSubnets}
+        serviceSubnets:
+            - ${clusterSvcSubnets}
+        cni:
+            name: custom
+            urls:
+                - ${cluster_network_cni_url}
+    ca:
+        crt: ${cluster_ca_crt}
+        key: ${cluster_ca_key}
+    aggregatorCA:
+        crt: ${cluster_aggregatorCA_crt}
+        key: ${cluster_aggregatorCA_key}
+    serviceAccount:
+        key: ${cluster_serviceAccount}
+    apiServer:
+        certSANs:
+            - ${vipAddress}
+            - ${vipHost}
+        disablePodSecurityPolicy: true
+        extraArgs:
+            feature-gates: MixedProtocolLBService=true,EphemeralContainers=True
+        admissionControl: []
+#            - name: PodSecurity  # Name is the name of the admission controller.
+#              # Configuration is an embedded configuration object to be used as the plugin's
+#              configuration:
+#                apiVersion: pod-security.admission.config.k8s.io/v1alpha1
+#                defaults:
+#                    audit: restricted
+#                    audit-version: latest
+#                    enforce: baseline
+#                    enforce-version: latest
+#                    warn: restricted
+#                    warn-version: latest
+#                exemptions:
+#                    namespaces:
+#                        - kube-system
+#                        - infra
+#                        - rook-ceph
+#                    runtimeClasses: []
+#                    usernames: []
+#                kind: PodSecurityConfiguration
+    controllerManager:
+        extraArgs:
+            bind-address: 0.0.0.0
+            feature-gates: MixedProtocolLBService=true,EphemeralContainers=True
+    proxy:
+        disabled: true  # Cilium strict mode
+    scheduler:
+        extraArgs:
+            bind-address: 0.0.0.0
+            feature-gates: MixedProtocolLBService=true,EphemeralContainers=True
+    discovery:
+        registries:
+            service:
+                disabled: true
+    coreDNS:
+        disabled: false
+#   extraManifests:
+#       - https://raw.githubusercontent.com/alex1989hu/kubelet-serving-cert-approver/v0.5.1/deploy/ha-install.yaml
+    etcd:
+        ca:
+            crt: ${cluster_etcd_ca_crt}
+            key: ${cluster_etcd_ca_key}
