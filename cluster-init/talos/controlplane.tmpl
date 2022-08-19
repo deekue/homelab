@@ -46,18 +46,25 @@ machine:
           aliases:
             - ${vipHost}
     install:
-        disk: /dev/sda
-        bootloader: true
-        wipe: false
-        extraKernelArgs:
-            - talos.platform=metal
-            - reboot=k
-            - printk.devkmsg=on
-            - console=tty1
-            - talos.logging.kernel=udp://${syslogAddress}:514/
-            #- console=ttyS4
+      disk: /dev/sda
+      bootloader: true
+      wipe: false
+      extraKernelArgs:
+        - talos.platform=metal
+        - reboot=k
+        - printk.devkmsg=on
+        - console=tty1
+        - talos.logging.kernel=udp://${syslogAddress}:514/
+        #- console=ttyS4
     features:
-        rbac: true
+      rbac: true
+      # requires v1.2.0-beta.0
+      kubernetesTalosAPIAccess:
+        enabled: true
+        allowedRoles:
+          - os:admin
+        allowedKubernetesNamespaces:
+          - kube-system
     controlPlane:
         controllerManager:
             disabled: false
@@ -110,7 +117,7 @@ cluster:
     controlPlane:
         endpoint: https://${vipAddress}:6443
     clusterName: homelab
-    allowSchedulingOnMasters: true  # hyperconverge FTW
+    allowSchedulingOnControlPlanes: true  # hyperconverge FTW
     network:
         dnsDomain: cluster.local
         podSubnets:
