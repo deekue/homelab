@@ -12,7 +12,7 @@ spec:
       match: Host(`mon.s.chaosengine.net`) || Host(`monitoring.s.chaosengine.net`)
       priority: 10
       services:
-        - name: kube-prom-stack-chart-grafana
+        - name: monitoring-grafana
           port: 80
   tls: {}
 ---
@@ -32,7 +32,7 @@ spec:
         - name: secured
           namespace: kube-system
       services:
-        - name: kube-prom-stack-chart-kube-prometheus
+        - name: monitoring-kube-prometheus-prometheus
           port: 9090
   tls: {}
 ---
@@ -52,6 +52,6 @@ spec:
         - name: secured
           namespace: kube-system
       services:
-        - name: kube-prom-stack-chart-kube-alertmanager
+        - name: monitoring-kube-prometheus-alertmanager
           port: 9093
   tls: {}
