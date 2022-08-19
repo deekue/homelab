@@ -23,7 +23,7 @@ spec:
           serviceAccountName: whereabouts
           containers:
             - name: whereabouts
-              image: ghcr.io/k8snetworkplumbingwg/whereabouts:latest-amd64
+              image: ghcr.io/k8snetworkplumbingwg/whereabouts:v0.5.3-amd64
               resources:
                 requests:
                   cpu: "100m"
