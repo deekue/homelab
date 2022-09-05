@@ -1,4 +1,5 @@
 # yamllint disable rule:line-length
+# vim: set tabstop=4 shiftwidth=4 expandtab:
 version: v1alpha1
 debug: false
 persist: true
@@ -17,6 +18,10 @@ machine:
         nodeIP:
           validSubnets:
             - ${network_default_subnet}.0/24
+#    env:
+#      http_proxy: ${httpProxy}
+#      https_proxy: ${httpsProxy}
+#      no_proxy: ${noProxy}
     network:
       hostname: ${node}
       interfaces:
@@ -55,27 +60,31 @@ machine:
         - printk.devkmsg=on
         - console=tty1
         - talos.logging.kernel=udp://${syslogAddress}:514/
+        - kernel.kexec_load_disabled=1
         #- console=ttyS4
+      extensions:
+        - image: ghcr.io/deekue/nut-client:2.8.0-1301d19@sha256:f45120cda4db88c725a6526393f8660af04db15bec701cff5fd9cc6d31d4855e
+        - image: ghcr.io/siderolabs/intel-ucode:20220809@sha256:fe3496b4c2a4c4cc09f1bdb20eeb677cdc273bc70f24cd9a6cac4f40c5cce98f
     features:
       rbac: true
-      # requires v1.2.0-beta.0
-      kubernetesTalosAPIAccess:
-        enabled: true
-        allowedRoles:
-          - os:admin
-        allowedKubernetesNamespaces:
-          - kube-system
     controlPlane:
         controllerManager:
             disabled: false
         scheduler:
             disabled: false
     files:
-        - path: /etc/ssl/certs/ca-certificates
-          permissions: 0o644
-          op: append
+        - path: /var/etc/nut/upsmon.conf
+          permissions: 0o600
+          op: create
           content: |-
-${machine_registry_proxy_ca_crt}
+            MONITOR ${upsmonHost} 1 remote ${upsmonPasswd} slave
+            SHUTDOWNCMD "/sbin/poweroff"
+
+        - path: /var/cri/conf.d/metrics.toml
+          op: create
+          content: |-
+            [metrics]
+              address = "0.0.0.0:11234"        
     # time:
     #     disabled: false  # Indicates if the time service is disabled for the machine.
     #     # Specifies time (NTP) servers to use for setting the system time.
@@ -86,25 +95,27 @@ ${machine_registry_proxy_ca_crt}
     sysctls:
         fs.inotify.max_user_instances: "8192"
         fs.inotify.max_user_watches: "1048576"
-
+        # kexec causes hangs
+        # https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=265196#c24
+        kernel.kexec_load_disabled: 1
     # Used to configure the machine's container image registry mirrors.
-    registries:
-        mirrors:
-          docker.io:
-            endpoints:
-              - $registryProxy
-          quay.io:
-            endpoints:
-              - $registryProxy
-          gcr.io:
-            endpoints:
-              - $registryProxy
-          k8s.gcr.io:
-            endpoints:
-              - $registryProxy
-    #      ghcr.io:
-    #        endpoints:
-    #          - $registryProxy
+    # registries:
+    #     mirrors:
+    #       docker.io:
+    #         endpoints:
+    #           - $registryProxy
+    #       quay.io:
+    #         endpoints:
+    #           - $registryProxy
+    #       gcr.io:
+    #         endpoints:
+    #           - $registryProxy
+    #       k8s.gcr.io:
+    #         endpoints:
+    #           - $registryProxy
+    #       ghcr.io:
+    #         endpoints:
+    #           - $registryProxy
     logging:
         destinations:
             - endpoint: udp://${syslogAddress}:514
